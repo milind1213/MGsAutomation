@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Daily Sanity Convozen">
+    <listeners>
+        <listener class-name="com.convozen.TestBase.RetryAnnotation"/>
+        <listener class-name="com.convozen.Utils.TestListeners"/>
+    </listeners>
+
+    <test name="Sanity for Callzen">
+        <classes>
+            <class name="com.convozen.TestCases.TestWeb.TestAgentsFilters"/>
+        </classes>
+    </test>
+</suite>
