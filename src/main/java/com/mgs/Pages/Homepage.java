@@ -22,10 +22,21 @@ public class Homepage extends CommonSelenium {
 
 
 	public WebDashboard webLogin(String email, String password) {
-		waitForElementClickable(driver.findElement(signInButton),10);
-		click(signInButton);
+		if (isElementPresent(driver, signInButton)) {
+			click(signInButton);
+			log("Clicking on Sign In button");
+		} else {
+			waitForElementClickable(driver.findElement(signInButton), 10);
+			log("Clicking on Sign In button");
+			click(signInButton);
+		}
+		log("Entering email address");
 		sendKeys(emailField, email);
+
+		log("Entering password");
 		sendKeys(passwordField, password);
+
+		log("Clicking on Login button");
 		click(loginButton);
 		return new WebDashboard(driver);
 	}

@@ -17,7 +17,7 @@ public class WebBrowser {
 	protected static ThreadLocal<WebDriver> webDriver = new ThreadLocal<>();
 	private static final List<WebDriver> webDriverList = Collections.synchronizedList(new ArrayList<>());
 
-	public void getSeleniumDriver(String browserType, boolean isHeadless) {
+	public void initializeWebDriver(String browserType, boolean isHeadless) {
 		if (browserType.equalsIgnoreCase("chrome")) {
 			WebDriverManager.chromedriver().setup();
 		 	ChromeOptions options = new ChromeOptions();

@@ -16,7 +16,7 @@ public class ExtentManager {
 
 		extentSparkReporter.config().setReportName(reportName);
 		extentSparkReporter.config().setDocumentTitle(documentTitle);
-		extentSparkReporter.config().setTheme(Theme.STANDARD);
+		extentSparkReporter.config().setTheme(Theme.DARK);
 		extentSparkReporter.config().setEncoding("utf-8");
 		extentSparkReporter.config().setTimelineEnabled(true);
 

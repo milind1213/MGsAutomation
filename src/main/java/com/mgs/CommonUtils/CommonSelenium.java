@@ -1,8 +1,14 @@
 package com.mgs.CommonUtils;
 
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Date;
 import java.util.Random;
 import java.util.Set;
+
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+import com.mgs.Utils.TestListeners;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -377,6 +383,20 @@ public class CommonSelenium {
 		}
 		Random r = new Random();
 		return r.nextInt((max - min) + 1) + min;
+	}
+
+
+	public void log(String message) {
+		try {
+			String timestamp = new SimpleDateFormat("h:mm:ss a").format(new Date());
+			ExtentTest extentTest = TestListeners.extentTest.get();
+			if (extentTest != null) {
+				extentTest.log(Status.INFO, message);
+			}
+			System.out.println("[" + timestamp + "] " + "INFO: " + message);
+		} catch (Exception e) {
+			System.err.println("Failed to log message: " + e.getMessage());
+		}
 	}
 
 }

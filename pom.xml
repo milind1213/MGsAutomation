@@ -121,18 +121,14 @@
 			<artifactId>httpmime</artifactId>
 			<version>4.5.13</version>
 		</dependency>
-        <dependency>
-            <groupId>com</groupId>
-            <artifactId>MGTS</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
     </dependencies>
 
 	<build>
 		<plugins>
+
 			<plugin>
 				<artifactId>maven-clean-plugin</artifactId>
-				<version>3.1.0</version>
+				<version>3.2.0</version>
 			</plugin>
 
 			<plugin>
@@ -155,12 +151,12 @@
 				<version>3.2.5</version>
 				<configuration>
 					<suiteXmlFiles>
-						<suiteXmlFile>testng.xml</suiteXmlFile>
+						<suiteXmlFile>Resource\TestSuites\${fileName}</suiteXmlFile>
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>
-
 		</plugins>
 	</build>
-
 </project>
+
+<!-- mvn clean test -DfileName=sanity.xml-->
