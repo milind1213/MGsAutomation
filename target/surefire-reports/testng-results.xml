@@ -2,20 +2,23 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-08-31T15:48:18 IST" name="Daily Sanity" finished-at="2024-08-31T15:48:40 IST" duration-ms="22665">
+  <suite started-at="2024-09-01T00:48:17 IST" name="Daily Sanity" finished-at="2024-09-01T00:48:36 IST" duration-ms="18182">
     <groups>
     </groups>
-    <test started-at="2024-08-31T15:48:18 IST" name="Web Tests" finished-at="2024-08-31T15:48:40 IST" duration-ms="22665">
-      <class name="com.mgs.Tests.WebTests.Explore">
-        <test-method signature="testLoginFunctionality()[pri:1, instance:com.mgs.Tests.WebTests.Explore@4550bb58]" started-at="2024-08-31T15:48:18 IST" name="testLoginFunctionality" finished-at="2024-08-31T15:48:40 IST" duration-ms="21744" status="PASS">
+    <test started-at="2024-09-01T00:48:17 IST" name="Web Tests" finished-at="2024-09-01T00:48:36 IST" duration-ms="18182">
+      <class name="com.mgs.Tests.WebTests.ParameterCheck">
+        <test-method signature="paraterTest(java.lang.String)[pri:0, instance:com.mgs.Tests.WebTests.ParameterCheck@16d04d3d]" started-at="2024-09-01T00:48:18 IST" name="paraterTest" finished-at="2024-09-01T00:48:36 IST" duration-ms="18119" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[firefox]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testLoginFunctionality -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.mgs.Tests.WebTests.Explore@4550bb58]" started-at="2024-08-31T15:48:40 IST" name="tearDown" finished-at="2024-08-31T15:48:40 IST" duration-ms="306" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-      </class> <!-- com.mgs.Tests.WebTests.Explore -->
+        </test-method> <!-- paraterTest -->
+      </class> <!-- com.mgs.Tests.WebTests.ParameterCheck -->
     </test> <!-- Web Tests -->
   </suite> <!-- Daily Sanity -->
 </testng-results>

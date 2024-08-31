@@ -13,7 +13,6 @@ public class Homepage extends CommonSelenium {
         super(driver);
         this.driver = driver;
     }
-
     protected By signInButton = By.xpath("//button[.='Sign In']");
 	protected By signUpButton = By.xpath("//button[.='Sign Up']");
 	protected By emailField = By.xpath("//input[@id='email']");

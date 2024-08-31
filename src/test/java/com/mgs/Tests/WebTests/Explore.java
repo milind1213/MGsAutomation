@@ -38,7 +38,6 @@ public class Explore extends BaseTest {
         WebDashboard user = getLoginInstance();
         user.getConnections().clickOnConnect();
         log("Clicked on the Connect button");
-
     }
 
 }
