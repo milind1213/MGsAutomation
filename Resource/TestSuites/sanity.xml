@@ -3,6 +3,7 @@
     <listeners>
         <listener class-name="com.mgs.TestBase.RetryAnnotation"/>
         <listener class-name="com.mgs.Utils.TestListeners"/>
+        
     </listeners>
 
     <test name="Web Tests">
