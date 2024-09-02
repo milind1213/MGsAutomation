@@ -59,13 +59,10 @@ public class Explore extends BaseTest {
         }
         List<WebElement> userList = user.getHome().getSortResults();
         if (userList.get(0).getText().startsWith("A")) {
-            String firstName = userList.get(0).getText().split(" ")[0];
-            System.out.println();
-            log("Starts With 'A': " + firstName);
+            log("Starts With 'A': " +  userList.get(0).getText());
         } else {
             log("Not Starts With 'A': " + userList.get(0).getText());
         }
-
         Assert.assertFalse(userList.isEmpty(), "The user list is empty.");
         log("User List is not empty and Validated Sorted List Ascending Order");
     }
