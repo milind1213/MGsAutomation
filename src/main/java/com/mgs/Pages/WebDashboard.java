@@ -6,23 +6,29 @@ import com.mgs.CommonUtils.CommonSelenium;
 
 public class WebDashboard extends CommonSelenium {
     WebDriver driver;
-    public final Homepage homepage;
+    public final Loginpage loginpage;
     public final Connection connection;
+    public final HomePage homepage;
 
     public WebDashboard(WebDriver driver) {
         super(driver);
         this.driver = driver;
-        homepage = new Homepage(driver);
+        loginpage = new Loginpage(driver);
         connection = new Connection(driver);
+        homepage = new HomePage(driver);
     }
 
-    public Homepage getHomePage() {
-        return homepage;
+    public Loginpage getHomePage() {
+        return loginpage;
     }
 
 	public Connection getConnections() {
 		return connection;
 	}
+
+    public HomePage getHome(){
+        return homepage;
+    }
 
 
 }

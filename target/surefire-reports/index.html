@@ -50,7 +50,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Daily_Sanity" class="navigator-link ">
-                    <span>C:\Users\Lenovo\eclipse-workspace\MGTS\Resource\TestSuites\Regression.xml</span>
+                    <span>C:\Users\Lenovo\eclipse-workspace\MGTS\Resource\TestSuites\sanity.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -103,7 +103,7 @@
                     <div class="method-list-content passed suite-Daily_Sanity">
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Daily_Sanity" title="com.mgs.Tests.WebTests.ParameterCheck" class="method navigator-link" hash-for-method="paraterTest(firefox)">paraterTest(firefox)</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Daily_Sanity" title="com.mgs.Tests.WebTests.Explore" class="method navigator-link" hash-for-method="testLoginFunctionality">testLoginFunctionality</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Daily_Sanity -->
@@ -121,15 +121,14 @@
           <div class="suite-Daily_Sanity-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
-              <span class="class-name">com.mgs.Tests.WebTests.ParameterCheck</span>
+              <span class="class-name">com.mgs.Tests.WebTests.Explore</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="paraterTest(firefox)">
-                  </a> <!-- paraterTest(firefox) -->
-                  <span class="method-name">paraterTest</span>
-                  <span class="parameters">(firefox)</span>
+                  <a name="testLoginFunctionality">
+                  </a> <!-- testLoginFunctionality -->
+                  <span class="method-name">testLoginFunctionality</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -137,16 +136,20 @@
         </div> <!-- panel Daily_Sanity -->
         <div panel-name="test-xml-Daily_Sanity" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\Lenovo\eclipse-workspace\MGTS\Resource\TestSuites\Regression.xml</span>
+            <span class="header-content">C:\Users\Lenovo\eclipse-workspace\MGTS\Resource\TestSuites\sanity.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
 &lt;suite name=&quot;Daily Sanity&quot; guice-stage=&quot;DEVELOPMENT&quot; verbose=&quot;0&quot;&gt;
+  &lt;listeners&gt;
+    &lt;listener class-name=&quot;com.mgs.TestBase.RetryAnnotation&quot;/&gt;
+    &lt;listener class-name=&quot;com.mgs.Utils.TestListeners&quot;/&gt;
+  &lt;/listeners&gt;
   &lt;test thread-count=&quot;5&quot; name=&quot;Web Tests&quot; verbose=&quot;0&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;com.mgs.Tests.WebTests.ParameterCheck&quot;/&gt;
+      &lt;class name=&quot;com.mgs.Tests.WebTests.Explore&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Web Tests --&gt;
 &lt;/suite&gt; &lt;!-- Daily Sanity --&gt;
@@ -188,14 +191,14 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'paraterTest')
-data.setCell(0, 2, 'com.mgs.Tests.WebTests.ParameterCheck')
-data.setCell(0, 3, 18119);
+data.setCell(0, 1, 'testLoginFunctionality')
+data.setCell(0, 2, 'com.mgs.Tests.WebTests.Explore')
+data.setCell(0, 3, 22667);
 window.suiteTableData['Daily_Sanity']= { tableData: data, tableDiv: 'times-div-Daily_Sanity'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 18 seconds</span>
+              <span class="suite-total-time">Total running time: 22 seconds</span>
               <div id="times-div-Daily_Sanity">
               </div> <!-- times-div-Daily_Sanity -->
             </div> <!-- times-div -->
@@ -221,11 +224,15 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">com.mgs.Tests.WebTests.ParameterCheck</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">com.mgs.Tests.WebTests.Explore</div> <!-- chronological-class-name -->
               <div class="test-method">
-                <span class="method-name">paraterTest(firefox)</span>
+                <span class="method-name">testLoginFunctionality</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- test-method -->
+              <div class="configuration-class after">
+                <span class="method-name">tearDown</span>
+                <span class="method-start">22681 ms</span>
+              </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
       </div> <!-- main-panel-root -->

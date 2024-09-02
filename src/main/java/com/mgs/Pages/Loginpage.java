@@ -4,12 +4,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import com.mgs.CommonUtils.CommonSelenium;
-import org.openqa.selenium.WebElement;
 
-public class Homepage extends CommonSelenium {
+public class Loginpage extends CommonSelenium {
     public WebDriver driver;
 
-    public Homepage(WebDriver driver) {
+    public Loginpage(WebDriver driver) {
         super(driver);
         this.driver = driver;
     }

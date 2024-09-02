@@ -12,10 +12,7 @@ public class Connection extends CommonSelenium {
         this.driver = driver;
     }
 
-   public WebElement clickOnConnect() {
-      waitFor(3);
-      return driver.findElement(By.xpath("//button[.='Connect']"));
-   }
+
 
 
 
