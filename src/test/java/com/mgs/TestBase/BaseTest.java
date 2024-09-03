@@ -36,7 +36,7 @@ public class BaseTest extends WebBrowser {
 		return driver;
 	}
 
-	@AfterClass
+	@AfterMethod
 	public void tearDown() {
 		if (driver != null) {
 			driver.quit();

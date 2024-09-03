@@ -16,7 +16,7 @@ import java.util.List;
 import static com.mgs.Utils.FileUtil.getProperty;
 
 @Listeners(TestListeners.class)
-public class Explore extends BaseTest {
+public class ClusterHomeExplore extends BaseTest {
     WebDriver driver;
 
     public WebDashboard getLoginInstance() throws Exception {

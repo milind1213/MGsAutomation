@@ -6,7 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-public class Parameter {
+public class PeopleGroveParameter {
     WebDriver driver;
 
     @Parameters("Browser")

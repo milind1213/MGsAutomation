@@ -2,7 +2,7 @@
 <suite name="Daily Sanity">
     <test name="Web Tests">
         <classes>
-            <class name="com.mgs.Tests.WebTests.Parameter"/>
+            <class name="com.mgs.Tests.WebTests.PeopleGroveParameter"/>
         </classes>
     </test>
 </suite>

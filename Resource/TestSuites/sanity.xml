@@ -8,7 +8,7 @@
 
     <test name="Web Tests">
         <classes>
-            <class name="com.mgs.Tests.WebTests.Explore"/>
+            <class name="com.mgs.Tests.WebTests.ClusterHomeExplore"/>
         </classes>
     </test>
 </suite>

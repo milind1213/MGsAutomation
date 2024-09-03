@@ -1,6 +1,6 @@
 package com.mgs.Tests.WebTests;
-import java.util.*;
-public class CodingTest {
+
+public class TestCode {
 	public static void main(String[] args) {
        String str = "MilindGhongade";
 	    System.out.println(reverse(str));
