@@ -39,7 +39,7 @@ public class Explore extends BaseTest {
     }
 
     @Test(priority = 1)
-    public void testLoginFunctionality() throws Exception {
+    public void communityMemberNameSortVeryfication() throws Exception {
         WebDashboard user = getLoginInstance();
         log("Clicking on Connect Dropdowns");
         user.getHome().clickOnConnect().click();
@@ -48,23 +48,82 @@ public class Explore extends BaseTest {
         user.getHome().selectConnectionType("Community");
         log("Clicked on Community option");
 
-        log("Clicking on Sort Button");
-        user.getHome().clickSortButton();
-
         List<WebElement> ele = user.getHome().getConnectionOptions();
         for (WebElement e : ele) {
             if (e.getText() == "Community") {
                 e.click();
             }
         }
+
+        log("Clicking on Sort Button");
+        user.getHome().clickSortButton();
+        
+        log("Clicking on A-Z Dropdowns");
+        user.getHome().clickedOnA2ZDropdowns();
+
         List<WebElement> userList = user.getHome().getSortResults();
-        if (userList.get(0).getText().startsWith("A")) {
+        if (userList.get(1).getText().startsWith("A")) {
             log("Starts With 'A': " +  userList.get(0).getText());
         } else {
             log("Not Starts With 'A': " + userList.get(0).getText());
         }
+
         Assert.assertFalse(userList.isEmpty(), "The user list is empty.");
         log("User List is not empty and Validated Sorted List Ascending Order");
+    }
+
+
+    @Test(priority = 2)
+    public void groupsNameVeryfication()throws Exception{
+        WebDashboard user = getLoginInstance();
+        log("Clicking on Connect Dropdowns");
+        user.getHome().clickOnConnect().click();
+
+        log("Clicking on Groups Dropdowns");
+        user.getHome().selectConnectionType("Groups");
+        log("Clicked on Groups option");
+
+        List<WebElement> ele = user.getHome().getConnectionOptions();
+        for (WebElement e : ele) {
+            if (e.getText() == "Groups") {
+                e.click();
+                log("Clicked on Groups option");
+            }
+        }
+
+      List<WebElement> groupList =user.getHome().getGroupNames();
+      for(WebElement group : groupList){
+        System.out.println(group.getText());
+      }
+      int members = user.getHome().getMembersCounts();
+      System.out.println("Total number of members in all groups: " + members);
+
+      Assert.assertEquals(members, 30);
+      log("Successfully validated members");
+}
+
+    @Test(priority = 3)
+    public void programNameVeryfication()throws Exception{
+        WebDashboard user = getLoginInstance();
+        log("Clicking on Connect Dropdowns");
+        user.getHome().clickOnConnect().click();
+
+        log("Clicking on Programs Dropdowns");
+        user.getHome().selectConnectionType("Programs");
+        log("Clicked on Programs option");
+
+        List<WebElement> ele = user.getHome().getConnectionOptions();
+        for (WebElement e : ele) {
+            if (e.getText() == "Programs") {
+                e.click();
+                log("Clicked on Programs option");
+            }
+        }
+
+       int programCount = user.getHome().getPrograms();
+       System.out.println("Total number of programs: " + programCount);
+        
+       
     }
 
 
@@ -73,5 +132,11 @@ public class Explore extends BaseTest {
 
 
 
-}
 
+
+
+
+
+
+
+}
