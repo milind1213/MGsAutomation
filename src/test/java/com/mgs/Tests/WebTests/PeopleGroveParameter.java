@@ -15,7 +15,7 @@ public class PeopleGroveParameter {
         System.out.println("Parater Values is " + browserName);
         if (browserName.contains("chrome")) {
             WebDriverManager.chromedriver().setup();
-            driver = new ChromeDriver();
+                 driver = new ChromeDriver();
         } else if (browserName.contains("firefox")) {
             WebDriverManager.firefoxdriver().setup();
             driver = new ChromeDriver();

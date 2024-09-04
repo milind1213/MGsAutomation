@@ -36,6 +36,25 @@ public class BaseTest extends WebBrowser {
 		return driver;
 	}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	@AfterMethod
 	public void tearDown() {
 		if (driver != null) {

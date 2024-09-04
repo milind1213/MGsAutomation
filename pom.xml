@@ -152,15 +152,15 @@
 				<configuration>
 					<suiteXmlFiles>
 						<suiteXmlFile>Resource\TestSuites\${fileName}</suiteXmlFile>
+						<!--<suiteXmlFile>Resource/TestSuites/sanity.xml</suiteXmlFile>-->
 					</suiteXmlFiles>
-					<systemPropertyVariables>
+				   <!--<systemPropertyVariables>
 						<browser>${Browser}</browser>
-					</systemPropertyVariables>
+					</systemPropertyVariables>-->
 				</configuration>
-
 			</plugin>
 		</plugins>
 	</build>
 </project>
 
-<!-- mvn clean test -DfileName=sanity.xml-->
+<!-- mvn clean test -DtestSuiteFile=sanity.xml-->

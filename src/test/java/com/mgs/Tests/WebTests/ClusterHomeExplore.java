@@ -39,7 +39,7 @@ public class ClusterHomeExplore extends BaseTest {
     }
 
     @Test(priority = 1)
-    public void communityMemberNameSortVeryfication() throws Exception {
+    public void verifyingCommunityMembers() throws Exception {
         WebDashboard user = getLoginInstance();
         log("Clicking on Connect Dropdowns");
         user.getHome().clickOnConnect().click();
@@ -74,7 +74,7 @@ public class ClusterHomeExplore extends BaseTest {
 
 
     @Test(priority = 2)
-    public void groupsNameVeryfication()throws Exception{
+    public void verifyingGroups()throws Exception{
         WebDashboard user = getLoginInstance();
         log("Clicking on Connect Dropdowns");
         user.getHome().clickOnConnect().click();
@@ -103,7 +103,7 @@ public class ClusterHomeExplore extends BaseTest {
 }
 
     @Test(priority = 3)
-    public void programNameVeryfication()throws Exception{
+    public void verifyingPrograms()throws Exception{
         WebDashboard user = getLoginInstance();
         log("Clicking on Connect Dropdowns");
         user.getHome().clickOnConnect().click();
@@ -122,8 +122,6 @@ public class ClusterHomeExplore extends BaseTest {
 
        int programCount = user.getHome().getPrograms();
        System.out.println("Total number of programs: " + programCount);
-        
-       
     }
 
 

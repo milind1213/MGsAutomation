@@ -1,14 +1,14 @@
+com\mgs\Pages\Loginpage.class
 com\mgs\CommonUtils\CommonRestAssured.class
+com\mgs\Pages\HomePage.class
 com\mgs\CommonUtils\CommonSelenium.class
 com\mgs\Pages\Connection.class
 com\mgs\Utils\ExcelUtils.class
 com\mgs\Pages\Summary.class
 com\mgs\Utils\TestListeners.class
 com\mgs\CommonConstants.class
-com\mgs\Pages\PaymentDashboard.class
 com\mgs\DriverUtils\WebBrowser.class
 com\mgs\Utils\ExtentManager.class
-com\mgs\Pages\Homepage.class
 com\mgs\Pages\WebDashboard.class
 com\mgs\Utils\FileUtil.class
 com\mgs\Utils\SlackIntegration.class

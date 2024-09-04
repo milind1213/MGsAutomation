@@ -18,6 +18,7 @@ public class WebBrowser {
 	private static final List<WebDriver> webDriverList = Collections.synchronizedList(new ArrayList<>());
 
 	public void initializeWebDriver(String browserType, boolean isHeadless) {
+
 		if (browserType.equalsIgnoreCase("chrome")) {
 			WebDriverManager.chromedriver().setup();
 		 	ChromeOptions options = new ChromeOptions();
@@ -29,7 +30,6 @@ public class WebBrowser {
 			addCommonArguments(options, isHeadless);
 			driver = new FirefoxDriver(options);
 		}
-
 		if (driver != null) {
 			webDriver.set(driver);
 			webDriverList.add(driver); 
