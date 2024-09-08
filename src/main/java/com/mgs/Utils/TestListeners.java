@@ -107,6 +107,8 @@ public class TestListeners extends WebBrowser implements ITestListener {
 		if (extentReports != null) {
 			extentReports.flush();
 		}
+		EmailReportingUtils report = new EmailReportingUtils();
+		report.sendReport();
 		// SlackIntegration slackIntegration = new SlackIntegration(getProperty(CommonConstants.COMMON, CommonConstants.MGS_SLACK_TOKEN),
 		//		getProperty(CommonConstants.COMMON, CommonConstants.MGS_SLACK_CHANENEL));
 		// slackIntegration.sendTestExecutionReportToSlack(reportPath, "Test Execution Report");

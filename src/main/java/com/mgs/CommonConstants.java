@@ -13,6 +13,12 @@ public class CommonConstants {
     public static final String MGS = "mgs";
     public static final String GMAIL_USERNAME = "common.username";
     public static final String GMAIL_PASSWORD = "common.password";
+    public static final String GMAIL_TO ="common.to";
+    public static final String GMAIL_FROM ="common.from";
+    public static final String GMAIL_SUBJECT ="common.subject";
+    public static final String GMAIL_TEXT ="common.text";
+
+
 
 
 }

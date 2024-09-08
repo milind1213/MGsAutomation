@@ -6,28 +6,59 @@ import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeBodyPart;
 import jakarta.mail.internet.MimeMessage;
 import jakarta.mail.internet.MimeMultipart;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
 import java.io.File;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Properties;
+
+import static com.mgs.CommonConstants.CURRENT_DIRECTORY;
 import static com.mgs.Utils.FileUtil.getProperty;
 
 public class EmailReportingUtils {
-    public static void main(String[] args) {
-        String[] to = {"mgs.milind@gmail.com", "gmilind13@gmail.com"};
-        String from = "milind.ghoongade@gmail.com";
-        String subject = "Subject : Test Automation Execution Report";
-        String text =
-                "Hi Team,\n\n" +
-                "Please find the attached Automation Execution Report. Review the results and provide any feedback.\n\n\n" +
-                "Thanks and Regards,\n" +
-                "Milind Ghongade\n" +
-                "QA Engineer";
-        File file = new File("C:\\Users\\Lenovo\\IdeaProjects\\Reports\\Automation_Report_084602.html");
-        boolean b = sendEmailWithAttachment(to, from, subject, text, file);
-        if (b) {
-            System.out.println("Email Sent Successfully");
-        } else {
-            System.out.println("Failed to Sending the Email");
+    public void sendReport() {
+        String[] to = getProperty(CommonConstants.COMMON, CommonConstants.GMAIL_TO).split(",");
+        String from = getProperty(CommonConstants.COMMON, CommonConstants.GMAIL_FROM);
+        String subject = getProperty(CommonConstants.COMMON, CommonConstants.GMAIL_SUBJECT);
+        String text = getProperty(CommonConstants.COMMON, CommonConstants.GMAIL_TEXT);
+
+        File reportDirectory = new File(CURRENT_DIRECTORY + "\\Reports");
+        File latestReportFile = null;
+
+        for (int attempt = 1; attempt <=5; attempt++) {
+            latestReportFile = getLatestFileFromDir(reportDirectory);
+            if (latestReportFile != null) {
+                System.out.println("Latest Report File: " + latestReportFile.getAbsolutePath());
+                break;         // Exit the loop if the file is found
+            } else {
+                try {
+                    Thread.sleep(2000);// Wait for the defined period before retrying
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
         }
+
+        if (latestReportFile != null) {
+            boolean emailSent = sendEmailWithAttachment(to, from, subject, text, latestReportFile);
+            if (emailSent) {
+                System.out.println("Extent Report has been successfully sent with the attachment to: " + Arrays.toString(to));
+            } else {
+                System.out.println("Failed to send the Extent Report email.");
+            }
+        } else {
+            System.out.println("Failed to locate the most recent Extent Report.");
+        }
+    }
+    public static File getLatestFileFromDir(File dir) {
+        File[] files = dir.listFiles((d, name) -> name.toLowerCase().endsWith(".html"));
+        if (files != null && files.length > 0) {
+            Arrays.sort(files, Comparator.comparingLong(File::lastModified).reversed());
+            return files[0]; // Return the most recent file
+        }
+        return null;
     }
 
     public static boolean sendEmailWithAttachment(String[] to, String from, String subject, String text, File file) {
@@ -48,11 +79,9 @@ public class EmailReportingUtils {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(from));
             message.setSubject(subject);
-
             for (String recipient : to) {
                 message.addRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
             }
-
             MimeBodyPart part1 = new MimeBodyPart();  // Create the message body
             part1.setText(text);
 
