@@ -1,14 +1,5 @@
 package com.mgs;
 
-import org.apache.commons.lang3.RandomStringUtils;
-
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
-import java.util.Date;
-import java.util.Random;
-
 public class CommonConstants {
     public static final String MGS_USERNAME = "mgs.username";
     public static final String MGS_PASSWORD = "mgs.password";
@@ -20,7 +11,8 @@ public class CommonConstants {
     public static final String CURRENT_DIRECTORY = System.getProperty("user.dir");
     public static final String COMMON = "common";
     public static final String MGS = "mgs";
-
+    public static final String GMAIL_USERNAME = "common.username";
+    public static final String GMAIL_PASSWORD = "common.password";
 
 
 }
