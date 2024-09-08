@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 public class PeopleGroveParameter {
     WebDriver driver;
 
-    @Parameters("Browser")
+    //@Parameters("Browser")
     @Test
     public void paraterTest(String browserName) throws InterruptedException {
         System.out.println("Parater Values is " + browserName);

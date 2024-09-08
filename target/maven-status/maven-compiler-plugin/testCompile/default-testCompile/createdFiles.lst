@@ -1,6 +1,7 @@
-com\mgs\Tests\WebTests\ClusterHomeExplore.class
 com\mgs\TestBase\RetryAnnotation.class
 com\mgs\TestBase\BaseTest.class
 com\mgs\TestBase\RetryListener.class
+com\mgs\Tests\ApiTest\BasicAPI.class
 com\mgs\Tests\WebTests\PeopleGroveParameter.class
 com\mgs\Tests\WebTests\TestCode.class
+com\mgs\Tests\WebTests\ClusterHomeExplore.class

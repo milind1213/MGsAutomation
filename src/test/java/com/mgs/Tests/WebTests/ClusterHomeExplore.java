@@ -1,8 +1,8 @@
 package com.mgs.Tests.WebTests;
 
 import com.mgs.CommonConstants;
-import com.mgs.Pages.Loginpage;
-import com.mgs.Pages.WebDashboard;
+import com.mgs.Pages.WebPages.Loginpage;
+import com.mgs.Pages.WebPages.WebDashboard;
 import com.mgs.TestBase.BaseTest;
 import com.mgs.Utils.TestListeners;
 import org.openqa.selenium.WebDriver;

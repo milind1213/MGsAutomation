@@ -1,4 +1,4 @@
-package com.mgs.Pages;
+package com.mgs.Pages.WebPages;
 
 import com.mgs.CommonUtils.CommonSelenium;
 import org.openqa.selenium.By;
