@@ -18,7 +18,6 @@ import static com.mgs.Utils.FileUtil.getProperty;
 @Listeners(TestListeners.class)
 public class ClusterHomeExplore extends BaseTest {
     WebDriver driver;
-
     public WebDashboard getLoginInstance() throws Exception {
         Loginpage homepage = getWebLogin();
         WebDashboard userDashboard = homepage.webLogin(
@@ -57,7 +56,6 @@ public class ClusterHomeExplore extends BaseTest {
 
         log("Clicking on Sort Button");
         user.getHome().clickSortButton();
-        
         log("Clicking on A-Z Dropdowns");
         user.getHome().clickedOnA2ZDropdowns();
 
@@ -67,7 +65,6 @@ public class ClusterHomeExplore extends BaseTest {
         } else {
             log("Not Starts With 'A': " + userList.get(0).getText());
         }
-
         Assert.assertFalse(userList.isEmpty(), "The user list is empty.");
         log("User List is not empty and Validated Sorted List Ascending Order");
     }
@@ -123,18 +120,4 @@ public class ClusterHomeExplore extends BaseTest {
        int programCount = user.getHome().getPrograms();
        System.out.println("Total number of programs: " + programCount);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

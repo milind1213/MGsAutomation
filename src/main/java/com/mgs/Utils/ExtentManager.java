@@ -13,7 +13,6 @@ public class ExtentManager {
 		ExtentSparkReporter extentSparkReporter = new ExtentSparkReporter(fileName);
 		extentSparkReporter.viewConfigurer().viewOrder().as(new ViewName[] { ViewName.DASHBOARD, ViewName.TEST,
 				ViewName.CATEGORY, ViewName.EXCEPTION, ViewName.DEVICE, ViewName.AUTHOR }).apply();
-
 		extentSparkReporter.config().setReportName(reportName);
 		extentSparkReporter.config().setDocumentTitle(documentTitle);
 		extentSparkReporter.config().setTheme(Theme.DARK);
@@ -21,14 +20,13 @@ public class ExtentManager {
 		extentSparkReporter.config().setTimelineEnabled(true);
 
 		extentReports = new ExtentReports();
-
 		extentReports.attachReporter(extentSparkReporter);
 		extentReports.setSystemInfo("Username", System.getProperty("user.name"));
 		extentReports.setSystemInfo("OS", System.getProperty("os.name"));
 		extentReports.setSystemInfo("OS Version", System.getProperty("os.version"));
 		extentReports.setSystemInfo("Java Version", System.getProperty("java.version"));
 		extentReports.setSystemInfo("Time Zone", System.getProperty("user.timezone"));
-		extentReports.setSystemInfo("Author", "Convozen");
+		extentReports.setSystemInfo("Author", "Milind G");
 
 		return extentReports;
 	}
