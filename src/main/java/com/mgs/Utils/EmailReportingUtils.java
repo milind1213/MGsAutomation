@@ -18,7 +18,7 @@ import static com.mgs.CommonConstants.CURRENT_DIRECTORY;
 import static com.mgs.Utils.FileUtil.getProperty;
 
 public class EmailReportingUtils {
-    public void sendReport() {
+    public void sendExecutionReport() {
         String[] to = getProperty(CommonConstants.COMMON, CommonConstants.GMAIL_TO).split(",");
         String from = getProperty(CommonConstants.COMMON, CommonConstants.GMAIL_FROM);
         String subject = getProperty(CommonConstants.COMMON, CommonConstants.GMAIL_SUBJECT);
