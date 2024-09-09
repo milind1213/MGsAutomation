@@ -14,9 +14,8 @@ import org.testng.annotations.Test;
 import java.util.List;
 
 import static com.mgs.Utils.FileUtil.getProperty;
-
 @Listeners(TestListeners.class)
-public class ClusterHomeExplore extends BaseTest {
+public class ConnectionGroups extends BaseTest {
     WebDriver driver;
     public WebDashboard getLoginInstance() throws Exception {
         Loginpage homepage = getWebLogin();
@@ -38,34 +37,31 @@ public class ClusterHomeExplore extends BaseTest {
     }
 
     @Test
-    public void VerifyingCommunityMembers() throws Exception {
+    public void VerifyingConnectionsGroups()throws Exception{
         WebDashboard user = getLoginInstance();
         log("Clicking on Connect Dropdowns");
         user.getHome().clickOnConnect().click();
 
-        log("Clicking on Community Dropdowns");
-        user.getHome().selectConnectionType("Community");
-        log("Clicked on Community option");
+        log("Clicking on Groups Dropdowns");
+        user.getHome().selectConnectionType("Groups");
+        log("Clicked on Groups option");
 
         List<WebElement> ele = user.getHome().getConnectionOptions();
         for (WebElement e : ele) {
-            if (e.getText() == "Community") {
+            if (e.getText() == "Groups") {
                 e.click();
+                log("Clicked on Groups option");
             }
         }
 
-        log("Clicking on Sort Button");
-        user.getHome().clickSortButton();
-        log("Clicking on A-Z Dropdowns");
-        user.getHome().clickedOnA2ZDropdowns();
-
-        List<WebElement> userList = user.getHome().getSortResults();
-        if (userList.get(1).getText().startsWith("A")) {
-            log("Starts With 'A': " +  userList.get(0).getText());
-        } else {
-            log("Not Starts With 'A': " + userList.get(0).getText());
+        List<WebElement> groupList =user.getHome().getGroupNames();
+        for(WebElement group : groupList){
+            System.out.println(group.getText());
         }
-        Assert.assertFalse(userList.isEmpty(), "The user list is empty.");
-        log("User List is not empty and Validated Sorted List Ascending Order");
+        int members = user.getHome().getMembersCounts();
+        System.out.println("Total number of members in all groups: " + members);
+
+        Assert.assertEquals(members, 30);
+        log("Successfully validated members");
     }
 }
