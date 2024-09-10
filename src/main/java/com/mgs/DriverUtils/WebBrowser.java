@@ -45,7 +45,7 @@ public class WebBrowser {
     public void initializeRemoteWebDriver(String browserType, boolean isHeadless) throws MalformedURLException {
         String hubUrl = "http://localhost:4444/wd/hub";
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setPlatform(Platform.WIN11); // Correct platform settings
+        capabilities.setPlatform(Platform.LINUX); // Correct platform settings
 
         if (browserType.equalsIgnoreCase("chrome")) {
             ChromeOptions options = new ChromeOptions();

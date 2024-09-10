@@ -35,7 +35,7 @@
 <a href="#"><span class="badge badge-primary">Automation Test Report</span></a>
 </li>
 <li class="m-r-10">
-<a href="#"><span class="badge badge-primary">Sept 9, 2024 09:26:03 pm</span></a>
+<a href="#"><span class="badge badge-primary">Sept 10, 2024 08:39:10 am</span></a>
 </li>
 </ul>
 </div>
@@ -66,13 +66,13 @@
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Started</p>
-<h3>Sept 9, 2024 09:26:03 pm</h3>
+<h3>Sept 10, 2024 08:39:10 am</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Ended</p>
-<h3>Sept 9, 2024 09:29:09 pm</h3>
+<h3>Sept 10, 2024 08:41:29 am</h3>
 </div></div>
 </div>
 <div class="col-md-3">
@@ -142,7 +142,7 @@
 </div></div>
 <script>
 var timeline = {
-"VerifyingConnectionsGroups":148.311,"VerifyingCommunityMembers":181.863,"VerifyingProgramDetails":162.565
+"VerifyingProgramDetails":138.533,"VerifyingCommunityMembers":55.95,"VerifyingConnectionsGroups":95.993
 };
 </script>
 <div class="row">
@@ -152,14 +152,6 @@ var timeline = {
 <div class="card-body pb-0 pt-0"><table class="table table-sm table-bordered">
 <thead><tr class="bg-gray"><th>Name</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Others</th><th>Passed %</th></tr></thead><tbody>
 <tr>
-<td>ConnectionGroups</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>100%</td>
-</tr>
-<tr>
 <td>ProgramDetails</td>
 <td>1</td>
 <td>0</td>
@@ -168,7 +160,7 @@ var timeline = {
 <td>100%</td>
 </tr>
 <tr>
-<td>DailySanity</td>
+<td>SanityTestSuit</td>
 <td>3</td>
 <td>0</td>
 <td>0</td>
@@ -177,6 +169,14 @@ var timeline = {
 </tr>
 <tr>
 <td>ClusterHomeExplore</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>ConnectionGroups</td>
 <td>1</td>
 <td>0</td>
 <td>0</td>
@@ -267,7 +267,7 @@ infoEvents: 32
 <li class="dropdown">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tag"></i></a>
 <ul id="tag-toggle" class="dropdown-menu dropdown-md p-v-0">
-<a class="dropdown-item" href="#">ConnectionGroups</a><a class="dropdown-item" href="#">ProgramDetails</a><a class="dropdown-item" href="#">DailySanity</a><a class="dropdown-item" href="#">ClusterHomeExplore</a>
+<a class="dropdown-item" href="#">ProgramDetails</a><a class="dropdown-item" href="#">SanityTestSuit</a><a class="dropdown-item" href="#">ClusterHomeExplore</a><a class="dropdown-item" href="#">ConnectionGroups</a>
 </ul>
 </li>
 </ul>
@@ -275,12 +275,12 @@ infoEvents: 32
       <ul class="test-list-item">
         <li class="test-item"  status="pass" test-id="1"
           author=""
-          tag="DailySanity ConnectionGroups"
+          tag="SanityTestSuit ProgramDetails"
           device="">
           <div class="test-detail">
-            <p class="name">VerifyingConnectionsGroups</p>
+            <p class="name">VerifyingProgramDetails</p>
             <p class="text-sm">
-              <span>9:26:06 pm</span> / <span>00:02:28:311</span>
+              <span>8:39:10 am</span> / <span>00:02:18:533</span>
               <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
@@ -288,17 +288,17 @@ infoEvents: 32
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">VerifyingConnectionsGroups</h5>
-<span class='badge badge-success'>09.09.2024 9:26:06 pm</span>
-<span class='badge badge-danger'>09.09.2024 9:28:34 pm</span>
-<span class='badge badge-default'>00:02:28:311</span>
+<h5 class="test-status text-pass">VerifyingProgramDetails</h5>
+<span class='badge badge-success'>09.10.2024 8:39:10 am</span>
+<span class='badge badge-danger'>09.10.2024 8:41:29 am</span>
+<span class='badge badge-default'>00:02:18:533</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
 <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
 <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
 <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
 </div>
-<div class="m-t-15"><span class="badge badge-pill badge-default">DailySanity</span>
-<span class="badge badge-pill badge-default">ConnectionGroups</span></div>
+<div class="m-t-15"><span class="badge badge-pill badge-default">SanityTestSuit</span>
+<span class="badge badge-pill badge-default">ProgramDetails</span></div>
 <div class="m-t-10 m-l-5"></div>
 </div>
 </div><div class="detail-body mt-4">
@@ -307,77 +307,70 @@ infoEvents: 32
   <tbody>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>9:27:05 pm</td>
+        <td>8:40:50 am</td>
         <td>
           Launching the URL :[https://basecopy5.staging.pg-test.com/v2/]
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>9:27:52 pm</td>
+        <td>8:40:55 am</td>
         <td>
           Clicking on Sign In button
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>9:27:52 pm</td>
+        <td>8:40:55 am</td>
         <td>
           Entering email address
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>9:28:00 pm</td>
+        <td>8:40:57 am</td>
         <td>
           Entering password
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>9:28:05 pm</td>
+        <td>8:40:59 am</td>
         <td>
           Clicking on Login button
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>9:28:09 pm</td>
+        <td>8:41:03 am</td>
         <td>
           Successfully Validated title of the Homepage
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>9:28:09 pm</td>
+        <td>8:41:03 am</td>
         <td>
           Clicking on Connect Dropdowns
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>9:28:12 pm</td>
+        <td>8:41:06 am</td>
         <td>
-          Clicking on Groups Dropdowns
+          Clicking on Programs Dropdowns
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>9:28:12 pm</td>
+        <td>8:41:07 am</td>
         <td>
-          Clicked on Groups option
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log info-bg">Info</span></td>
-        <td>9:28:34 pm</td>
-        <td>
-          Successfully validated members
+          Clicked on Programs option
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log pass-bg">Pass</span></td>
-        <td>9:28:34 pm</td>
+        <td>8:41:29 am</td>
         <td>
           <span class='badge white-text green'><b>Test Passed! 😊 </b></span>
         </td>
@@ -389,12 +382,12 @@ infoEvents: 32
         </li>
         <li class="test-item"  status="pass" test-id="2"
           author=""
-          tag="DailySanity ClusterHomeExplore"
+          tag="ClusterHomeExplore SanityTestSuit"
           device="">
           <div class="test-detail">
             <p class="name">VerifyingCommunityMembers</p>
             <p class="text-sm">
-              <span>9:26:06 pm</span> / <span>00:03:01:863</span>
+              <span>8:39:10 am</span> / <span>00:00:55:950</span>
               <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
@@ -403,16 +396,16 @@ infoEvents: 32
 <div class="p-v-10">
 <div class="info">
 <h5 class="test-status text-pass">VerifyingCommunityMembers</h5>
-<span class='badge badge-success'>09.09.2024 9:26:06 pm</span>
-<span class='badge badge-danger'>09.09.2024 9:29:08 pm</span>
-<span class='badge badge-default'>00:03:01:863</span>
+<span class='badge badge-success'>09.10.2024 8:39:10 am</span>
+<span class='badge badge-danger'>09.10.2024 8:40:06 am</span>
+<span class='badge badge-default'>00:00:55:950</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=2</span>
 <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
 <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
 <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
 </div>
-<div class="m-t-15"><span class="badge badge-pill badge-default">DailySanity</span>
-<span class="badge badge-pill badge-default">ClusterHomeExplore</span></div>
+<div class="m-t-15"><span class="badge badge-pill badge-default">ClusterHomeExplore</span>
+<span class="badge badge-pill badge-default">SanityTestSuit</span></div>
 <div class="m-t-10 m-l-5"></div>
 </div>
 </div><div class="detail-body mt-4">
@@ -421,98 +414,98 @@ infoEvents: 32
   <tbody>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>9:27:04 pm</td>
+        <td>8:39:22 am</td>
         <td>
           Launching the URL :[https://basecopy5.staging.pg-test.com/v2/]
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>9:27:54 pm</td>
+        <td>8:39:27 am</td>
         <td>
           Clicking on Sign In button
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>9:27:54 pm</td>
+        <td>8:39:27 am</td>
         <td>
           Entering email address
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>9:28:08 pm</td>
+        <td>8:39:30 am</td>
         <td>
           Entering password
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>9:28:11 pm</td>
+        <td>8:39:32 am</td>
         <td>
           Clicking on Login button
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>9:28:14 pm</td>
+        <td>8:39:35 am</td>
         <td>
           Successfully Validated title of the Homepage
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>9:28:14 pm</td>
+        <td>8:39:35 am</td>
         <td>
           Clicking on Connect Dropdowns
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>9:28:17 pm</td>
+        <td>8:39:39 am</td>
         <td>
           Clicking on Community Dropdowns
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>9:28:17 pm</td>
+        <td>8:39:39 am</td>
         <td>
           Clicked on Community option
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>9:28:49 pm</td>
+        <td>8:39:59 am</td>
         <td>
           Clicking on Sort Button
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>9:29:01 pm</td>
+        <td>8:40:03 am</td>
         <td>
           Clicking on A-Z Dropdowns
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>9:29:08 pm</td>
+        <td>8:40:06 am</td>
         <td>
           Starts With 'A': Leonard Sharma
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>9:29:08 pm</td>
+        <td>8:40:06 am</td>
         <td>
           User List is not empty and Validated Sorted List Ascending Order
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log pass-bg">Pass</span></td>
-        <td>9:29:08 pm</td>
+        <td>8:40:06 am</td>
         <td>
           <span class='badge white-text green'><b>Test Passed! 😊 </b></span>
         </td>
@@ -524,12 +517,12 @@ infoEvents: 32
         </li>
         <li class="test-item"  status="pass" test-id="3"
           author=""
-          tag="DailySanity ProgramDetails"
+          tag="ConnectionGroups SanityTestSuit"
           device="">
           <div class="test-detail">
-            <p class="name">VerifyingProgramDetails</p>
+            <p class="name">VerifyingConnectionsGroups</p>
             <p class="text-sm">
-              <span>9:26:06 pm</span> / <span>00:02:42:565</span>
+              <span>8:39:10 am</span> / <span>00:01:35:993</span>
               <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
@@ -537,17 +530,17 @@ infoEvents: 32
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">VerifyingProgramDetails</h5>
-<span class='badge badge-success'>09.09.2024 9:26:06 pm</span>
-<span class='badge badge-danger'>09.09.2024 9:28:48 pm</span>
-<span class='badge badge-default'>00:02:42:565</span>
+<h5 class="test-status text-pass">VerifyingConnectionsGroups</h5>
+<span class='badge badge-success'>09.10.2024 8:39:10 am</span>
+<span class='badge badge-danger'>09.10.2024 8:40:46 am</span>
+<span class='badge badge-default'>00:01:35:993</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=3</span>
 <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
 <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
 <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
 </div>
-<div class="m-t-15"><span class="badge badge-pill badge-default">DailySanity</span>
-<span class="badge badge-pill badge-default">ProgramDetails</span></div>
+<div class="m-t-15"><span class="badge badge-pill badge-default">ConnectionGroups</span>
+<span class="badge badge-pill badge-default">SanityTestSuit</span></div>
 <div class="m-t-10 m-l-5"></div>
 </div>
 </div><div class="detail-body mt-4">
@@ -556,70 +549,77 @@ infoEvents: 32
   <tbody>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>9:27:05 pm</td>
+        <td>8:40:09 am</td>
         <td>
           Launching the URL :[https://basecopy5.staging.pg-test.com/v2/]
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>9:28:08 pm</td>
+        <td>8:40:14 am</td>
         <td>
           Clicking on Sign In button
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>9:28:08 pm</td>
+        <td>8:40:14 am</td>
         <td>
           Entering email address
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>9:28:17 pm</td>
+        <td>8:40:17 am</td>
         <td>
           Entering password
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>9:28:19 pm</td>
+        <td>8:40:19 am</td>
         <td>
           Clicking on Login button
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>9:28:22 pm</td>
+        <td>8:40:22 am</td>
         <td>
           Successfully Validated title of the Homepage
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>9:28:22 pm</td>
+        <td>8:40:22 am</td>
         <td>
           Clicking on Connect Dropdowns
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>9:28:25 pm</td>
+        <td>8:40:26 am</td>
         <td>
-          Clicking on Programs Dropdowns
+          Clicking on Groups Dropdowns
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>9:28:26 pm</td>
+        <td>8:40:26 am</td>
         <td>
-          Clicked on Programs option
+          Clicked on Groups option
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>8:40:46 am</td>
+        <td>
+          Successfully validated members
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log pass-bg">Pass</span></td>
-        <td>9:28:48 pm</td>
+        <td>8:40:46 am</td>
         <td>
           <span class='badge white-text green'><b>Test Passed! 😊 </b></span>
         </td>
@@ -651,39 +651,6 @@ infoEvents: 32
 <span class="meta">
 <span class='badge log pass-bg'>1</span>
 </span>
-<p class="name">ConnectionGroups</p>
-<p class="duration text-sm">1 tests</p>
-</div>
-<div class="test-contents d-none">
-<div class="info">
-<h4>ConnectionGroups</h4>
-<span status="pass" class='badge log pass-bg'>1 passed</span>
-</div>
-<table class='table table-sm mt-4'>
-<thead>
-<tr>
-<th class="status-col">Status</th>
-<th class="timestamp-col">Timestamp</th>
-<th>TestName</th>
-</tr>
-</thead>
-<tbody>
-<tr class="tag-test-status" status="pass">
-<td><span class="badge log pass-bg">Pass</span></td>
-<td>21:26:06 pm</td>
-<td>
-<a href="#" class="linked" test-id='1' id='1'>VerifyingConnectionsGroups</a>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</li>
-<li class="test-item">
-<div class="test-detail">
-<span class="meta">
-<span class='badge log pass-bg'>1</span>
-</span>
 <p class="name">ProgramDetails</p>
 <p class="duration text-sm">1 tests</p>
 </div>
@@ -703,9 +670,9 @@ infoEvents: 32
 <tbody>
 <tr class="tag-test-status" status="pass">
 <td><span class="badge log pass-bg">Pass</span></td>
-<td>21:26:06 pm</td>
+<td>08:39:10 am</td>
 <td>
-<a href="#" class="linked" test-id='3' id='3'>VerifyingProgramDetails</a>
+<a href="#" class="linked" test-id='1' id='1'>VerifyingProgramDetails</a>
 </td>
 </tr>
 </tbody>
@@ -717,12 +684,12 @@ infoEvents: 32
 <span class="meta">
 <span class='badge log pass-bg'>3</span>
 </span>
-<p class="name">DailySanity</p>
+<p class="name">SanityTestSuit</p>
 <p class="duration text-sm">3 tests</p>
 </div>
 <div class="test-contents d-none">
 <div class="info">
-<h4>DailySanity</h4>
+<h4>SanityTestSuit</h4>
 <span status="pass" class='badge log pass-bg'>3 passed</span>
 </div>
 <table class='table table-sm mt-4'>
@@ -736,23 +703,23 @@ infoEvents: 32
 <tbody>
 <tr class="tag-test-status" status="pass">
 <td><span class="badge log pass-bg">Pass</span></td>
-<td>21:26:06 pm</td>
+<td>08:39:10 am</td>
 <td>
-<a href="#" class="linked" test-id='1' id='1'>VerifyingConnectionsGroups</a>
+<a href="#" class="linked" test-id='1' id='1'>VerifyingProgramDetails</a>
 </td>
 </tr>
 <tr class="tag-test-status" status="pass">
 <td><span class="badge log pass-bg">Pass</span></td>
-<td>21:26:06 pm</td>
+<td>08:39:10 am</td>
 <td>
 <a href="#" class="linked" test-id='2' id='2'>VerifyingCommunityMembers</a>
 </td>
 </tr>
 <tr class="tag-test-status" status="pass">
 <td><span class="badge log pass-bg">Pass</span></td>
-<td>21:26:06 pm</td>
+<td>08:39:10 am</td>
 <td>
-<a href="#" class="linked" test-id='3' id='3'>VerifyingProgramDetails</a>
+<a href="#" class="linked" test-id='3' id='3'>VerifyingConnectionsGroups</a>
 </td>
 </tr>
 </tbody>
@@ -783,9 +750,42 @@ infoEvents: 32
 <tbody>
 <tr class="tag-test-status" status="pass">
 <td><span class="badge log pass-bg">Pass</span></td>
-<td>21:26:06 pm</td>
+<td>08:39:10 am</td>
 <td>
 <a href="#" class="linked" test-id='2' id='2'>VerifyingCommunityMembers</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">ConnectionGroups</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>ConnectionGroups</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>08:39:10 am</td>
+<td>
+<a href="#" class="linked" test-id='3' id='3'>VerifyingConnectionsGroups</a>
 </td>
 </tr>
 </tbody>

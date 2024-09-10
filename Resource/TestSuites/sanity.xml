@@ -1,11 +1,11 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="SanityTestSuit" parallel="tests" thread-count="3">  <!-- Parallel execution enabled -->
+<suite name="SanityTestSuit" parallel="tests" thread-count="3">
     <listeners>
         <listener class-name="com.mgs.TestBase.RetryAnnotation"/>
         <listener class-name="com.mgs.Utils.TestListeners"/>
     </listeners>
 
-    <test name="Web Tests" parallel="classes" thread-count="3"> <!-- Parallel execution for classes -->
+    <test name="Web Tests" parallel="classes" thread-count="3">
         <classes>
             <class name="com.mgs.Tests.WebTests.ClusterHomeExplore"/>
             <class name="com.mgs.Tests.WebTests.ConnectionGroups"/>

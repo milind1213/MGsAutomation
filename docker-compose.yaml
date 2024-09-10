@@ -1,0 +1,33 @@
+version: "3"
+services:
+  selenium-hub:
+    image: selenium/hub
+    container_name: selenium-hub-new # Renamed
+    ports:
+      - "4442-4444:4442-4444"
+    networks:
+      - selenium-grid
+
+  node-chrome:
+    image: selenium/node-chrome
+    container_name: node-chrome-new # Renamed
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+    networks:
+      - selenium-grid
+
+  node-firefox:
+    image: selenium/node-firefox
+    container_name: node-firefox-new # Renamed
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+    networks:
+      - selenium-grid
+
+networks:
+  selenium-grid:
+    name: selenium-grid
