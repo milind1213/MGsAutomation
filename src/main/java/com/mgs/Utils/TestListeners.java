@@ -31,7 +31,7 @@ public class TestListeners extends WebBrowser implements ITestListener {
 
 	@Override
 	public synchronized void onStart(ITestContext context) {
-		reportPath = System.getProperty("user.dir") + "/reports/";
+		reportPath = System.getProperty("user.dir") + "/Reports/";
 		Path reportDirPath = Paths.get(reportPath);
 		createDirectoryIfNotExists(reportDirPath);
 		deleteOldReports(reportDirPath);
