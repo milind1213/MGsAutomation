@@ -1,6 +1,21 @@
-FROM tomcat:latest
-COPY ./webapp.war /usr/local/tomcat/webapps
-RUN cp -r /usr/local/tomcat/webapps.dist/* /usr/local/tomcat/webapps
+Selenium Grid
+------------------------------------------
+Standalone :
+------------
+Download -- selenium-server-4.24.0
+C:\Users\Lenovo\Downloads>java -jar selenium-server-4.24.0.jar standalone
+grit URL
+http://172.22.176.1:4444
+
+
+Hub And Node Set up
+-------------------
+Download -- selenium-server-4.24.0
+java -jar selenium-server-4.24.0.jar hub
+java -jar selenium-server-4.24.0.jar node --hub http://<hubip>:4444
+
+URL Selenium Grid: http://localhost:4444
+
 
 Docker Basic Commands
 ---------------------------------------
@@ -23,7 +38,6 @@ docker system df
 docker system prune  df   - remove all  stopped containers
 
 
-
 Selenium Grid Setup with Dockers 
 ----------------------------------------
 docker pull selenium/hub
@@ -41,24 +55,5 @@ docker run-d--net grid-e SE_EVENT_BUS_HOST=selenium-hub-e SE_EVENT_BUS_PUBLISH_P
 docker run -d--net grid-e SE_EVENT_BUS_HOST=selenium-hub-e SE_EVENT_BUS_PUBLISH_PORT=4442-e SE_EVENT_BUS_SUBSCRIBE_PORT=4443 selenium/node-firefox
 
 
-Selenium Grid
-------------------------------------------
-Standalone :
-------------
-Download -- selenium-server-4.24.0
-C:\Users\Lenovo\Downloads>java -jar selenium-server-4.24.0.jar standalone
-grit URL
-http://172.22.176.1:4444
-
-
-Hub And Node Set up
--------------------
-Download -- selenium-server-4.24.0
-java -jar selenium-server-4.24.0.jar hub
-java -jar selenium-server-4.24.0.jar node --hub http://<hubip>:4444
-
-URL to See Sessions : http://localhost:4444
-
-
-
-
+docker-compose up
+docker-compose down
