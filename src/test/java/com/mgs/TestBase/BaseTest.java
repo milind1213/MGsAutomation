@@ -23,11 +23,12 @@ public class BaseTest extends WebBrowser {
         String browserType = getProperty(CommonConstants.MGS, CommonConstants.BROWSER);
         boolean isHeadless = Boolean.parseBoolean(getProperty(CommonConstants.MGS, CommonConstants.RUNMODE_IS_HEADLESS));
         try {
-            System.out.println("Launching the " + (isHeadless ? "Headless " : "") + browserType + " browser");
             if (env.equalsIgnoreCase(CommonConstants.LOCAL)) {
                 initializeWebDriver(browserType, isHeadless);
+                System.out.println("Launching the Local " + (isHeadless ? "Headless " : "") + browserType + " browser");
             } else if (env.equalsIgnoreCase(CommonConstants.REMOTE)) {
                 initializeRemoteWebDriver(browserType, isHeadless);
+                System.out.println("Launching the Remote " + (isHeadless ? "Headless " : "") + browserType + " browser");
             }
             driver = webDriver.get();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
@@ -39,7 +40,6 @@ public class BaseTest extends WebBrowser {
         }
         return driver;
     }
-
 
     @AfterMethod
     public void tearDown() {

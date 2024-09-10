@@ -2,9 +2,11 @@ package com.mgs;
 
 public class CommonConstants {
     public static final String EXECUTION_ENV ="mgs.execution_env";
+    public static final String EXECUTION_PLATFORM ="mgs.executionPlatform";
+    public static final String HUB_URL ="mgs.hubUrl";
     public static final String MGS_USERNAME = "mgs.username";
     public static final String MGS_PASSWORD = "mgs.password";
-    public static final String MGS_WEBURL = "mgs.weburl";
+    public static final String MGS_WEBURL = "mgs.webUrl";
     public static final String BROWSER = "mgs.browser";
     public static final String RUNMODE_IS_HEADLESS = "mgs.headless";
     public static final String CURRENT_DIRECTORY = System.getProperty("user.dir");
@@ -21,7 +23,6 @@ public class CommonConstants {
     public static final String PROD ="prod";
     public static final String MGS_SLACK_CHANENEL = "mgs.slackChannel";
     public static final String MGS_SLACK_TOKEN = "mgs.slackToken";
-
 
 
 

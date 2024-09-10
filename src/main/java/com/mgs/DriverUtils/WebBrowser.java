@@ -35,7 +35,6 @@ public class WebBrowser {
             addCommonArguments(options, isHeadless);
             driver = new FirefoxDriver(options);
         }
-
         if (driver != null) {
             webDriver.set(driver);
             webDriverList.add(driver);
@@ -43,11 +42,15 @@ public class WebBrowser {
     }
 
     public void initializeRemoteWebDriver(String browserType, boolean isHeadless) throws MalformedURLException {
-          String hubUrl = "http://localhost:4444/wd/hub";
-         // String hubUrl = "http://100.27.207.138:4444/wd/hub";
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setPlatform(Platform.LINUX); // Correct platform settings
-
+        String ExecutionPlatform = getProperty(CommonConstants.MGS, CommonConstants.EXECUTION_PLATFORM);
+        if(ExecutionPlatform.equalsIgnoreCase("windows")){
+            capabilities.setPlatform(Platform.WINDOWS);
+        } else if(ExecutionPlatform.equalsIgnoreCase("linux")){
+            capabilities.setPlatform(Platform.LINUX);
+        } else if(ExecutionPlatform.equalsIgnoreCase("mac")){
+            capabilities.setPlatform(Platform.MAC);
+        }
         if (browserType.equalsIgnoreCase("chrome")) {
             ChromeOptions options = new ChromeOptions();
             addCommonArguments(options, isHeadless);
@@ -57,15 +60,13 @@ public class WebBrowser {
             addCommonArguments(options, isHeadless);
             capabilities.merge(options);
         }
-
-        driver = new RemoteWebDriver(new URL(hubUrl), capabilities);
+        driver = new RemoteWebDriver(new URL(getProperty(CommonConstants.MGS, CommonConstants.HUB_URL)), capabilities);
         webDriver.set(driver);
         webDriverList.add(driver);
     }
 
     private void addCommonArguments(Object options, boolean isHeadless) {
-        if (options instanceof ChromeOptions) {
-            ChromeOptions chromeOptions = (ChromeOptions) options;
+        if (options instanceof ChromeOptions chromeOptions) {
             chromeOptions.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);
             chromeOptions.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
             if (isHeadless) {
@@ -81,8 +82,7 @@ public class WebBrowser {
             prefs.put("profile.password_manager_enabled", false);
             chromeOptions.setExperimentalOption("prefs", prefs);
 
-        } else if (options instanceof FirefoxOptions) {
-            FirefoxOptions firefoxOptions = (FirefoxOptions) options;
+        } else if (options instanceof FirefoxOptions firefoxOptions) {
             firefoxOptions.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);
             if (isHeadless) {
                 firefoxOptions.addArguments("--headless", "--window-size=1920,1080");
