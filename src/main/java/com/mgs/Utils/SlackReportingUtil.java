@@ -10,11 +10,11 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Optional;
  	
-public class SlackReportingUtils {
+public class SlackReportingUtil {
     private String channelName;
     private final String botUserOAuthAccessToken;
 
-    public SlackReportingUtils(String channelName, String botUserOAuthAccessToken) {
+    public SlackReportingUtil(String channelName, String botUserOAuthAccessToken) {
         this.channelName = channelName;
         this.botUserOAuthAccessToken = botUserOAuthAccessToken;
     }

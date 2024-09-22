@@ -6,8 +6,6 @@ import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeBodyPart;
 import jakarta.mail.internet.MimeMessage;
 import jakarta.mail.internet.MimeMultipart;
-import org.testng.annotations.Listeners;
-import org.testng.annotations.Test;
 
 import java.io.File;
 import java.util.Arrays;
@@ -17,7 +15,7 @@ import java.util.Properties;
 import static com.mgs.CommonConstants.CURRENT_DIRECTORY;
 import static com.mgs.Utils.FileUtil.getProperty;
 
-public class EmailReportingUtils {
+public class EmailReportingUtil {
     public void sendExecutionReport() {
         String[] to = getProperty(CommonConstants.COMMON, CommonConstants.GMAIL_TO).split(",");
         String from = getProperty(CommonConstants.COMMON, CommonConstants.GMAIL_FROM);
