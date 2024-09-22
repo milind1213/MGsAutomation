@@ -1,0 +1,8 @@
+com\mgs\Tests\WebTests\ProgramDetails.class
+com\mgs\TestBase\RetryAnnotation.class
+com\mgs\TestBase\BaseTest.class
+com\mgs\TestBase\RetryListener.class
+com\mgs\Tests\ApiTest\BasicAPI.class
+com\mgs\Tests\WebTests\ClusterHomeExplore.class
+com\mgs\Tests\WebTests\ConnectionGroups.class
+com\mgs\Tests\WebTests\TestParameters.class
