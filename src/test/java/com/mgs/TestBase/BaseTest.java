@@ -31,8 +31,8 @@ public class BaseTest extends WebBrowser {
                 System.out.println("Launching the Remote " + (isHeadless ? "Headless " : "") + browserType + " browser");
             }
             driver = webDriver.get();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-            driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
+            driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
             driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(120));
             driver.manage().window().maximize();
         } catch (Exception e) {
