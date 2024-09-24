@@ -40,6 +40,7 @@ public class CommonSelenium {
 			e.getMessage();
 			Assert.fail("Failed to send keys to element [" + locator + "]");
 		}
+
 	}
 
 	public void sendKeys(WebElement element, String text) {

@@ -147,9 +147,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.opencsv</groupId>
-			<artifactId>opencsv</artifactId>
-			<version>5.7.1</version> <!-- You can update to the latest version if needed -->
+			<groupId>com.github.miachm.sods</groupId>
+			<artifactId>SODS</artifactId>
+			<version>1.6.2</version>
 		</dependency>
 
 

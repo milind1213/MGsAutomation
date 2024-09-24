@@ -7,6 +7,7 @@ public class CommonConstants {
     public static final String MGS_USERNAME = "mgs.username";
     public static final String MGS_PASSWORD = "mgs.password";
     public static final String MGS_WEBURL = "mgs.webUrl";
+    public static final String MGS_FD_URL = "mgs.webFdUrl";
     public static final String BROWSER = "mgs.browser";
     public static final String RUNMODE_IS_HEADLESS = "mgs.headless";
     public static final String CURRENT_DIRECTORY = System.getProperty("user.dir");

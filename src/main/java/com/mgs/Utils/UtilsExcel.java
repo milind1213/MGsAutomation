@@ -13,7 +13,7 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-public class ExcelUtils {
+public class UtilsExcel {
 	public static FileInputStream fileInputStream;
 	public static FileOutputStream fileOutputStream;
 	public static XSSFWorkbook workbook;
@@ -53,7 +53,6 @@ public class ExcelUtils {
 		String data;
 		try {
 			// data=cell.toString();
-
 			DataFormatter formatter = new DataFormatter();
 			data = formatter.formatCellValue(cell);
 			return data;
