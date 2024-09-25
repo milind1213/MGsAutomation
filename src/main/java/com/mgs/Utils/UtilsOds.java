@@ -18,7 +18,6 @@ public class UtilsOds {
         return new SpreadSheet(file);
     }
 
-    // Get row count in a sheet
     public static int getRowCount(String odsFile, String sheetName) throws Exception {
         SpreadSheet spreadsheet = loadSpreadsheet(odsFile);
         Sheet sheet = spreadsheet.getSheet(sheetName);
@@ -28,7 +27,6 @@ public class UtilsOds {
         return sheet.getDataRange().getLastRow(); // Get total number of rows
     }
 
-    // Get cell (column) count in a specific row
     public static int getCellCount(String odsFile, String sheetName, int rownum) throws Exception {
         SpreadSheet spreadsheet = loadSpreadsheet(odsFile);
         Sheet sheet = spreadsheet.getSheet(sheetName);
@@ -38,7 +36,6 @@ public class UtilsOds {
         return sheet.getDataRange().getLastColumn(); // Get total number of columns in the sheet
     }
 
-    // Get cell data by row and column number
     public static String getCellData(String odsFile, String sheetName, int rownum, int colnum) throws Exception {
         SpreadSheet spreadsheet = loadSpreadsheet(odsFile);
         Sheet sheet = spreadsheet.getSheet(sheetName);
@@ -54,19 +51,16 @@ public class UtilsOds {
             throw new Exception("Invalid column number: " + colnum);
         }
 
-        // Get the cell value
         Object cellValue = range.getCell(rownum, colnum).getValue();
         return (cellValue != null) ? cellValue.toString() : "";
     }
 
-    // Set cell data by row and column number
     public static void setCellData(String odsFile, String sheetName, int rownum, int colnum, String data) throws Exception {
         SpreadSheet spreadsheet = loadSpreadsheet(odsFile);
         Sheet sheet = spreadsheet.getSheet(sheetName);
         if (sheet == null) {
             throw new Exception("Sheet not found: " + sheetName);
         }
-
         // Set the value in the specified row and column
         sheet.getRange(rownum, colnum).setValue(data);
 

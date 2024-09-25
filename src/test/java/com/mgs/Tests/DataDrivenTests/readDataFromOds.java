@@ -3,14 +3,11 @@ package com.mgs.Tests.DataDrivenTests;
 import com.mgs.CommonConstants;
 import com.mgs.Pages.WebPages.FDCalculatorPage;
 import com.mgs.TestBase.BaseTest;
-import com.mgs.Utils.UtilsExcel;
 import com.mgs.Utils.UtilsOds;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
 import static com.mgs.Utils.FileUtil.getProperty;
-import static com.mgs.Utils.UtilsOds.loadSpreadsheet;
 
 public class readDataFromOds extends BaseTest {
     WebDriver driver;
@@ -37,11 +34,15 @@ public class readDataFromOds extends BaseTest {
             String per2 = UtilsOds.getCellData(filePath, "Sheet1", i, 3);
             String frequency = UtilsOds.getCellData(filePath, "Sheet1", i, 4);
             String exp_maturityValue = UtilsOds.getCellData(filePath, "Sheet1", i, 5);
+
             int period1 = (int) Math.round(Double.parseDouble(per1));
+
             log("Performing FD calculation for row: " + i);
             user.calculateRateOfInterest(principle, roi, String.valueOf(period1), per2, frequency);
+
             String actualMaturityAmt = user.getMaturity();
             log("Expected Maturity: " + exp_maturityValue + ", Actual Maturity: " + actualMaturityAmt);
+
             if (Double.parseDouble(exp_maturityValue) == Double.parseDouble(actualMaturityAmt)) {
                 log("Test passed for row: " + i);
                 UtilsOds.setCellData(filePath, "Sheet1", i, 7, "Passed");

@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.util.List;
 
 import static com.mgs.Utils.FileUtil.getProperty;
+import static com.mgs.Utils.UtilsJson.readDataFromJson;
+import static com.mgs.Utils.UtilsJson.readsDataFromJson;
 
 public class readDataFromJsonTest extends BaseTest {
     WebDriver driver;
@@ -26,15 +28,39 @@ public class readDataFromJsonTest extends BaseTest {
     }
 
     @Test(priority = 1)
-    public void calculateFdRatesWithSimple() throws IOException {
-        // Read data from JSON
-        List<FdData> fdDataList = UtilsJson.readDataFromJson(jsonFilePath, FdData.class);
+    public void calculateFdRatesUsingGsonLibrary() throws IOException {
+        List<FdData> fdDataList = readDataFromJson(jsonFilePath, FdData.class);
 
-        // Iterate over each row of data and perform the FD calculation
+        for (FdData fdData : fdDataList) {
+            log("Performing FD calculation for Principle: " + fdData.getPrinciple());
+            user.calculateRateOfInterest(
+                    String.valueOf(fdData.getPrinciple()),
+                    String.valueOf(fdData.getRateOfInterest()),
+                    String.valueOf(fdData.getPeriod()),
+                    fdData.getPeriodType(),
+                    fdData.getFrequency()
+            );
+            String actualMaturityAmt = user.getMaturity();
+            log("Expected Maturity: " + fdData.getMaturityValue() + ", Actual Maturity: " + actualMaturityAmt);
+
+            if (Double.parseDouble(actualMaturityAmt) == fdData.getMaturityValue()) {
+                log("Test passed for Principle: " + fdData.getPrinciple());
+                fdData.setResult("Passed");  // Set the result as "Passed"
+            } else {
+                log("Test failed for Principle: " + fdData.getPrinciple());
+                fdData.setResult("Failed");  // Set the result as "Failed"
+            }
+            user.clickOnClearBtn();
+        }
+        UtilsJson.writeDataToJson(fdDataList, jsonFilePath);
+    }
+
+    @Test(priority = 2)
+    public void calculateFdRatesUsingJacksonDatabindLibrary() throws IOException {
+        List<FdData> fdDataList = UtilsJson.readsDataFromJson(jsonFilePath, FdData.class);
         for (FdData fdData : fdDataList) {
             log("Performing FD calculation for Principle: " + fdData.getPrinciple());
 
-            // Perform the calculation
             user.calculateRateOfInterest(
                     String.valueOf(fdData.getPrinciple()),
                     String.valueOf(fdData.getRateOfInterest()),
@@ -43,11 +69,8 @@ public class readDataFromJsonTest extends BaseTest {
                     fdData.getFrequency()
             );
 
-            // Get the actual maturity amount from the app
             String actualMaturityAmt = user.getMaturity();
             log("Expected Maturity: " + fdData.getMaturityValue() + ", Actual Maturity: " + actualMaturityAmt);
-
-            // Compare actual and expected maturity values
             if (Double.parseDouble(actualMaturityAmt) == fdData.getMaturityValue()) {
                 log("Test passed for Principle: " + fdData.getPrinciple());
                 fdData.setResult("Passed");  // Set the result as "Passed"
@@ -55,11 +78,8 @@ public class readDataFromJsonTest extends BaseTest {
                 log("Test failed for Principle: " + fdData.getPrinciple());
                 fdData.setResult("Failed");  // Set the result as "Failed"
             }
-
-            // Clear the form for the next test case
             user.clickOnClearBtn();
         }
-        // Write updated results back to the JSON file
-        UtilsJson.writeDataToJson(fdDataList, jsonFilePath);
+        UtilsJson.writesDataToJson(fdDataList, jsonFilePath);
     }
 }

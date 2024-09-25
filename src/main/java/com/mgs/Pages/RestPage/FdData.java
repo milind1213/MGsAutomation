@@ -1,91 +1,91 @@
 package com.mgs.Pages.RestPage;
 
 public class FdData {
-    private int Principle;
-    private int RateOfInterest;
-    private int Period;
-    private String PeriodType;
-    private String Frequency;
-    private double MaturityValue;
-    private String Expected;
-    private String Result;
+    private int principle;  // Lowercase 'p'
+    private int rateOfInterest;  // Lowercase 'r'
+    private int period;  // Lowercase 'p'
+    private String periodType;  // Lowercase 'p'
+    private String frequency;  // Lowercase 'f'
+    private double maturityValue;  // Lowercase 'm'
+    private String expected;  // Lowercase 'e'
+    private String result;  // Lowercase 'r'
 
-    public int getRateOfInterest() {
-        return RateOfInterest;
-    }
-
-    public void setRateOfInterest(int rateOfInterest) {
-        RateOfInterest = rateOfInterest;
-    }
-
+    // Getters and setters
     public int getPrinciple() {
-        return Principle;
+        return principle;
     }
 
     public void setPrinciple(int principle) {
-        Principle = principle;
+        this.principle = principle;
+    }
+
+    public int getRateOfInterest() {
+        return rateOfInterest;
+    }
+
+    public void setRateOfInterest(int rateOfInterest) {
+        this.rateOfInterest = rateOfInterest;
     }
 
     public int getPeriod() {
-        return Period;
+        return period;
     }
 
     public void setPeriod(int period) {
-        Period = period;
+        this.period = period;
     }
 
     public String getPeriodType() {
-        return PeriodType;
+        return periodType;
     }
 
     public void setPeriodType(String periodType) {
-        PeriodType = periodType;
+        this.periodType = periodType;
     }
 
     public String getFrequency() {
-        return Frequency;
+        return frequency;
     }
 
     public void setFrequency(String frequency) {
-        Frequency = frequency;
+        this.frequency = frequency;
     }
 
     public double getMaturityValue() {
-        return MaturityValue;
+        return maturityValue;
     }
 
     public void setMaturityValue(double maturityValue) {
-        MaturityValue = maturityValue;
+        this.maturityValue = maturityValue;
     }
 
     public String getExpected() {
-        return Expected;
+        return expected;
     }
 
     public void setExpected(String expected) {
-        Expected = expected;
+        this.expected = expected;
     }
 
     public String getResult() {
-        return Result;
+        return result;
     }
 
     public void setResult(String result) {
-        Result = result;
+        this.result = result;
     }
 
     @Override
     public String toString() {
         return "FdData{" +
-                "Principle=" + Principle +
-                ", RateOfInterest=" + RateOfInterest +
-                ", Period=" + Period +
-                ", PeriodType='" + PeriodType + '\'' +
-                ", Frequency='" + Frequency + '\'' +
-                ", MaturityValue=" + MaturityValue +
-                ", Expected='" + Expected + '\'' +
-                ", Result='" + Result + '\'' +
+                "principle=" + principle +
+                ", rateOfInterest=" + rateOfInterest +
+                ", period=" + period +
+                ", periodType='" + periodType + '\'' +
+                ", frequency='" + frequency + '\'' +
+                ", maturityValue=" + maturityValue +
+                ", expected='" + expected + '\'' +
+                ", result='" + result + '\'' +
                 '}';
     }
-
 }
