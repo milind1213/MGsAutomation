@@ -1,33 +1,72 @@
 package com.mgs.Utils;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVPrinter;
+import org.apache.commons.csv.CSVRecord;
+
+import java.io.*;
+import java.util.*;
 
 public class UtilsCSV {
-    public static List<String[]> readCsv(String csvFile) throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader(csvFile));
-        String line;
-        List<String[]> data = new ArrayList<>();
+    // Method to read data from a CSV file and return it as a List of Maps<String, Object>
+    public static List<Map<String, Object>> readDataFromCsv(String csvFilePath) throws IOException {
+        List<Map<String, Object>> dataList = new ArrayList<>();
 
-        while ((line = br.readLine()) != null) {
-            String[] values = line.split(",");
-            data.add(values);
+        try (Reader reader = new FileReader(csvFilePath)) {
+            Iterable<CSVRecord> records = CSVFormat.DEFAULT
+                    .withFirstRecordAsHeader()
+                    .parse(reader);
+
+            for (CSVRecord record : records) {
+                Map<String, Object> rowMap = new HashMap<>();
+
+                // Iterate through each column (header) and populate the rowMap with dynamically parsed values
+                for (String header : record.toMap().keySet()) {
+                    rowMap.put(header, parseValue(record.get(header)));
+                }
+                dataList.add(rowMap);
+            }
         }
 
-        br.close();
-        return data;
+        return dataList;
     }
-    public static void writeCsv(String csvFile, List<String[]> data) throws IOException {
-        FileWriter csvWriter = new FileWriter(csvFile);
 
-        for (String[] rowData : data) {
-            csvWriter.append(String.join(",", rowData));
-            csvWriter.append("\n");
+    // Method to write data to a CSV file, given a List of Maps<String, Object>
+    public static void writeDataToCsv(List<Map<String, Object>> dataList, String csvFilePath) throws IOException {
+        if (dataList.isEmpty()) {
+            throw new IllegalArgumentException("No data to write to CSV");
         }
-        csvWriter.flush();
-        csvWriter.close();
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(csvFilePath));
+             CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT.withHeader(dataList.get(0).keySet().toArray(new String[0])))) {
+
+            for (Map<String, Object> rowMap : dataList) {
+                csvPrinter.printRecord(rowMap.values());
+            }
+        }
+    }
+
+    // Helper method to parse values from String to their correct type (Integer, Double, etc.)
+    private static Object parseValue(String value) {
+        if (value == null || value.isEmpty()) {
+            return null;
+        }
+
+        // Try to parse as Integer
+        try {
+            return Integer.parseInt(value);
+        } catch (NumberFormatException e) {
+            // Not an Integer
+        }
+
+        // Try to parse as Double
+        try {
+            return Double.parseDouble(value);
+        } catch (NumberFormatException e) {
+            // Not a Double
+        }
+
+        // Otherwise, return as String
+        return value;
     }
 }

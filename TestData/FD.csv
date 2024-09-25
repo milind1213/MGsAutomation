@@ -1,0 +1,6 @@
+RateOfInterest,PeriodType,Expected,MaturityValue,Period,Frequency,Principle,Result
+10,year(s),Pass,24000.0,2,Simple Interest,20000,Passed
+15,year(s),Pass,70000.0,5,Simple Interest,40000,Passed
+10,month(s),Pass,51250.0,3,Simple Interest,50000,Passed
+12,month(s),Pass,76500.0,2,Simple Interest,75000,Passed
+12,day(s),Fail,75045.32,2,Simple Interest,75000,Failed

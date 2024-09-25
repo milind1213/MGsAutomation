@@ -1,0 +1,52 @@
+[
+  {
+    "Principle": 20000,
+    "RateOfInterest": 10,
+    "Period": 2,
+    "PeriodType": "year(s)",
+    "Frequency": "Simple Interest",
+    "MaturityValue": 24000,
+    "Expected": "Pass",
+    "Result": "Passed"
+  },
+  {
+    "Principle": 40000,
+    "RateOfInterest": 15,
+    "Period": 5,
+    "PeriodType": "year(s)",
+    "Frequency": "Simple Interest",
+    "MaturityValue": 70000,
+    "Expected": "Passed",
+    "Result": "Passed"
+  },
+  {
+    "Principle": 50000,
+    "RateOfInterest": 10,
+    "Period": 3,
+    "PeriodType": "month(s)",
+    "Frequency": "Simple Interest",
+    "MaturityValue": 51250,
+    "Expected": "Passed",
+    "Result": "Passed"
+  },
+  {
+    "Principle": 75000,
+    "RateOfInterest": 12,
+    "Period": 2,
+    "PeriodType": "month(s)",
+    "Frequency": "Simple Interest",
+    "MaturityValue": 76500,
+    "Expected": "Passed",
+    "Result": "Passed"
+  },
+  {
+    "Principle": 75000,
+    "RateOfInterest": 12,
+    "Period": 2,
+    "PeriodType": "day(s)",
+    "Frequency": "Simple Interest",
+    "MaturityValue": 75045.32,
+    "Expected": "Failed",
+    "Result": "Failed"
+  }
+]

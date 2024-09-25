@@ -37,25 +37,17 @@ public class readDataFromOds extends BaseTest {
             String per2 = UtilsOds.getCellData(filePath, "Sheet1", i, 3);
             String frequency = UtilsOds.getCellData(filePath, "Sheet1", i, 4);
             String exp_maturityValue = UtilsOds.getCellData(filePath, "Sheet1", i, 5);
-
-            // Ensure period is a valid integer
             int period1 = (int) Math.round(Double.parseDouble(per1));
-
             log("Performing FD calculation for row: " + i);
             user.calculateRateOfInterest(principle, roi, String.valueOf(period1), per2, frequency);
-
             String actualMaturityAmt = user.getMaturity();
             log("Expected Maturity: " + exp_maturityValue + ", Actual Maturity: " + actualMaturityAmt);
-
-            // Compare the expected and actual maturity amounts
             if (Double.parseDouble(exp_maturityValue) == Double.parseDouble(actualMaturityAmt)) {
                 log("Test passed for row: " + i);
                 UtilsOds.setCellData(filePath, "Sheet1", i, 7, "Passed");
             } else {
                 log("Test failed for row: " + i);
                 UtilsOds.setCellData(filePath, "Sheet1", i, 7, "Failed");
-
-                // Handle the case where no "Actual" result is present
                 if (actualMaturityAmt == null || actualMaturityAmt.isEmpty()) {
                     UtilsOds.setCellData(filePath, "Sheet1", i, 8, "Failed");
                 }
