@@ -53,15 +53,12 @@ public class ConnectionGroups extends BaseTest {
                 log("Clicked on Groups option");
             }
         }
-
         List<WebElement> groupList =user.getHome().getGroupNames();
         for(WebElement group : groupList){
-            System.out.println(group.getText());
+            log("Group Members : "+group.getText());
         }
         int members = user.getHome().getMembersCounts();
-        System.out.println("Total number of members in all groups: " + members);
-
         Assert.assertEquals(members, 30);
-        log("Successfully validated members");
+        log("Successfully validated members : "+ members);
     }
 }
