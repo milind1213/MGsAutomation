@@ -7,8 +7,8 @@ import org.testng.annotations.Test;
 
 public class TestParameters {
     WebDriver driver;
-
     //@Parameters("Browser")
+
     @Test
     public void paraterTest(String browserName) throws InterruptedException {
         System.out.println("Parater Values is " + browserName);

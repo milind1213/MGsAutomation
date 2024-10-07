@@ -3,7 +3,6 @@ package com.mgs.Utils;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.FillPatternType;
@@ -43,10 +42,10 @@ public class UtilsExcel {
 		return cellcount;
 	}
 
-	public static String getCellData(String xlfile, String xlsheet, int rownum, int colnum) throws IOException {
+	public static String getCellData(String xlfile, String sheetName, int rownum, int colnum) throws IOException {
 		fileInputStream = new FileInputStream(xlfile);
 		workbook = new XSSFWorkbook(fileInputStream);
-		sheet = workbook.getSheet(xlsheet);
+		sheet = workbook.getSheet(sheetName);
 		row = sheet.getRow(rownum);
 		cell = row.getCell(colnum);
 
@@ -65,10 +64,10 @@ public class UtilsExcel {
 		return data;
 	}
 
-	public static void setCellData(String xlfile, String xlsheet, int rownum, int colnum, String data) throws IOException {
+	public static void setCellData(String xlfile, String sheetName, int rownum, int colnum, String data) throws IOException {
 		fileInputStream = new FileInputStream(xlfile);
 		workbook = new XSSFWorkbook(fileInputStream);
-		sheet = workbook.getSheet(xlsheet);
+		sheet = workbook.getSheet(sheetName);
 		row = sheet.getRow(rownum);
 		cell = row.createCell(colnum);
 		cell.setCellValue(data);
@@ -80,10 +79,10 @@ public class UtilsExcel {
 
 	}
 
-	public static void fillGreenColor(String xlfile, String xlsheet, int rownum, int colnum) throws IOException {
+	public static void fillGreenColor(String xlfile, String sheetName, int rownum, int colnum) throws IOException {
 		fileInputStream = new FileInputStream(xlfile);
 		workbook = new XSSFWorkbook(fileInputStream);
-		sheet = workbook.getSheet(xlsheet);
+		sheet = workbook.getSheet(sheetName);
 		row = sheet.getRow(rownum);
 		cell = row.getCell(colnum);
 
