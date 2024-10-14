@@ -7,6 +7,11 @@ public interface Endpoints {
     // Simple Grocery API
     String status = "/status";
     String products = "/products/";
+    String getProduct = "products/{id}";
+    String carts = "/carts/";
+    String getCarts = "/carts/{cartId}";
+    String addItemToCart = "/carts/{cartId}/items";
+    String updateCarts = "/carts/{cartId}/items/{itemId}";
 
 
 }

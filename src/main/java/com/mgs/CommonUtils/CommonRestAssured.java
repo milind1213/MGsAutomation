@@ -13,7 +13,6 @@ import io.restassured.specification.QueryableRequestSpecification;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.SpecificationQuerier;
 import org.apache.commons.io.output.WriterOutputStream;
-
 import javax.crypto.*;
 import javax.crypto.spec.SecretKeySpec;
 import java.io.IOException;
@@ -52,7 +51,6 @@ public class CommonRestAssured {
         return response;
     }
 
-
     public static Response Post(String baseURL, String endPoint, String requestPayload, Map<String, Object> headers) {
         RequestSpecification requestSpecification = getRequestSpecification(baseURL, endPoint, headers);
         requestLog(requestSpecification.contentType(ContentType.JSON).body(requestPayload));
@@ -66,6 +64,16 @@ public class CommonRestAssured {
         RequestSpecification requestSpecification = getRequestSpecification(baseURL, endPoint, headers);
         requestLog(requestSpecification.contentType(ContentType.JSON).body(requestPayload));
         Response response = requestSpecification.put();
+        response.getBody().asString();
+        responseLog(response);
+        return response;
+    }
+
+
+    public static Response Patch(String baseURL, String endPoint,String requestPayload,Map<String, Object> headers) {
+        RequestSpecification requestSpecification = getRequestSpecification(baseURL, endPoint, headers);
+        requestLog(requestSpecification.contentType(ContentType.JSON).body(requestPayload));
+        Response response = requestSpecification.patch();
         response.getBody().asString();
         responseLog(response);
         return response;
