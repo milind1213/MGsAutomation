@@ -1,4 +1,5 @@
 package com.mgs.CommonUtils;
+
 import com.aventstack.extentreports.markuputils.CodeLanguage;
 import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
@@ -12,6 +13,7 @@ import io.restassured.specification.QueryableRequestSpecification;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.SpecificationQuerier;
 import org.apache.commons.io.output.WriterOutputStream;
+
 import javax.crypto.*;
 import javax.crypto.spec.SecretKeySpec;
 import java.io.IOException;
@@ -24,6 +26,7 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Map;
+
 import static com.mgs.Utils.TestListeners.extentTest;
 import static io.restassured.RestAssured.given;
 
@@ -33,14 +36,24 @@ public class CommonRestAssured {
     StringWriter sw;
     PrintStream ps;
 
-    private static RequestSpecification getRequestSpecification(String baseURL, String endPoint,Map<String, String> headers) {
+    private static RequestSpecification getRequestSpecification(String baseURL, String endPoint, Map<String, Object> headers) {
         return RestAssured.given().log().all()
                 .baseUri(baseURL)
                 .basePath(endPoint)
                 .headers(headers);
     }
 
-    public static Response Post(String baseURL, String endPoint, String requestPayload,Map<String, String> headers) {
+    public static Response Get(String baseURL, String endPoint, Map<String, Object> headers, Map<String, Object> queryParameters) {
+        RequestSpecification requestSpecification = getRequestSpecification(baseURL, endPoint, headers);
+        requestSpecification.queryParams(queryParameters);
+        reqLogGet(requestSpecification);
+        Response response = requestSpecification.get();
+        responseLog(response);
+        return response;
+    }
+
+
+    public static Response Post(String baseURL, String endPoint, String requestPayload, Map<String, Object> headers) {
         RequestSpecification requestSpecification = getRequestSpecification(baseURL, endPoint, headers);
         requestLog(requestSpecification.contentType(ContentType.JSON).body(requestPayload));
         Response response = requestSpecification.post();
@@ -49,8 +62,17 @@ public class CommonRestAssured {
         return response;
     }
 
+    public static Response Put(String baseURL, String endPoint, String requestPayload, Map<String, Object> headers) {
+        RequestSpecification requestSpecification = getRequestSpecification(baseURL, endPoint, headers);
+        requestLog(requestSpecification.contentType(ContentType.JSON).body(requestPayload));
+        Response response = requestSpecification.put();
+        response.getBody().asString();
+        responseLog(response);
+        return response;
+    }
 
-    public static Response post1(String baseURL, String endPoint, String requestPayload,Map<String, String> headers) {
+
+    public static Response post1(String baseURL, String endPoint, String requestPayload, Map<String, Object> headers) {
         RequestSpecification requestSpecification = getRequestSpecification(baseURL, endPoint, headers);
         requestLog(requestSpecification.contentType(ContentType.JSON).body(requestPayload));
         Response response = requestSpecification.post();
@@ -58,7 +80,7 @@ public class CommonRestAssured {
         return response;
     }
 
-    public static Response Delete(String baseURL, String endPoint, String requestPayload, Map<String, String> headers) {
+    public static Response Delete(String baseURL, String endPoint, String requestPayload, Map<String, Object> headers) {
         RequestSpecification requestSpecification = getRequestSpecification(baseURL, endPoint, headers);
         reqLogGet(requestSpecification.contentType(ContentType.JSON).body(requestPayload));
         Response response = requestSpecification.delete();
@@ -67,23 +89,16 @@ public class CommonRestAssured {
         return response;
     }
 
-    public static Response Get(String baseURL, String endPoint, Map<String, String> headers) {
-        RequestSpecification requestSpecification = getRequestSpecification(baseURL, endPoint,headers);
+    public static Response Get(String baseURL, String endPoint, Map<String, Object> headers) {
+        RequestSpecification requestSpecification = getRequestSpecification(baseURL, endPoint, headers);
         reqLogGet(requestSpecification);
         Response response = requestSpecification.get();
         responseLog(response);
         return response;
     }
 
-    public static Response Get(String baseURL, String endPoint, Map<String, String> headers, Map<String, String> queryParameters) {
-        RequestSpecification requestSpecification = getRequestSpecification(baseURL, endPoint, headers);
-        requestSpecification.queryParams(queryParameters);
-        Response response = requestSpecification.get();
-        responseLog(response);
-        return response;
-    }
 
-    public static Response GetNew(String baseURL, String endPoint,Map<String, String> headers, Map<String, String> queryParameters) {
+    public static Response GetNew(String baseURL, String endPoint, Map<String, Object> headers, Map<String, Object> queryParameters) {
         RequestSpecification requestSpecification = getRequestSpecification(baseURL, endPoint, headers);
         requestSpecification.queryParams(queryParameters);
         Response response = requestSpecification.get();
@@ -104,6 +119,7 @@ public class CommonRestAssured {
         res.prettyPrint();
         return res;
     }
+
     protected Response postNew(RequestSpecification spec, String resourceURL) {
         sw = new StringWriter();
         ps = new PrintStream(new WriterOutputStream(sw), true);
@@ -119,9 +135,11 @@ public class CommonRestAssured {
         res = given().spec(spec).filter(new RequestLoggingFilter(ps)).log().all().when().put(resourceURL);
         return res;
     }
+
     public int getStatusCode(Response response) {
         return response.getStatusCode();
     }
+
     public Response getCurrentResponse() {
         return res;
     }
@@ -133,9 +151,11 @@ public class CommonRestAssured {
             e.printStackTrace();
         }
     }
+
     public Object parseJson(Response response, String path) {
         return response.jsonPath().get(path);
     }
+
     public String getJsonPathValue(String res, String key) {
         JsonPath json = new JsonPath(res.toString());
         Object value = json.get(key);
@@ -201,8 +221,8 @@ public class CommonRestAssured {
 
     private static void responseLog(Response response) {
         logInfo("Response Status is  : " + response.getStatusCode());
-        logInfo("Response Headers are :  ");
-        logHeaders(response.getHeaders().asList());
+        //logInfo("Response Headers are :  ");
+        //logHeaders(response.getHeaders().asList());
         logInfo("Response Body is :  ");
         logJson(response.getBody().prettyPrint());
     }
@@ -210,15 +230,20 @@ public class CommonRestAssured {
     private static void reqLogGet(RequestSpecification requestSpecification) {
         QueryableRequestSpecification queryableRequestSpecification = SpecificationQuerier.query(requestSpecification);
         logInfo("Base URL is  : " + queryableRequestSpecification.getBaseUri());
-        logInfo("Base Path is  : " + queryableRequestSpecification.getBasePath());
-        logInfo("Headers Are  : ");
+        logInfo("EndPoint is  : " + queryableRequestSpecification.getBasePath());
+        /* logInfo("Headers Are  : ");
         logHeaders(queryableRequestSpecification.getHeaders().asList());
+        logInfo("Query Parameters Are  : ");
+        queryableRequestSpecification.getQueryParams().forEach((key, value) -> {
+            logInfo(key + " : " + value);
+         });
+         */
     }
 
     protected static void logInfo(String log) {
         if (extentTest.get() != null) {
             extentTest.get().info(MarkupHelper.createLabel(log, ExtentColor.PINK));
-        } else{
+        } else {
             System.out.println(log);
         }
     }
@@ -226,7 +251,7 @@ public class CommonRestAssured {
     static void logJson(String json) {
         if (extentTest.get() != null) {
             extentTest.get().info(MarkupHelper.createCodeBlock(json, CodeLanguage.JSON));
-        } else{
+        } else {
             System.out.println(json);
         }
     }
