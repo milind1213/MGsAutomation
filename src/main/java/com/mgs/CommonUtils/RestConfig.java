@@ -74,6 +74,14 @@ public class RestConfig {
     }
 
 
+    public static Response Delete(String baseURL,String endPoint,RestConfig config) {
+        RequestSpecification requestSpecification = getRequestSpecification(baseURL,endPoint,config);
+        reqLogGet(requestSpecification);
+        Response response = requestSpecification.delete();
+        responseLog(response);
+        return response;
+    }
+
     public String getDecryptedString(String inputText, String secret) {
         SecretKey key = new SecretKeySpec(secret.getBytes(), "AES");
         Cipher cipher = null;
@@ -101,8 +109,8 @@ public class RestConfig {
 
     private static void responseLog(Response response) {
         logInfo("Response Status is  : " + response.getStatusCode());
-        //logInfo("Response Headers are :  ");
-        //logHeaders(response.getHeaders().asList());
+        logInfo("Response Headers are :  ");
+        logHeaders(response.getHeaders().asList());
         logInfo("Response Body is :  ");
         logJson(response.getBody().prettyPrint());
     }
@@ -111,13 +119,12 @@ public class RestConfig {
         QueryableRequestSpecification queryableRequestSpecification = SpecificationQuerier.query(requestSpecification);
         logInfo("Base URL is  : " + queryableRequestSpecification.getBaseUri());
         logInfo("EndPoint is  : " + queryableRequestSpecification.getBasePath());
-        /* logInfo("Headers Are  : ");
+         logInfo("Headers Are  : ");
         logHeaders(queryableRequestSpecification.getHeaders().asList());
         logInfo("Query Parameters Are  : ");
         queryableRequestSpecification.getQueryParams().forEach((key, value) -> {
             logInfo(key + " : " + value);
          });
-         */
     }
 
     protected static void logInfo(String log) {

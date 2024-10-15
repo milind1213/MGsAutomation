@@ -12,6 +12,11 @@ public interface Endpoints {
     String getCarts = "/carts/{cartId}";
     String addItemToCart = "/carts/{cartId}/items";
     String updateCarts = "/carts/{cartId}/items/{itemId}";
+    String orders ="/orders/";
+    String apiClients ="api-clients";
+    String updateOrder = "/orders/{orderId}";
+    String deleteOrder = "/orders/{orderId}";
+
 
 
 }

@@ -1,4 +1,4 @@
-package com.mgs.Tests.DataDrivenTests;
+package com.mgs.Tests.DataDriven;
 
 import com.mgs.CommonConstants;
 import com.mgs.Pages.WebPages.FDCalculatorPage;

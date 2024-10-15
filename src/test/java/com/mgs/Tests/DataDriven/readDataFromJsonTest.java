@@ -1,6 +1,6 @@
-package com.mgs.Tests.DataDrivenTests;
+package com.mgs.Tests.DataDriven;
 import com.mgs.CommonConstants;
-import com.mgs.Pages.RestPage.FdData;
+import com.mgs.Pages.RestPage.POJO.FdData;
 import com.mgs.Pages.WebPages.FDCalculatorPage;
 import com.mgs.TestBase.BaseTest;
 import com.mgs.Utils.UtilsJson;
@@ -13,7 +13,6 @@ import java.util.List;
 
 import static com.mgs.Utils.FileUtil.getProperty;
 import static com.mgs.Utils.UtilsJson.readDataFromJson;
-import static com.mgs.Utils.UtilsJson.readsDataFromJson;
 
 public class readDataFromJsonTest extends BaseTest {
     WebDriver driver;

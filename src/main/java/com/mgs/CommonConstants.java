@@ -36,7 +36,11 @@ public class CommonConstants {
     public static String generateRandomText(int length) {
         return RandomStringUtils.randomAlphanumeric(length);
     }
+    public static String generateRandomEmail(int length) {
+        String randomText = RandomStringUtils.randomAlphanumeric(length);
+        return  randomText + "@example.com";
 
+    }
     public static int getRandomNumberInRange(int min, int max) {
         if (min >= max) {
             throw new IllegalArgumentException("max must be greater than min");

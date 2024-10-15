@@ -1,4 +1,4 @@
-package com.mgs.Pages.RestPage;
+package com.mgs.Pages.RestPage.POJO;
 
 public class FdData {
     private int principle;  // Lowercase 'p'

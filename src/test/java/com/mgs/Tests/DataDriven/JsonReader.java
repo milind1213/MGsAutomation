@@ -1,11 +1,10 @@
-package com.mgs.Tests.DataDrivenTests;
+package com.mgs.Tests.DataDriven;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.Test;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
