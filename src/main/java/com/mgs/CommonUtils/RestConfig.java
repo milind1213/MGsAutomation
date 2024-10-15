@@ -18,7 +18,6 @@ import javax.crypto.spec.SecretKeySpec;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.*;
-
 import static com.mgs.Utils.TestListeners.extentTest;
 
 @Getter
@@ -58,7 +57,7 @@ public class RestConfig {
     public static Response Post(String baseURL,String endPoint,RestConfig config, Object body) {
         RequestSpecification requestSpecification = getRequestSpecification(baseURL,endPoint,config).contentType(ContentType.JSON)
                 .body(body);
-        reqLogGet(requestSpecification);  // Log request details
+        requestLog(requestSpecification);  // Log request details
         Response response = requestSpecification.post();  // Send POST request
         responseLog(response);  // Log response details
         return response;
@@ -67,7 +66,7 @@ public class RestConfig {
     public static Response Patch(String baseURL,String endPoint,RestConfig config, Object body) {
         RequestSpecification requestSpecification = getRequestSpecification(baseURL,endPoint,config).contentType(ContentType.JSON)
                 .body(body);
-        reqLogGet(requestSpecification);  // Log request details
+        requestLog(requestSpecification);  // Log request details
         Response response = requestSpecification.patch();  // Send POST request
         responseLog(response);  // Log response details
         return response;
@@ -119,7 +118,7 @@ public class RestConfig {
         QueryableRequestSpecification queryableRequestSpecification = SpecificationQuerier.query(requestSpecification);
         logInfo("Base URL is  : " + queryableRequestSpecification.getBaseUri());
         logInfo("EndPoint is  : " + queryableRequestSpecification.getBasePath());
-         logInfo("Headers Are  : ");
+        logInfo("Headers Are  : ");
         logHeaders(queryableRequestSpecification.getHeaders().asList());
         logInfo("Query Parameters Are  : ");
         queryableRequestSpecification.getQueryParams().forEach((key, value) -> {
