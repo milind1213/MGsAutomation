@@ -14,7 +14,7 @@ import java.util.List;
 import static com.mgs.Utils.FileUtil.getProperty;
 import static com.mgs.Utils.UtilsJson.readDataFromJson;
 
-public class readDataFromJsonTest extends BaseTest {
+public class readDataFromJson extends BaseTest {
     WebDriver driver;
     String jsonFilePath = System.getProperty("user.dir") + "/TestData/FDRates.json";  // Path to JSON file
     FDCalculatorPage user;
@@ -29,16 +29,9 @@ public class readDataFromJsonTest extends BaseTest {
     @Test(priority = 1)
     public void calculateFdRatesUsingGsonLibrary() throws IOException {
         List<FdData> fdDataList = readDataFromJson(jsonFilePath, FdData.class);
-
         for (FdData fdData : fdDataList) {
             log("Performing FD calculation for Principle: " + fdData.getPrinciple());
-            user.calculateRateOfInterest(
-                    String.valueOf(fdData.getPrinciple()),
-                    String.valueOf(fdData.getRateOfInterest()),
-                    String.valueOf(fdData.getPeriod()),
-                    fdData.getPeriodType(),
-                    fdData.getFrequency()
-            );
+            user.calculateRateOfInterest(String.valueOf(fdData.getPrinciple()), String.valueOf(fdData.getRateOfInterest()), String.valueOf(fdData.getPeriod()), fdData.getPeriodType(), fdData.getFrequency());
             String actualMaturityAmt = user.getMaturity();
             log("Expected Maturity: " + fdData.getMaturityValue() + ", Actual Maturity: " + actualMaturityAmt);
 
@@ -59,15 +52,7 @@ public class readDataFromJsonTest extends BaseTest {
         List<FdData> fdDataList = UtilsJson.readsDataFromJson(jsonFilePath, FdData.class);
         for (FdData fdData : fdDataList) {
             log("Performing FD calculation for Principle: " + fdData.getPrinciple());
-
-            user.calculateRateOfInterest(
-                    String.valueOf(fdData.getPrinciple()),
-                    String.valueOf(fdData.getRateOfInterest()),
-                    String.valueOf(fdData.getPeriod()),
-                    fdData.getPeriodType(),
-                    fdData.getFrequency()
-            );
-
+            user.calculateRateOfInterest(String.valueOf(fdData.getPrinciple()), String.valueOf(fdData.getRateOfInterest()), String.valueOf(fdData.getPeriod()),fdData.getPeriodType(),fdData.getFrequency());
             String actualMaturityAmt = user.getMaturity();
             log("Expected Maturity: " + fdData.getMaturityValue() + ", Actual Maturity: " + actualMaturityAmt);
             if (Double.parseDouble(actualMaturityAmt) == fdData.getMaturityValue()) {

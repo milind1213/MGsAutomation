@@ -41,5 +41,4 @@ public class UtilsJson {
         writer.close();
     }
 
-
 }

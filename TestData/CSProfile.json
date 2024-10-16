@@ -1,0 +1,153 @@
+{
+  "customerName": "Milind",
+  "riskCapacity": "Medium",
+  "investmentStrategy": "Balanced",
+  "totalInvestment": 500000,
+  "maturityAmount": 890759,
+  "depositDetails": [
+    {
+      "principle": 300000,
+      "rateOfInterest": 15,
+      "period": 5,
+      "interestType": "Compound Interest",
+      "periodType": "year(s)",
+      "maturityValue": 603407.16,
+      "bankDetails": {
+        "ifsc": "XYZ0001234",
+        "branch": "New York",
+        "name": "XYZ Bank"
+      },
+      "audits": {
+        "review": {
+          "auditor": "John Doe",
+          "remarks": "Reviewed",
+          "date": "2024-01-15"
+        },
+        "approval": {
+          "auditor": "Jane Smith",
+          "remarks": "Approved",
+          "date": "2024-02-10"
+        }
+      },
+      "history": {
+        "transactionIDs": [
+          "TX123456789",
+          "TX987654321"
+        ],
+        "lastUpdated": "2024-05-12T14:45:00",
+        "statuses": [
+          {
+            "status": "Pending",
+            "updatedBy": "Auditor1",
+            "date": "2024-03-15"
+          },
+          {
+            "status": "Approved",
+            "updatedBy": "Auditor2",
+            "date": "2024-03-18"
+          }
+        ]
+      },
+      "additionalInfo": {
+        "isVerified": true,
+        "comments": "All data is up-to-date and verified."
+      }
+    },
+    {
+      "principle": 100000,
+      "rateOfInterest": 10,
+      "period": 3,
+      "interestType": "Simple Interest",
+      "periodType": "year(s)",
+      "maturityValue": 130000.0,
+      "bankDetails": {
+        "ifsc": "ABC0005678",
+        "branch": "Los Angeles",
+        "name": "ABC Bank"
+      },
+      "audits": {
+        "review": {
+          "auditor": "Alice Johnson",
+          "remarks": "Reviewed",
+          "date": "2024-02-12"
+        },
+        "approval": {
+          "auditor": "Bob Williams",
+          "remarks": "Approved",
+          "date": "2024-02-20"
+        }
+      },
+      "history": {
+        "transactionIDs": [
+          "TX567890123",
+          "TX765432198"
+        ],
+        "lastUpdated": "2024-06-12T12:30:00",
+        "statuses": [
+          {
+            "status": "Pending",
+            "updatedBy": "Auditor3",
+            "date": "2024-03-25"
+          },
+          {
+            "status": "Approved",
+            "updatedBy": "Auditor4",
+            "date": "2024-03-29"
+          }
+        ]
+      },
+      "additionalInfo": {
+        "isVerified": false,
+        "comments": "Verification pending."
+      }
+    },
+    {
+      "principle": 100000,
+      "rateOfInterest": 12,
+      "period": 4,
+      "interestType": "Compound Interest",
+      "periodType": "year(s)",
+      "maturityValue": 157353.28,
+      "bankDetails": {
+        "ifsc": "DEF0009101",
+        "branch": "Chicago",
+        "name": "DEF Bank"
+      },
+      "audits": {
+        "review": {
+          "auditor": "Michael Brown",
+          "remarks": "Reviewed",
+          "date": "2024-03-01"
+        },
+        "approval": {
+          "auditor": "Linda Green",
+          "remarks": "Approved",
+          "date": "2024-03-10"
+        }
+      },
+      "history": {
+        "transactionIDs": [
+          "TX098765432",
+          "TX345678901"
+        ],
+        "lastUpdated": "2024-07-15T09:50:00",
+        "statuses": [
+          {
+            "status": "Pending",
+            "updatedBy": "Auditor5",
+            "date": "2024-04-02"
+          },
+          {
+            "status": "Approved",
+            "updatedBy": "Auditor6",
+            "date": "2024-04-05"
+          }
+        ]
+      },
+      "additionalInfo": {
+        "isVerified": true,
+        "comments": "All discrepancies were resolved."
+      }
+    }
+  ]
+}
