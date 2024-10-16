@@ -1,0 +1,84 @@
+{
+  "orderId": "ORD12345678",
+  "customerName": "Aditi Rao",
+  "orderDate": "2024-10-12",
+  "deliveryDate": "2024-10-18",
+  "shippingAddress": {
+    "street": "123 Green Street",
+    "city": "Bangalore",
+    "state": "Karnataka",
+    "zipCode": "560001",
+    "country": "India"
+  },
+  "billingAddress": {
+    "street": "456 Blue Avenue",
+    "city": "Mumbai",
+    "state": "Maharashtra",
+    "zipCode": "400012",
+    "country": "India"
+  },
+  "items": [
+    {
+      "productId": "PROD98765",
+      "productName": "Wireless Headphones",
+      "quantity": 2,
+      "pricePerUnit": 1500,
+      "totalPrice": 3000,
+      "warehouseLocation": {
+        "warehouseId": "WH789",
+        "city": "Hyderabad",
+        "state": "Telangana"
+      },
+      "shipmentStatus": {
+        "status": "Dispatched",
+        "dispatchedDate": "2024-10-13",
+        "expectedDelivery": "2024-10-18",
+        "trackingId": "TRACK987654321"
+      }
+    },
+    {
+      "productId": "PROD12345",
+      "productName": "Smartphone Case",
+      "quantity": 1,
+      "pricePerUnit": 500,
+      "totalPrice": 500,
+      "warehouseLocation": {
+        "warehouseId": "WH456",
+        "city": "Pune",
+        "state": "Maharashtra"
+      },
+      "shipmentStatus": {
+        "status": "Packed",
+        "packedDate": "2024-10-12",
+        "expectedDelivery": "2024-10-18",
+        "trackingId": "TRACK123456789"
+      }
+    }
+  ],
+  "paymentDetails": {
+    "paymentMethod": "Credit Card",
+    "cardLastFourDigits": "1234",
+    "transactionId": "TXN123456789",
+    "paymentDate": "2024-10-12",
+    "paymentStatus": "Successful"
+  },
+  "orderHistory": {
+    "orderPlaced": {
+      "date": "2024-10-12",
+      "updatedBy": "System"
+    },
+    "orderConfirmed": {
+      "date": "2024-10-12",
+      "updatedBy": "AdminUser1"
+    },
+    "orderDispatched": {
+      "date": "2024-10-13",
+      "updatedBy": "WarehouseAdmin"
+    }
+  },
+  "customerFeedback": {
+    "feedbackSubmitted": false,
+    "expectedFeedbackDate": "2024-10-20",
+    "comments": null
+  }
+}

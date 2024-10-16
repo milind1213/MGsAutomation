@@ -1,6 +1,7 @@
 package com.mgs.Tests.DataDriven;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mgs.Pages.RestPage.POJO.CSProfile;
+import com.mgs.Pages.RestPage.POJO.OrderDetails;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -144,10 +145,8 @@ public class readDataFrmJson {
         System.out.println("Risk Capacity : " + csProfile.getRiskCapacity());
         System.out.println("Investment Strategy: " + csProfile.getInvestmentStrategy());
         System.out.println("Total Investment : " + csProfile.getTotalInvestment());
-
         long maturityAmount = csProfile.getMaturityAmount();
         System.out.println("Total Maturity : " + maturityAmount);
-
         // Extract Deposit Details and calculate total maturity
         long calculatedMaturity = 0;
         for (CSProfile.DepositDetail deposit : csProfile.getDepositDetails()) {
@@ -170,6 +169,17 @@ public class readDataFrmJson {
         System.out.println("Displaying Maturity: " + maturityAmount + " Calculated Maturity: " + calculatedMaturity);
         Assert.assertEquals(maturityAmount, calculatedMaturity);
     }
+
+    @Test
+    public static void orderDetailsValidation() throws IOException {
+        String path = System.getProperty("user.dir")+"/TestData/OrderDetails.json";
+        ObjectMapper objectMapper = new ObjectMapper();
+        OrderDetails orderDetails = objectMapper.readValue(new File(path), OrderDetails.class);
+
+        String orderId = orderDetails.getOrderId().toString();
+        System.out.println(orderId);
+    }
+
 
 
 }

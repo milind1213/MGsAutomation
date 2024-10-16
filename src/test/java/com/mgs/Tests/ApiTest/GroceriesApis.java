@@ -156,6 +156,7 @@ public class GroceriesApis extends GroceriesPayloads implements Endpoints {
 
     @Test(priority = 10, dependsOnMethods = {"generateAccessToken", "createNewCart"})
     public void createOrder() {
+        String name = "MG No" + generateRandomText(3);
         RestConfig reqConfig = new RestConfig();
         Map<String, Object> headers = new HashMap<>();
         headers.put("Authorization", "Bearer " + accessToken);
@@ -163,7 +164,7 @@ public class GroceriesApis extends GroceriesPayloads implements Endpoints {
 
         CreateOrder payload = new CreateOrder();
         payload.setCartId(cartId); // Assuming 'cartId' is set from 'createNewCart' method
-        payload.setCustomerName("John Doe");
+        payload.setCustomerName(name);
 
         Response res = RestConfig.Post(baseUrl, orders, reqConfig, payload);
 

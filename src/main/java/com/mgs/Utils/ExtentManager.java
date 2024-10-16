@@ -6,9 +6,7 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
 import com.aventstack.extentreports.reporter.configuration.ViewName;
 
 public class ExtentManager {
-
 	private static ExtentReports extentReports;
-
 	public static synchronized ExtentReports createInstance(String fileName, String reportName, String documentTitle) {
 		ExtentSparkReporter extentSparkReporter = new ExtentSparkReporter(fileName);
 		extentSparkReporter.viewConfigurer().viewOrder().as(new ViewName[] { ViewName.DASHBOARD, ViewName.TEST,
