@@ -1,0 +1,72 @@
+{
+  "testdata": [
+    {
+      "testName": "LoginTest",
+      "data": [
+        {
+          "runmode": "Headless",
+          "browser": "chrome",
+          "username":"abc@gmail.com",
+          "password":"pass1234"
+        },
+        {
+          "runmode": "With Head",
+          "browser": "mozilla",
+          "username":"abc@gmail.com",
+          "password":"pass1234"
+        },
+        {
+          "runmode": "Headless",
+          "browser": "edge",
+          "username":"abc@gmail.com",
+          "password":"pass1234"
+        }
+      ]
+
+    },
+    {
+      "testName": "PurchaseProductTest",
+      "data": [
+        {
+          "runmode": "Headless",
+          "browser": "chrome",
+          "productname":"iphone1 10",
+          "mincost":"10000",
+          "maxcost":"50000"
+        },
+        {
+          "runmode": "With Head",
+          "browser": "mozilla",
+          "productname":"IBM ThinkPad",
+          "mincost":"50000",
+          "maxcost":"100000"
+        },
+        {
+          "runmode": "Headless",
+          "browser": "edge",
+          "productname":"Iball Headphones",
+          "mincost":"1000",
+          "maxcost":"5000"
+        }
+      ]
+    },
+    {
+      "testName": "ProductOperationTest",
+      "data": [
+        {
+          "runmode": "Headless",
+          "browser": "chrome",
+          "productname":"iphone 10",
+          "operation":"remove"
+        },
+        {
+          "runmode": "With Head",
+          "browser": "mozilla",
+          "productname":"IBM ThinkPad",
+          "mincost":"50000",
+          "maxcost":"100000"
+        }
+      ]
+    }
+  ]
+}

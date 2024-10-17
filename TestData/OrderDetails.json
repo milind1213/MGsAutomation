@@ -21,7 +21,7 @@
     {
       "productId": "PROD98765",
       "productName": "Wireless Headphones",
-      "quantity": 2,
+      "quantity": 15,
       "pricePerUnit": 1500,
       "totalPrice": 3000,
       "warehouseLocation": {
@@ -39,7 +39,7 @@
     {
       "productId": "PROD12345",
       "productName": "Smartphone Case",
-      "quantity": 1,
+      "quantity": 15,
       "pricePerUnit": 500,
       "totalPrice": 500,
       "warehouseLocation": {
@@ -49,9 +49,9 @@
       },
       "shipmentStatus": {
         "status": "Packed",
-        "packedDate": "2024-10-12",
         "expectedDelivery": "2024-10-18",
-        "trackingId": "TRACK123456789"
+        "trackingId": "TRACK123456789",
+        "packedDate": "2024-10-12"
       }
     }
   ],
@@ -59,26 +59,4 @@
     "paymentMethod": "Credit Card",
     "cardLastFourDigits": "1234",
     "transactionId": "TXN123456789",
-    "paymentDate": "2024-10-12",
-    "paymentStatus": "Successful"
-  },
-  "orderHistory": {
-    "orderPlaced": {
-      "date": "2024-10-12",
-      "updatedBy": "System"
-    },
-    "orderConfirmed": {
-      "date": "2024-10-12",
-      "updatedBy": "AdminUser1"
-    },
-    "orderDispatched": {
-      "date": "2024-10-13",
-      "updatedBy": "WarehouseAdmin"
-    }
-  },
-  "customerFeedback": {
-    "feedbackSubmitted": false,
-    "expectedFeedbackDate": "2024-10-20",
-    "comments": null
-  }
-}
+    "p
