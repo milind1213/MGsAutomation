@@ -13,6 +13,7 @@
       "periodType": "year(s)",
       "maturityValue": 603407.16,
       "bankDetails": {
+        "accountNumber": 83453401,
         "ifsc": "XYZ0001234",
         "branch": "New York",
         "name": "XYZ Bank"
@@ -61,6 +62,7 @@
       "periodType": "year(s)",
       "maturityValue": 130000.0,
       "bankDetails": {
+        "accountNumber": "83453402",
         "ifsc": "ABC0005678",
         "branch": "Los Angeles",
         "name": "ABC Bank"
@@ -109,6 +111,7 @@
       "periodType": "year(s)",
       "maturityValue": 157353.28,
       "bankDetails": {
+        "accountNumber": 83453403,
         "ifsc": "DEF0009101",
         "branch": "Chicago",
         "name": "DEF Bank"

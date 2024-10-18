@@ -10,16 +10,16 @@ import org.json.simple.parser.ParseException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.Iterator;
 import java.util.Set;
 
 public class JsonHandleGsonSimpleJson {
-    @Test
-    public void writeJSON() {
+    @Test //Simple Json
+    public void writeJSON() throws IOException {
+        String path = System.getProperty("user.dir") + "/TestData/studentDetails.json";
+        FileWriter file = new FileWriter(path);
+
         JSONObject student1 = new JSONObject();
         student1.put("studentName", "John");
         student1.put("Grade", "5th");
@@ -42,6 +42,9 @@ public class JsonHandleGsonSimpleJson {
         JSONObject details = new JSONObject();
         details.put("studentDetails", studentDetails);
         System.out.println(details.toJSONString());
+
+        file.write(details.toJSONString());
+        file.flush();
     }
 
     @Test

@@ -1,62 +1,66 @@
 {
-  "orderId": "ORD12345678",
-  "customerName": "Aditi Rao",
-  "orderDate": "2024-10-12",
-  "deliveryDate": "2024-10-18",
-  "shippingAddress": {
-    "street": "123 Green Street",
-    "city": "Bangalore",
-    "state": "Karnataka",
-    "zipCode": "560001",
-    "country": "India"
+  "orderId" : "ORD12345678",
+  "customerName" : "Aditi Rao",
+  "orderDate" : "2024-10-12",
+  "deliveryDate" : "2024-10-18",
+  "shippingAddress" : {
+    "street" : "123 Green Street",
+    "city" : "Bangalore",
+    "state" : "Karnataka",
+    "zipCode" : "560001",
+    "country" : "India"
   },
-  "billingAddress": {
-    "street": "456 Blue Avenue",
-    "city": "Mumbai",
-    "state": "Maharashtra",
-    "zipCode": "400012",
-    "country": "India"
+  "billingAddress" : {
+    "street" : "456 Blue Avenue",
+    "city" : "Mumbai",
+    "state" : "Maharashtra",
+    "zipCode" : "400012",
+    "country" : "India"
   },
-  "items": [
-    {
-      "productId": "PROD98765",
-      "productName": "Wireless Headphones",
-      "quantity": 15,
-      "pricePerUnit": 1500,
-      "totalPrice": 3000,
-      "warehouseLocation": {
-        "warehouseId": "WH789",
-        "city": "Hyderabad",
-        "state": "Telangana"
-      },
-      "shipmentStatus": {
-        "status": "Dispatched",
-        "dispatchedDate": "2024-10-13",
-        "expectedDelivery": "2024-10-18",
-        "trackingId": "TRACK987654321"
-      }
+  "items" : [ {
+    "productId" : "PROD98765",
+    "productName" : "Wireless Headphones",
+    "quantity" : 3,
+    "pricePerUnit" : 1500,
+    "totalPrice" : 3000,
+    "warehouseLocation" : {
+      "warehouseId" : "WH789",
+      "city" : "Hyderabad",
+      "state" : "Telangana"
     },
-    {
-      "productId": "PROD12345",
-      "productName": "Smartphone Case",
-      "quantity": 15,
-      "pricePerUnit": 500,
-      "totalPrice": 500,
-      "warehouseLocation": {
-        "warehouseId": "WH456",
-        "city": "Pune",
-        "state": "Maharashtra"
-      },
-      "shipmentStatus": {
-        "status": "Packed",
-        "expectedDelivery": "2024-10-18",
-        "trackingId": "TRACK123456789",
-        "packedDate": "2024-10-12"
-      }
+    "shipmentStatus" : {
+      "status" : "Dispatched",
+      "dispatchedDate" : "2024-10-13",
+      "expectedDelivery" : "2024-10-18",
+      "trackingId" : "TRACK987654321",
+      "packedDate" : null
     }
-  ],
-  "paymentDetails": {
-    "paymentMethod": "Credit Card",
-    "cardLastFourDigits": "1234",
-    "transactionId": "TXN123456789",
-    "p
+  }, {
+    "productId" : "PROD12345",
+    "productName" : "Smartphone Case",
+    "quantity" : 3,
+    "pricePerUnit" : 500,
+    "totalPrice" : 500,
+    "warehouseLocation" : {
+      "warehouseId" : "WH456",
+      "city" : "Pune",
+      "state" : "Maharashtra"
+    },
+    "shipmentStatus" : {
+      "status" : "Packed",
+      "dispatchedDate" : null,
+      "expectedDelivery" : "2024-10-18",
+      "trackingId" : "TRACK123456789",
+      "packedDate" : "2024-10-12"
+    }
+  } ],
+  "paymentDetails" : {
+    "paymentMethod" : "Credit Card",
+    "cardLastFourDigits" : "1234",
+    "transactionId" : "TXN123456789",
+    "paymentDate" : null,
+    "paymentStatus" : null
+  },
+  "orderHistory" : null,
+  "customerFeedback" : null
+}

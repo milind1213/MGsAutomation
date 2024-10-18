@@ -36,6 +36,7 @@ public class CSProfile {
             private String ifsc;
             private String branch;
             private String name;
+            private int accountNumber;
         }
 
         @Getter

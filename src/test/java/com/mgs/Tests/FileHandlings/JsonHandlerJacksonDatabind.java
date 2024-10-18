@@ -1,17 +1,61 @@
 package com.mgs.Tests.FileHandlings;
-
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.mgs.Pages.RestPage.POJO.CSProfile;
 import com.mgs.Pages.RestPage.POJO.OrderDetails;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
 public class JsonHandlerJacksonDatabind {
+    @Test
+    public void writeJSON() throws IOException {
+        String path = System.getProperty("user.dir") + "/TestData/studentDetails.json";
+        File jsonFile = new File(path);
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectNode student1 =  objectMapper.createObjectNode();
+        student1.put("studentName", "John");
+        student1.put("Grade", "5th");
+        student1.put("Location", "16th Avenue");
+
+        ObjectNode student2 =  objectMapper.createObjectNode();
+        student2.put("studentName", "John");
+        student2.put("Grade", "5th");
+        student2.put("Location", "16th Avenue");
+
+        // Print individual student JSON
+        System.out.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(student1));
+        System.out.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(student2));
+
+        ArrayNode studentDetails = objectMapper.createArrayNode();
+        studentDetails.add(student1);
+        studentDetails.add(student2);
+
+        // Print List of student JSON
+        System.out.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(studentDetails));
+
+
+        ObjectNode details = objectMapper.createObjectNode();
+        details.set("studentDetails", studentDetails);
+        // Print the final details JSON
+        System.out.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(details));
+
+
+        // Write JSON
+        objectMapper.writerWithDefaultPrettyPrinter().writeValue(jsonFile, details);
+        System.out.println("JSON written to file: " + jsonFile.getAbsolutePath());
+    }
+
+
+
+
+
     @Test(priority = 1)
     public void fixedDepositDetailValidating() throws IOException {
         String filePath = System.getProperty("user.dir") + "/TestData/CSProfile.json"; // Path to the JSON file
@@ -53,8 +97,38 @@ public class JsonHandlerJacksonDatabind {
         Assert.assertEquals(maturityAmount, calculatedMaturity);
     }
 
+    @Test(priority = 2)
+    public void getBankAccountNumbers() throws IOException {
+        String filePath = System.getProperty("user.dir") + "/TestData/CSProfile.json"; // Path to the JSON file
+        ObjectMapper obj = new ObjectMapper();
+        Map<String, Object> customer = obj.readValue(new File(filePath), Map.class);
+        String customerName = customer.get("customerName").toString();
+        System.out.println("Customer Name : " + customerName);
 
-    @Test(priority = 2)  // Using POJO
+        List<Map<String, Object>> depositDetails = (List<Map<String, Object>>) customer.get("depositDetails");
+        for (Map<String, Object> deposit : depositDetails) {
+            Map<String, Object> bankDetails = (Map<String, Object>) deposit.get("bankDetails");
+            String accountNumber = bankDetails.get("accountNumber").toString();
+            String bankName = bankDetails.get("name").toString();
+            System.out.println("Account Number :" + accountNumber + " Bank Name : " + bankName);
+
+            Map<String, Object> history = (Map<String, Object>) deposit.get("history");
+            List<String> transactionIDs = (List<String>) history.get("transactionIDs");
+            System.out.println("Transaction IDs for deposit: " + deposit.get("principle"));
+            for (String transactionID : transactionIDs) {
+                System.out.println(transactionID);
+            }
+
+            List<Map<String, Object>> statuses = (List<Map<String, Object>>) history.get("statuses");
+            for (Map<String, Object> sts : statuses) {
+                String status = sts.get("status").toString();
+                System.out.println("Account Status : " + status);
+            }
+            System.out.println(); // Just for better formatting
+        }
+    }
+
+    @Test(priority = 3)  // Using POJO
     public void fixedDepositDetailValidatingUsingPOJO() throws IOException {
         String filePath = System.getProperty("user.dir") + "/TestData/CSProfile.json"; // Path to the JSON file
         ObjectMapper objectMapper = new ObjectMapper();
@@ -67,6 +141,7 @@ public class JsonHandlerJacksonDatabind {
         System.out.println("Total Investment : " + customer.getTotalInvestment());
         long maturityAmount = customer.getMaturityAmount();
         System.out.println("Total Maturity : " + maturityAmount);
+
         // Extract Deposit Details and calculate total maturity
         long calculatedMaturity = 0;
         for (CSProfile.DepositDetail deposit : customer.getDepositDetails()) {
@@ -86,36 +161,60 @@ public class JsonHandlerJacksonDatabind {
             long calculatedMaturityValue = calculateMaturityValue(principle, rateOfInterest, period, interestType);
             calculatedMaturity += calculatedMaturityValue; // Update calculated maturity
         }
+
         System.out.println("Displaying Maturity: " + maturityAmount + " Calculated Maturity: " + calculatedMaturity);
         Assert.assertEquals(maturityAmount, calculatedMaturity);
     }
 
 
-    @Test(priority=3) //Using Jackson Databind
+    @Test(priority = 4)
+    public void getBankAccountNumbersPOJO() throws IOException {
+        String filePath = System.getProperty("user.dir") + "/TestData/CSProfile.json"; // Path to the JSON file
+        ObjectMapper obj = new ObjectMapper();
+        CSProfile customer = obj.readValue(new File(filePath), CSProfile.class);
+        String customerName = customer.getCustomerName();
+        System.out.println("Customer Name : " + customerName);
+
+        List<CSProfile.DepositDetail> deposits = customer.getDepositDetails();
+        for (CSProfile.DepositDetail deposit : deposits) {
+            CSProfile.DepositDetail.BankDetails bankDetails = deposit.getBankDetails();
+            System.out.println("AccountNumber : " + bankDetails.getAccountNumber() + " BankName : " + bankDetails.getName());
+
+            CSProfile.DepositDetail.History history = deposit.getHistory();  //System.out.println("Transaction IDs : " +history.getTransactionIDs());
+            List<String> transactionIDs = history.getTransactionIDs();
+            for (String id : transactionIDs) {
+                System.out.println("Transaction ID: " + id);
+            }
+
+            List<CSProfile.DepositDetail.History.Status> statusList = history.getStatuses();
+            for (CSProfile.DepositDetail.History.Status sts : statusList) {
+                System.out.println("Transaction ID: " + sts.getStatus());
+            }
+            System.out.println(); // Just for better formatting
+        }
+    }
+
+
+    @Test(priority = 5) //Using Jackson Databind
     public static void orderDetailsRadWritePOJO() throws IOException {
         String path = System.getProperty("user.dir") + "/TestData/OrderDetails.json";
         ObjectMapper objectMapper = new ObjectMapper();
         OrderDetails orderDetails = objectMapper.readValue(new File(path), OrderDetails.class);
-
-        String orderId = orderDetails.getOrderId();
-        String customerName = orderDetails.getCustomerName();
-        System.out.println("CustomerName:"+customerName +", OrderId:"+orderId);
-
-        int sumAmount=0,numberOfItems=0;
+        System.out.println("Name:"+orderDetails.getCustomerName()+", OrderId:"+orderDetails.getOrderId());
+        int sumAmount = 0, numberOfItems = 0;
         for (OrderDetails.Item item : orderDetails.getItems()) {
             numberOfItems = numberOfItems + item.getQuantity();
-            sumAmount = sumAmount+ item.getTotalPrice();
+            sumAmount = sumAmount + item.getTotalPrice();
         }
-        System.out.println("NumberOfItems:"+ numberOfItems+ ", PaidAmount:"+ sumAmount);
+        System.out.println("NumberOfItems:" + numberOfItems + ", PaidAmount:" + sumAmount);
 
         for (OrderDetails.Item item : orderDetails.getItems()) {
             item.setQuantity(3);
-            int num =  item.getQuantity();
-            System.out.println("NumberOfItems:"+ num);
+            int num = item.getQuantity();
+            System.out.println("NumberOfItems:" + num);
         }
         objectMapper.writerWithDefaultPrettyPrinter().writeValue(new File(path), orderDetails);
     }
-
 
     private long calculateMaturityValue(long principle, long rateOfInterest, long period, String frequency) {
         if (frequency.equalsIgnoreCase("Simple Interest")) {
