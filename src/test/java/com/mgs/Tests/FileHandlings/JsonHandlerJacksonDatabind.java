@@ -1,9 +1,8 @@
 package com.mgs.Tests.FileHandlings;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.mgs.Pages.RestPage.POJO.CSProfile;
+import com.mgs.Pages.RestPage.POJO.CustomerProfile;
 import com.mgs.Pages.RestPage.POJO.OrderDetails;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -58,7 +57,7 @@ public class JsonHandlerJacksonDatabind {
 
     @Test(priority = 1)
     public void fixedDepositDetailValidating() throws IOException {
-        String filePath = System.getProperty("user.dir") + "/TestData/CSProfile.json"; // Path to the JSON file
+        String filePath = System.getProperty("user.dir") + "/TestData/CustomerProfile.json"; // Path to the JSON file
         ObjectMapper objectMapper = new ObjectMapper();
         // Read JSON into a Map
         Map<String, Object> customer = objectMapper.readValue(new File(filePath), Map.class);
@@ -99,7 +98,7 @@ public class JsonHandlerJacksonDatabind {
 
     @Test(priority = 2)
     public void getBankAccountNumbers() throws IOException {
-        String filePath = System.getProperty("user.dir") + "/TestData/CSProfile.json"; // Path to the JSON file
+        String filePath = System.getProperty("user.dir") + "/TestData/CustomerProfile.json"; // Path to the JSON file
         ObjectMapper obj = new ObjectMapper();
         Map<String, Object> customer = obj.readValue(new File(filePath), Map.class);
         String customerName = customer.get("customerName").toString();
@@ -130,9 +129,9 @@ public class JsonHandlerJacksonDatabind {
 
     @Test(priority = 3)  // Using POJO
     public void fixedDepositDetailValidatingUsingPOJO() throws IOException {
-        String filePath = System.getProperty("user.dir") + "/TestData/CSProfile.json"; // Path to the JSON file
+        String filePath = System.getProperty("user.dir") + "/TestData/CustomerProfile.json"; // Path to the JSON file
         ObjectMapper objectMapper = new ObjectMapper();
-        CSProfile customer = objectMapper.readValue(new File(filePath), CSProfile.class);
+        CustomerProfile customer = objectMapper.readValue(new File(filePath), CustomerProfile.class);
 
         // Extract Customer Details
         System.out.println("Customer Name : " + customer.getCustomerName());
@@ -144,7 +143,7 @@ public class JsonHandlerJacksonDatabind {
 
         // Extract Deposit Details and calculate total maturity
         long calculatedMaturity = 0;
-        for (CSProfile.DepositDetail deposit : customer.getDepositDetails()) {
+        for (CustomerProfile.DepositDetail deposit : customer.getDepositDetails()) {
             long principle = deposit.getPrinciple();
             long rateOfInterest = deposit.getRateOfInterest();
             long period = deposit.getPeriod();
@@ -169,25 +168,25 @@ public class JsonHandlerJacksonDatabind {
 
     @Test(priority = 4)
     public void getBankAccountNumbersPOJO() throws IOException {
-        String filePath = System.getProperty("user.dir") + "/TestData/CSProfile.json"; // Path to the JSON file
+        String filePath = System.getProperty("user.dir") + "/TestData/CustomerProfile.json"; // Path to the JSON file
         ObjectMapper obj = new ObjectMapper();
-        CSProfile customer = obj.readValue(new File(filePath), CSProfile.class);
+        CustomerProfile customer = obj.readValue(new File(filePath), CustomerProfile.class);
         String customerName = customer.getCustomerName();
         System.out.println("Customer Name : " + customerName);
 
-        List<CSProfile.DepositDetail> deposits = customer.getDepositDetails();
-        for (CSProfile.DepositDetail deposit : deposits) {
-            CSProfile.DepositDetail.BankDetails bankDetails = deposit.getBankDetails();
+        List<CustomerProfile.DepositDetail> deposits = customer.getDepositDetails();
+        for (CustomerProfile.DepositDetail deposit : deposits) {
+            CustomerProfile.DepositDetail.BankDetails bankDetails = deposit.getBankDetails();
             System.out.println("AccountNumber : " + bankDetails.getAccountNumber() + " BankName : " + bankDetails.getName());
 
-            CSProfile.DepositDetail.History history = deposit.getHistory();  //System.out.println("Transaction IDs : " +history.getTransactionIDs());
+            CustomerProfile.DepositDetail.History history = deposit.getHistory();  //System.out.println("Transaction IDs : " +history.getTransactionIDs());
             List<String> transactionIDs = history.getTransactionIDs();
             for (String id : transactionIDs) {
                 System.out.println("Transaction ID: " + id);
             }
 
-            List<CSProfile.DepositDetail.History.Status> statusList = history.getStatuses();
-            for (CSProfile.DepositDetail.History.Status sts : statusList) {
+            List<CustomerProfile.DepositDetail.History.Status> statusList = history.getStatuses();
+            for (CustomerProfile.DepositDetail.History.Status sts : statusList) {
                 System.out.println("Transaction ID: " + sts.getStatus());
             }
             System.out.println(); // Just for better formatting

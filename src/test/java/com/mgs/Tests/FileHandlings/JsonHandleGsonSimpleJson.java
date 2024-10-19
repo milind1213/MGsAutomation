@@ -86,7 +86,7 @@ public class JsonHandleGsonSimpleJson {
 
     @Test //Simple-Json
     public static void fixedDepositDetailsReading() throws IOException, ParseException {
-        String filePath = System.getProperty("user.dir") + "/TestData/FDRates.json";
+        String filePath = System.getProperty("user.dir") + "/TestData/DepositDetails.json";
         JSONParser jsonParser = new JSONParser();        // Initialize JSON parser
         FileReader reader = new FileReader(filePath);    // Read and parse the file
         Object obj = jsonParser.parse(reader);
@@ -108,7 +108,7 @@ public class JsonHandleGsonSimpleJson {
 
     @Test  // Using Simple-Json
     public void fixedDepositDetailsValidatingUsingGson() throws IOException, ParseException {
-        String filePath = System.getProperty("user.dir") + "/TestData/CSProfile.json"; // Path to the JSON file
+        String filePath = System.getProperty("user.dir") + "/TestData/CustomerProfile.json"; // Path to the JSON file
         JSONParser jsonParser = new JSONParser();     // Initialize JSON parser
         FileReader file = new FileReader(filePath); // Read the JSON file
         Object obj = jsonParser.parse(file);        // Parse JSON data

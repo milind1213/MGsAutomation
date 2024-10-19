@@ -1,0 +1,595 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "customerName": {
+      "type": "string"
+    },
+    "riskCapacity": {
+      "type": "string"
+    },
+    "investmentStrategy": {
+      "type": "string"
+    },
+    "totalInvestment": {
+      "type": "integer"
+    },
+    "maturityAmount": {
+      "type": "integer"
+    },
+    "depositDetails": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "principle": {
+              "type": "integer"
+            },
+            "rateOfInterest": {
+              "type": "integer"
+            },
+            "period": {
+              "type": "integer"
+            },
+            "interestType": {
+              "type": "string"
+            },
+            "periodType": {
+              "type": "string"
+            },
+            "maturityValue": {
+              "type": "number"
+            },
+            "bankDetails": {
+              "type": "object",
+              "properties": {
+                "accountNumber": {
+                  "type": "integer"
+                },
+                "ifsc": {
+                  "type": "string"
+                },
+                "branch": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "accountNumber",
+                "ifsc",
+                "branch",
+                "name"
+              ]
+            },
+            "audits": {
+              "type": "object",
+              "properties": {
+                "review": {
+                  "type": "object",
+                  "properties": {
+                    "auditor": {
+                      "type": "string"
+                    },
+                    "remarks": {
+                      "type": "string"
+                    },
+                    "date": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "auditor",
+                    "remarks",
+                    "date"
+                  ]
+                },
+                "approval": {
+                  "type": "object",
+                  "properties": {
+                    "auditor": {
+                      "type": "string"
+                    },
+                    "remarks": {
+                      "type": "string"
+                    },
+                    "date": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "auditor",
+                    "remarks",
+                    "date"
+                  ]
+                }
+              },
+              "required": [
+                "review",
+                "approval"
+              ]
+            },
+            "history": {
+              "type": "object",
+              "properties": {
+                "transactionIDs": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                "lastUpdated": {
+                  "type": "string"
+                },
+                "statuses": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "string"
+                        },
+                        "updatedBy": {
+                          "type": "string"
+                        },
+                        "date": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "status",
+                        "updatedBy",
+                        "date"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "string"
+                        },
+                        "updatedBy": {
+                          "type": "string"
+                        },
+                        "date": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "status",
+                        "updatedBy",
+                        "date"
+                      ]
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "transactionIDs",
+                "lastUpdated",
+                "statuses"
+              ]
+            },
+            "additionalInfo": {
+              "type": "object",
+              "properties": {
+                "isVerified": {
+                  "type": "boolean"
+                },
+                "comments": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "isVerified",
+                "comments"
+              ]
+            }
+          },
+          "required": [
+            "principle",
+            "rateOfInterest",
+            "period",
+            "interestType",
+            "periodType",
+            "maturityValue",
+            "bankDetails",
+            "audits",
+            "history",
+            "additionalInfo"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "principle": {
+              "type": "integer"
+            },
+            "rateOfInterest": {
+              "type": "integer"
+            },
+            "period": {
+              "type": "integer"
+            },
+            "interestType": {
+              "type": "string"
+            },
+            "periodType": {
+              "type": "string"
+            },
+            "maturityValue": {
+              "type": "number"
+            },
+            "bankDetails": {
+              "type": "object",
+              "properties": {
+                "accountNumber": {
+                  "type": "string"
+                },
+                "ifsc": {
+                  "type": "string"
+                },
+                "branch": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "accountNumber",
+                "ifsc",
+                "branch",
+                "name"
+              ]
+            },
+            "audits": {
+              "type": "object",
+              "properties": {
+                "review": {
+                  "type": "object",
+                  "properties": {
+                    "auditor": {
+                      "type": "string"
+                    },
+                    "remarks": {
+                      "type": "string"
+                    },
+                    "date": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "auditor",
+                    "remarks",
+                    "date"
+                  ]
+                },
+                "approval": {
+                  "type": "object",
+                  "properties": {
+                    "auditor": {
+                      "type": "string"
+                    },
+                    "remarks": {
+                      "type": "string"
+                    },
+                    "date": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "auditor",
+                    "remarks",
+                    "date"
+                  ]
+                }
+              },
+              "required": [
+                "review",
+                "approval"
+              ]
+            },
+            "history": {
+              "type": "object",
+              "properties": {
+                "transactionIDs": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                "lastUpdated": {
+                  "type": "string"
+                },
+                "statuses": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "string"
+                        },
+                        "updatedBy": {
+                          "type": "string"
+                        },
+                        "date": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "status",
+                        "updatedBy",
+                        "date"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "string"
+                        },
+                        "updatedBy": {
+                          "type": "string"
+                        },
+                        "date": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "status",
+                        "updatedBy",
+                        "date"
+                      ]
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "transactionIDs",
+                "lastUpdated",
+                "statuses"
+              ]
+            },
+            "additionalInfo": {
+              "type": "object",
+              "properties": {
+                "isVerified": {
+                  "type": "boolean"
+                },
+                "comments": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "isVerified",
+                "comments"
+              ]
+            }
+          },
+          "required": [
+            "principle",
+            "rateOfInterest",
+            "period",
+            "interestType",
+            "periodType",
+            "maturityValue",
+            "bankDetails",
+            "audits",
+            "history",
+            "additionalInfo"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "principle": {
+              "type": "integer"
+            },
+            "rateOfInterest": {
+              "type": "integer"
+            },
+            "period": {
+              "type": "integer"
+            },
+            "interestType": {
+              "type": "string"
+            },
+            "periodType": {
+              "type": "string"
+            },
+            "maturityValue": {
+              "type": "number"
+            },
+            "bankDetails": {
+              "type": "object",
+              "properties": {
+                "accountNumber": {
+                  "type": "integer"
+                },
+                "ifsc": {
+                  "type": "string"
+                },
+                "branch": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "accountNumber",
+                "ifsc",
+                "branch",
+                "name"
+              ]
+            },
+            "audits": {
+              "type": "object",
+              "properties": {
+                "review": {
+                  "type": "object",
+                  "properties": {
+                    "auditor": {
+                      "type": "string"
+                    },
+                    "remarks": {
+                      "type": "string"
+                    },
+                    "date": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "auditor",
+                    "remarks",
+                    "date"
+                  ]
+                },
+                "approval": {
+                  "type": "object",
+                  "properties": {
+                    "auditor": {
+                      "type": "string"
+                    },
+                    "remarks": {
+                      "type": "string"
+                    },
+                    "date": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "auditor",
+                    "remarks",
+                    "date"
+                  ]
+                }
+              },
+              "required": [
+                "review",
+                "approval"
+              ]
+            },
+            "history": {
+              "type": "object",
+              "properties": {
+                "transactionIDs": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                "lastUpdated": {
+                  "type": "string"
+                },
+                "statuses": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "string"
+                        },
+                        "updatedBy": {
+                          "type": "string"
+                        },
+                        "date": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "status",
+                        "updatedBy",
+                        "date"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "string"
+                        },
+                        "updatedBy": {
+                          "type": "string"
+                        },
+                        "date": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "status",
+                        "updatedBy",
+                        "date"
+                      ]
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "transactionIDs",
+                "lastUpdated",
+                "statuses"
+              ]
+            },
+            "additionalInfo": {
+              "type": "object",
+              "properties": {
+                "isVerified": {
+                  "type": "boolean"
+                },
+                "comments": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "isVerified",
+                "comments"
+              ]
+            }
+          },
+          "required": [
+            "principle",
+            "rateOfInterest",
+            "period",
+            "interestType",
+            "periodType",
+            "maturityValue",
+            "bankDetails",
+            "audits",
+            "history",
+            "additionalInfo"
+          ]
+        }
+      ]
+    }
+  },
+  "required": [
+    "customerName",
+    "riskCapacity",
+    "investmentStrategy",
+    "totalInvestment",
+    "maturityAmount",
+    "depositDetails"
+  ]
+}

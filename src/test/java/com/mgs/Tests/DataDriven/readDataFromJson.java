@@ -1,6 +1,6 @@
 package com.mgs.Tests.DataDriven;
 import com.mgs.CommonConstants;
-import com.mgs.Pages.RestPage.POJO.FdData;
+import com.mgs.Pages.RestPage.POJO.DepositDatails;
 import com.mgs.Pages.WebPages.FDCalculatorPage;
 import com.mgs.TestBase.BaseTest;
 import com.mgs.Utils.UtilsJson;
@@ -16,7 +16,7 @@ import static com.mgs.Utils.UtilsJson.readDataFromJson;
 
 public class readDataFromJson extends BaseTest {
     WebDriver driver;
-    String jsonFilePath = System.getProperty("user.dir") + "/TestData/FDRates.json";  // Path to JSON file
+    String jsonFilePath = System.getProperty("user.dir") + "/TestData/DepositDetails.json";  // Path to JSON file
     FDCalculatorPage user;
 
     @BeforeTest
@@ -28,8 +28,8 @@ public class readDataFromJson extends BaseTest {
 
     @Test(priority = 1)
     public void calculateFdRatesUsingGsonLibrary() throws IOException {
-        List<FdData> fdDataList = readDataFromJson(jsonFilePath, FdData.class);
-        for (FdData fdData : fdDataList) {
+        List<DepositDatails> fdDataList = readDataFromJson(jsonFilePath, DepositDatails.class);
+        for (DepositDatails fdData : fdDataList) {
             log("Performing FD calculation for Principle: " + fdData.getPrinciple());
             user.calculateRateOfInterest(String.valueOf(fdData.getPrinciple()), String.valueOf(fdData.getRateOfInterest()), String.valueOf(fdData.getPeriod()), fdData.getPeriodType(), fdData.getFrequency());
             String actualMaturityAmt = user.getMaturity();
@@ -49,8 +49,8 @@ public class readDataFromJson extends BaseTest {
 
     @Test(priority = 2)
     public void calculateFdRatesUsingJacksonDatabindLibrary() throws IOException {
-        List<FdData> fdDataList = UtilsJson.readsDataFromJson(jsonFilePath, FdData.class);
-        for (FdData fdData : fdDataList) {
+        List<DepositDatails> fdDataList = UtilsJson.readsDataFromJson(jsonFilePath, DepositDatails.class);
+        for (DepositDatails fdData : fdDataList) {
             log("Performing FD calculation for Principle: " + fdData.getPrinciple());
             user.calculateRateOfInterest(String.valueOf(fdData.getPrinciple()), String.valueOf(fdData.getRateOfInterest()), String.valueOf(fdData.getPeriod()),fdData.getPeriodType(),fdData.getFrequency());
             String actualMaturityAmt = user.getMaturity();

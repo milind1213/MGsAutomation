@@ -11,7 +11,7 @@ import static com.mgs.Utils.FileUtil.getProperty;
 
 public class readDataFromOds extends BaseTest {
     WebDriver driver;
-    String filePath = System.getProperty("user.dir") + "/TestData/FD_ROI.ods";
+    String filePath = System.getProperty("user.dir") + "/TestData/DepositDetails.ods";
     FDCalculatorPage user;
 
     @BeforeTest

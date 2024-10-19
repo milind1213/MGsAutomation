@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class FdData {
+public class DepositDatails {
     private int principle;  // Lowercase 'p'
     private int rateOfInterest;  // Lowercase 'r'
     private int period;  // Lowercase 'p'
@@ -14,7 +14,6 @@ public class FdData {
     private double maturityValue;  // Lowercase 'm'
     private String expected;  // Lowercase 'e'
     private String result;  // Lowercase 'r'
-
 
     @Override
     public String toString() {

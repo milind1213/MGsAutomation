@@ -9,5 +9,4 @@ public class Products {
     private String category;
     private String name;
     private boolean inStock;
-
 }

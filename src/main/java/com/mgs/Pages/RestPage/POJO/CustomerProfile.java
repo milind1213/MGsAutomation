@@ -8,7 +8,7 @@ import java.util.Date;
 
 @Getter
 @Setter
-public class CSProfile {
+public class CustomerProfile {
     private String customerName;
     private String riskCapacity;
     private String investmentStrategy;

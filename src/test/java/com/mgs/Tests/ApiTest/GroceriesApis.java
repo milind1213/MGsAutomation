@@ -7,11 +7,13 @@ import com.mgs.Pages.RestPage.GroceriesPayloads;
 import com.mgs.Pages.RestPage.POJO.CreateOrder;
 import com.mgs.Pages.RestPage.POJO.Products;
 import com.mgs.Utils.TestListeners;
+import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -20,6 +22,7 @@ import java.util.Map;
 import static com.mgs.CommonConstants.generateRandomEmail;
 import static com.mgs.CommonConstants.generateRandomText;
 import static com.mgs.Utils.FileUtil.getProperty;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 import static org.testng.Assert.assertTrue;
 
 @Listeners(TestListeners.class)
@@ -79,6 +82,8 @@ public class GroceriesApis extends GroceriesPayloads implements Endpoints {
             Boolean inStock = res.jsonPath().getBoolean("[" + i + "].inStock");
             Assert.assertNotNull(inStock, "Stock availability should not be null.");
         }
+        // Validation the JSON Schema
+        res.then().assertThat().body(JsonSchemaValidator.matchesJsonSchemaInClasspath("products-schema.json"));
     }
 
     @Test(priority = 5)
@@ -95,7 +100,6 @@ public class GroceriesApis extends GroceriesPayloads implements Endpoints {
             }
         }
         System.out.println("Number of Products In Stock: " + productNamesInStock.size());
-
         List<String> coffeeProductList = new ArrayList<>();
         List<Integer> coffeeIDs = new ArrayList<>();
         for (Products product : products) {

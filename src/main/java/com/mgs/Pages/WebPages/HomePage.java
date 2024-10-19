@@ -51,13 +51,14 @@ public class HomePage extends CommonSelenium {
     }
 
     public List<WebElement> getSortResults() {
-        waitForElementClickable(driver.findElement(sortResults),5);
+        waitForElementClickable(driver.findElement(sortResults), 5);
         return driver.findElements(sortResults);
     }
 
     public List<WebElement> getGroupNames() {
         return driver.findElements(groupNames);
     }
+
     public int getMembersCounts() {
         int sum = 0;
         List<WebElement> elements = driver.findElements(By.xpath("//span[@class='group-members']"));
@@ -78,12 +79,11 @@ public class HomePage extends CommonSelenium {
         return sum;
     }
 
-    public int getPrograms(){
-     String programs = getText(By.xpath("(//span[contains(.,'Programs')])[3]"));
-     String programCount = programs.replaceAll("[A-Za-z]","").trim();
+    public int getPrograms() {
+        String programs = getText(By.xpath("(//span[contains(.,'Programs')])[3]"));
+        String programCount = programs.replaceAll("[A-Za-z]", "").trim();
         return Integer.parseInt(programCount);
     }
-    
 
 
 }

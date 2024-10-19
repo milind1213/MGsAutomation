@@ -62,7 +62,7 @@ public class readDataFromCsv extends BaseTest {
 
     @Test(priority = 2)
     public void fixedDepositDetailsValidating() throws IOException {
-        String filePath = System.getProperty("user.dir") + "/TestData/CSProfile.json"; // Path to the JSON file
+        String filePath = System.getProperty("user.dir") + "/TestData/CustomerProfile.json"; // Path to the JSON file
 
         ObjectMapper objectMapper = new ObjectMapper();
 
