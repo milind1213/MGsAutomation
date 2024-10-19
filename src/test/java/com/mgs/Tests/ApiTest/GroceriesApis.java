@@ -121,7 +121,7 @@ public class GroceriesApis extends GroceriesPayloads implements Endpoints {
         Assert.assertNotNull(cartId, "Cart ID should not be null.");
     }
 
-    @Test(priority = 7, dependsOnMethods = "createNewCart")
+    @Test(priority = 7)
     public void fetchCartById() {
         RestConfig reqConfig = new RestConfig();
         Map<String, Object> pathParams = new HashMap<>();
@@ -132,7 +132,7 @@ public class GroceriesApis extends GroceriesPayloads implements Endpoints {
         Assert.assertEquals(res.getStatusCode(), 200, "Failed to retrieve cart details.");
     }
 
-    @Test(priority = 8, dependsOnMethods = "createNewCart")
+    @Test(priority = 8)
     public void addItemToCart() {
         RestConfig reqConfig = new RestConfig();
         Map<String, Object> pathParams = new HashMap<>();
@@ -146,7 +146,7 @@ public class GroceriesApis extends GroceriesPayloads implements Endpoints {
         Assert.assertNotNull(itemId, "Item ID should not be null.");
     }
 
-    @Test(priority = 9, dependsOnMethods = {"createNewCart", "addItemToCart"})
+    @Test(priority = 9)
     public void updateCartItemQuantity() {
         RestConfig reqConfig = new RestConfig();
         Map<String, Object> pathParams = new HashMap<>();
@@ -158,7 +158,7 @@ public class GroceriesApis extends GroceriesPayloads implements Endpoints {
         Assert.assertEquals(res.getStatusCode(), 204, "Failed to update cart item.");
     }
 
-    @Test(priority = 10, dependsOnMethods = {"generateAccessToken", "createNewCart"})
+    @Test(priority = 10)
     public void createOrder() {
         String name = "MG No" + generateRandomText(3);
         RestConfig reqConfig = new RestConfig();
@@ -182,7 +182,7 @@ public class GroceriesApis extends GroceriesPayloads implements Endpoints {
         Assert.assertNotNull(orderId, "Order ID should not be null.");
     }
 
-    @Test(priority = 11, dependsOnMethods = {"generateAccessToken"})
+    @Test(priority = 11)
     public void fetchAllOrders() {
         RestConfig reqConfig = new RestConfig();
 

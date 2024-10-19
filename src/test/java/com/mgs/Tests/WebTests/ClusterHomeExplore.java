@@ -41,7 +41,7 @@ public class ClusterHomeExplore extends BaseTest {
     public void VerifyingCommunityMembers() throws Exception {
         WebDashboard user = getLoginInstance();
         log("Clicking on Connect Dropdowns");
-        user.getHome().clickOnConnect().click();
+        user.getHome().moveOnConnect();
 
         log("Clicking on Community Dropdowns");
         user.getHome().selectConnectionType("Community");

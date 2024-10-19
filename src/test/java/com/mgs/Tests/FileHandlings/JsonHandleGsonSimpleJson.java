@@ -81,7 +81,6 @@ public class JsonHandleGsonSimpleJson {
                 }
             }
         }
-
     }
 
     @Test //Simple-Json

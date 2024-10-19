@@ -15,16 +15,16 @@ public class PropertyFileActions {
 
         FileOutputStream fis = new FileOutputStream(filePath);
         try {
-            prop.store(fis,"UserDetails");
+            prop.store(fis, "UserDetails");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         fis.close();
-      System.out.println("Properties have been updated");
-      }
+        System.out.println("Properties have been updated");
+    }
 
 
-      public static void readProperty(String filePath) throws IOException {
+    public static void readProperty(String filePath) throws IOException {
         Properties prop = new Properties();
         FileInputStream fis = new FileInputStream(filePath);
         try {
@@ -36,11 +36,11 @@ public class PropertyFileActions {
         System.out.println("Age: " + prop.getProperty("Age"));
         System.out.println("City: " + prop.getProperty("City"));
         System.out.println("PinCode: " + prop.getProperty("PinCode"));
-      }
+    }
 
-      public static void main(String [] args) throws IOException {
-        String path = System.getProperty("user.dir")+"\\TestData\\user.properties";
+    public static void main(String[] args) throws IOException {
+        String path = System.getProperty("user.dir") + "\\TestData\\user.properties";
         writeProperty(path);
         readProperty(path);
-      }
+    }
 }

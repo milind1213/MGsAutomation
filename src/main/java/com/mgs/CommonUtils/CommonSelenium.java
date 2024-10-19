@@ -239,6 +239,26 @@ public class CommonSelenium {
 		}
 	}
 
+	public void moveToElement(By locator) {
+		try {
+			waitFor(2); // Optional: wait for 2 seconds (adjust as necessary)
+
+			// Find the element
+			WebElement element = driver.findElement(locator);
+			drawBorder(driver, element); // Optional: highlight the element with a border
+
+			Actions actions = new Actions(driver);
+
+			// Move to the element
+			actions.moveToElement(element).build().perform();
+
+			waitFor(1); // Optional: additional wait after moving to the element
+		} catch (Exception e) {
+			e.printStackTrace();
+			Assert.fail("Failed to move to element [" + locator + "]");
+		}
+	}
+
 	public void doubleClick(By locator) {
 		try {
 			waitFor(2);

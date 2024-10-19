@@ -41,7 +41,7 @@ public class ProgramDetails extends BaseTest {
     public void VerifyingProgramDetails()throws Exception{
         WebDashboard user = getLoginInstance();
         log("Clicking on Connect Dropdowns");
-        user.getHome().clickOnConnect().click();
+        user.getHome().moveOnConnect();
 
         log("Clicking on Programs Dropdowns");
         user.getHome().selectConnectionType("Programs");

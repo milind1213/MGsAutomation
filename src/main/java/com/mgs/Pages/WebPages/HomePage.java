@@ -20,11 +20,11 @@ public class HomePage extends CommonSelenium {
     By sortResults = By.xpath("//a[@class='user-name']//h3");
     By sortByChar = By.xpath("//div[contains(text(),'Name (A-Z)')]");
     By groupNames = By.xpath("//h2//span[@role='link']");
+    By connectBtn = By.xpath("//button[normalize-space()='Connect']//*[name()='svg']");
 
-
-    public WebElement clickOnConnect() {
-        waitFor(3);
-        return driver.findElement(By.xpath("//button[normalize-space()='Connect']//*[name()='svg']"));
+    public void moveOnConnect() {
+        waitForElementToBeClickable(connectBtn,10);
+        moveToElement(connectBtn);
     }
 
     public void selectConnectionType(String type) {
