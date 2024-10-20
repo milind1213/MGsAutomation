@@ -64,6 +64,7 @@ public class GroceriesApis extends GroceriesPayloads implements Endpoints {
 
     @Test(priority = 4)
     public void fetchAllProducts() {
+       // String schemaFile = System.getProperty("user.dir") + "/TestData/products-schema.json";
         RestConfig reqConfig = new RestConfig();
         Response res = RestConfig.Get(baseUrl, products, reqConfig);
         allIds = res.jsonPath().getList("id");
@@ -84,6 +85,7 @@ public class GroceriesApis extends GroceriesPayloads implements Endpoints {
         }
         // Validation the JSON Schema
         res.then().assertThat().body(JsonSchemaValidator.matchesJsonSchemaInClasspath("products-schema.json"));
+        // res.then().assertThat().body(JsonSchemaValidator.matchesJsonSchema(schemaFile));
     }
 
     @Test(priority = 5)

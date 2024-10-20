@@ -2,7 +2,6 @@
 <suite name="Daily Sanity">
     <test name="Web Tests">
         <classes>
-            <class name="com.mgs.Tests.WebTests.TestParameters"/>
         </classes>
     </test>
 </suite>

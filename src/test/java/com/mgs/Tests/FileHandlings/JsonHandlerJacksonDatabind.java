@@ -57,7 +57,7 @@ public class JsonHandlerJacksonDatabind {
 
     @Test(priority = 1)
     public void fixedDepositDetailValidating() throws IOException {
-        String filePath = System.getProperty("user.dir") + "/TestData/CustomerProfile.json"; // Path to the JSON file
+        String filePath = System.getProperty("user.dir") + "/TestData/products-schema.json";
         ObjectMapper objectMapper = new ObjectMapper();
         // Read JSON into a Map
         Map<String, Object> customer = objectMapper.readValue(new File(filePath), Map.class);
