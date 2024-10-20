@@ -12,7 +12,7 @@ import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
+import io.restassured.module.jsv.JsonSchemaValidator;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -64,7 +64,7 @@ public class GroceriesApis extends GroceriesPayloads implements Endpoints {
 
     @Test(priority = 4)
     public void fetchAllProducts() {
-       // String schemaFile = System.getProperty("user.dir") + "/TestData/products-schema.json";
+       String schemaFile = System.getProperty("user.dir") + "/TestData/products-schema.json";
         RestConfig reqConfig = new RestConfig();
         Response res = RestConfig.Get(baseUrl, products, reqConfig);
         allIds = res.jsonPath().getList("id");
@@ -84,8 +84,8 @@ public class GroceriesApis extends GroceriesPayloads implements Endpoints {
             Assert.assertNotNull(inStock, "Stock availability should not be null.");
         }
         // Validation the JSON Schema
-        res.then().assertThat().body(JsonSchemaValidator.matchesJsonSchemaInClasspath("products-schema.json"));
-        // res.then().assertThat().body(JsonSchemaValidator.matchesJsonSchema(schemaFile));
+        //res.then().assertThat().body(JsonSchemaValidator.matchesJsonSchemaInClasspath("products-schema.json"));
+        res.then().assertThat().body(JsonSchemaValidator.matchesJsonSchema(new File(schemaFile)));
     }
 
     @Test(priority = 5)
@@ -201,7 +201,7 @@ public class GroceriesApis extends GroceriesPayloads implements Endpoints {
         String name = "Mady " + generateRandomText(3);
         RestConfig reqConfig = new RestConfig();
         String payload = "{\n" + "\"customerName\": \"" + name + "\"\n" + "}";
-
+        //validateRequestSchema(payload);
         Map<String, Object> headers = new HashMap<>();
         headers.put("Authorization", "Bearer " + accessToken);
         reqConfig.setHeaders(headers);
@@ -213,6 +213,16 @@ public class GroceriesApis extends GroceriesPayloads implements Endpoints {
         Response res = RestConfig.Patch(baseUrl, updateOrder, reqConfig, payload);
         Assert.assertEquals(res.getStatusCode(), 204, "Failed to update order customer name.");
     }
+
+ /*   static void validateRequestSchema(String payload) {
+        File schemaFile = new File("src/test/resources/updateName-schema.json");
+        try {
+            JsonSchemaValidator.matchesJsonSchema(schemaFile).
+            System.out.println("Request schema validation passed.");
+        } catch (Exception e) {
+            throw new AssertionError("Request schema validation failed: " + e.getMessage());
+        }
+    } */
 
     @Test(priority = 13)
     public void deleteOrderById() {

@@ -1,125 +1,646 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="TestSuite" time="107.264" tests="3" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="TestSuite" time="99.347" tests="16" errors="0" skipped="0" failures="0">
   <properties>
     <property name="fileName" value="sanity.xml"/>
     <property name="java.specification.version" value="21"/>
-    <property name="webdriver.chrome.driver" value="C:\Users\Lenovo\.cache\selenium\chromedriver\win64\128.0.6613.137\chromedriver.exe"/>
-    <property name="sun.cpu.isalist" value="amd64"/>
-    <property name="sun.jnu.encoding" value="Cp1252"/>
-    <property name="java.class.path" value="C:\Users\Lenovo\IdeaProjects\MG-TECH\target\test-classes;C:\Users\Lenovo\IdeaProjects\MG-TECH\target\classes;C:\Users\Lenovo\.m2\repository\org\testng\testng\7.10.2\testng-7.10.2.jar;C:\Users\Lenovo\.m2\repository\com\beust\jcommander\1.82\jcommander-1.82.jar;C:\Users\Lenovo\.m2\repository\org\webjars\jquery\3.7.1\jquery-3.7.1.jar;C:\Users\Lenovo\.m2\repository\org\seleniumhq\selenium\selenium-java\4.22.0\selenium-java-4.22.0.jar;C:\Users\Lenovo\.m2\repository\org\seleniumhq\selenium\selenium-api\4.22.0\selenium-api-4.22.0.jar;C:\Users\Lenovo\.m2\repository\org\seleniumhq\selenium\selenium-chrome-driver\4.22.0\selenium-chrome-driver-4.22.0.jar;C:\Users\Lenovo\.m2\repository\com\google\auto\service\auto-service-annotations\1.1.1\auto-service-annotations-1.1.1.jar;C:\Users\Lenovo\.m2\repository\org\seleniumhq\selenium\selenium-chromium-driver\4.22.0\selenium-chromium-driver-4.22.0.jar;C:\Users\Lenovo\.m2\repository\org\seleniumhq\selenium\selenium-json\4.22.0\selenium-json-4.22.0.jar;C:\Users\Lenovo\.m2\repository\org\seleniumhq\selenium\selenium-manager\4.22.0\selenium-manager-4.22.0.jar;C:\Users\Lenovo\.m2\repository\org\seleniumhq\selenium\selenium-devtools-v124\4.22.0\selenium-devtools-v124-4.22.0.jar;C:\Users\Lenovo\.m2\repository\org\seleniumhq\selenium\selenium-devtools-v125\4.22.0\selenium-devtools-v125-4.22.0.jar;C:\Users\Lenovo\.m2\repository\org\seleniumhq\selenium\selenium-devtools-v126\4.22.0\selenium-devtools-v126-4.22.0.jar;C:\Users\Lenovo\.m2\repository\org\seleniumhq\selenium\selenium-devtools-v85\4.22.0\selenium-devtools-v85-4.22.0.jar;C:\Users\Lenovo\.m2\repository\org\seleniumhq\selenium\selenium-edge-driver\4.22.0\selenium-edge-driver-4.22.0.jar;C:\Users\Lenovo\.m2\repository\org\seleniumhq\selenium\selenium-firefox-driver\4.22.0\selenium-firefox-driver-4.22.0.jar;C:\Users\Lenovo\.m2\repository\org\seleniumhq\selenium\selenium-http\4.22.0\selenium-http-4.22.0.jar;C:\Users\Lenovo\.m2\repository\dev\failsafe\failsafe\3.3.2\failsafe-3.3.2.jar;C:\Users\Lenovo\.m2\repository\org\seleniumhq\selenium\selenium-ie-driver\4.22.0\selenium-ie-driver-4.22.0.jar;C:\Users\Lenovo\.m2\repository\org\seleniumhq\selenium\selenium-remote-driver\4.22.0\selenium-remote-driver-4.22.0.jar;C:\Users\Lenovo\.m2\repository\com\google\guava\guava\33.2.1-jre\guava-33.2.1-jre.jar;C:\Users\Lenovo\.m2\repository\com\google\guava\failureaccess\1.0.2\failureaccess-1.0.2.jar;C:\Users\Lenovo\.m2\repository\com\google\guava\listenablefuture\9999.0-empty-to-avoid-conflict-with-guava\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;C:\Users\Lenovo\.m2\repository\com\google\code\findbugs\jsr305\3.0.2\jsr305-3.0.2.jar;C:\Users\Lenovo\.m2\repository\org\checkerframework\checker-qual\3.42.0\checker-qual-3.42.0.jar;C:\Users\Lenovo\.m2\repository\com\google\errorprone\error_prone_annotations\2.26.1\error_prone_annotations-2.26.1.jar;C:\Users\Lenovo\.m2\repository\com\google\j2objc\j2objc-annotations\3.0.0\j2objc-annotations-3.0.0.jar;C:\Users\Lenovo\.m2\repository\io\opentelemetry\semconv\opentelemetry-semconv\1.25.0-alpha\opentelemetry-semconv-1.25.0-alpha.jar;C:\Users\Lenovo\.m2\repository\io\opentelemetry\opentelemetry-api\1.39.0\opentelemetry-api-1.39.0.jar;C:\Users\Lenovo\.m2\repository\io\opentelemetry\opentelemetry-context\1.39.0\opentelemetry-context-1.39.0.jar;C:\Users\Lenovo\.m2\repository\io\opentelemetry\opentelemetry-exporter-logging\1.39.0\opentelemetry-exporter-logging-1.39.0.jar;C:\Users\Lenovo\.m2\repository\io\opentelemetry\opentelemetry-sdk-common\1.39.0\opentelemetry-sdk-common-1.39.0.jar;C:\Users\Lenovo\.m2\repository\io\opentelemetry\opentelemetry-sdk-extension-autoconfigure-spi\1.39.0\opentelemetry-sdk-extension-autoconfigure-spi-1.39.0.jar;C:\Users\Lenovo\.m2\repository\io\opentelemetry\opentelemetry-sdk-extension-autoconfigure\1.39.0\opentelemetry-sdk-extension-autoconfigure-1.39.0.jar;C:\Users\Lenovo\.m2\repository\io\opentelemetry\opentelemetry-api-incubator\1.39.0-alpha\opentelemetry-api-incubator-1.39.0-alpha.jar;C:\Users\Lenovo\.m2\repository\io\opentelemetry\opentelemetry-sdk-trace\1.39.0\opentelemetry-sdk-trace-1.39.0.jar;C:\Users\Lenovo\.m2\repository\io\opentelemetry\opentelemetry-sdk\1.39.0\opentelemetry-sdk-1.39.0.jar;C:\Users\Lenovo\.m2\repository\io\opentelemetry\opentelemetry-sdk-metrics\1.39.0\opentelemetry-sdk-metrics-1.39.0.jar;C:\Users\Lenovo\.m2\repository\io\opentelemetry\opentelemetry-sdk-logs\1.39.0\opentelemetry-sdk-logs-1.39.0.jar;C:\Users\Lenovo\.m2\repository\net\bytebuddy\byte-buddy\1.14.17\byte-buddy-1.14.17.jar;C:\Users\Lenovo\.m2\repository\org\seleniumhq\selenium\selenium-os\4.22.0\selenium-os-4.22.0.jar;C:\Users\Lenovo\.m2\repository\org\apache\commons\commons-exec\1.4.0\commons-exec-1.4.0.jar;C:\Users\Lenovo\.m2\repository\org\seleniumhq\selenium\selenium-safari-driver\4.22.0\selenium-safari-driver-4.22.0.jar;C:\Users\Lenovo\.m2\repository\org\seleniumhq\selenium\selenium-support\4.22.0\selenium-support-4.22.0.jar;C:\Users\Lenovo\.m2\repository\io\github\bonigarcia\webdrivermanager\5.8.0\webdrivermanager-5.8.0.jar;C:\Users\Lenovo\.m2\repository\com\google\code\gson\gson\2.10.1\gson-2.10.1.jar;C:\Users\Lenovo\.m2\repository\com\github\docker-java\docker-java\3.3.6\docker-java-3.3.6.jar;C:\Users\Lenovo\.m2\repository\com\github\docker-java\docker-java-core\3.3.6\docker-java-core-3.3.6.jar;C:\Users\Lenovo\.m2\repository\com\github\docker-java\docker-java-api\3.3.6\docker-java-api-3.3.6.jar;C:\Users\Lenovo\.m2\repository\org\bouncycastle\bcpkix-jdk18on\1.76\bcpkix-jdk18on-1.76.jar;C:\Users\Lenovo\.m2\repository\org\bouncycastle\bcprov-jdk18on\1.76\bcprov-jdk18on-1.76.jar;C:\Users\Lenovo\.m2\repository\org\bouncycastle\bcutil-jdk18on\1.76\bcutil-jdk18on-1.76.jar;C:\Users\Lenovo\.m2\repository\org\slf4j\jcl-over-slf4j\1.7.30\jcl-over-slf4j-1.7.30.jar;C:\Users\Lenovo\.m2\repository\com\github\docker-java\docker-java-transport-httpclient5\3.3.6\docker-java-transport-httpclient5-3.3.6.jar;C:\Users\Lenovo\.m2\repository\com\github\docker-java\docker-java-transport\3.3.6\docker-java-transport-3.3.6.jar;C:\Users\Lenovo\.m2\repository\net\java\dev\jna\jna\5.13.0\jna-5.13.0.jar;C:\Users\Lenovo\.m2\repository\org\brotli\dec\0.1.2\dec-0.1.2.jar;C:\Users\Lenovo\.m2\repository\org\apache\commons\commons-lang3\3.14.0\commons-lang3-3.14.0.jar;C:\Users\Lenovo\.m2\repository\org\apache\commons\commons-compress\1.26.1\commons-compress-1.26.1.jar;C:\Users\Lenovo\.m2\repository\org\apache\httpcomponents\client5\httpclient5\5.2.1\httpclient5-5.2.1.jar;C:\Users\Lenovo\.m2\repository\org\apache\httpcomponents\core5\httpcore5\5.2\httpcore5-5.2.jar;C:\Users\Lenovo\.m2\repository\org\apache\httpcomponents\core5\httpcore5-h2\5.2\httpcore5-h2-5.2.jar;C:\Users\Lenovo\.m2\repository\io\rest-assured\rest-assured\5.3.0\rest-assured-5.3.0.jar;C:\Users\Lenovo\.m2\repository\org\apache\groovy\groovy\4.0.6\groovy-4.0.6.jar;C:\Users\Lenovo\.m2\repository\org\apache\groovy\groovy-xml\4.0.6\groovy-xml-4.0.6.jar;C:\Users\Lenovo\.m2\repository\org\hamcrest\hamcrest\2.1\hamcrest-2.1.jar;C:\Users\Lenovo\.m2\repository\org\ccil\cowan\tagsoup\tagsoup\1.2.1\tagsoup-1.2.1.jar;C:\Users\Lenovo\.m2\repository\io\rest-assured\json-path\5.3.0\json-path-5.3.0.jar;C:\Users\Lenovo\.m2\repository\org\apache\groovy\groovy-json\4.0.6\groovy-json-4.0.6.jar;C:\Users\Lenovo\.m2\repository\io\rest-assured\rest-assured-common\5.3.0\rest-assured-common-5.3.0.jar;C:\Users\Lenovo\.m2\repository\io\rest-assured\xml-path\5.3.0\xml-path-5.3.0.jar;C:\Users\Lenovo\.m2\repository\org\apache\poi\poi-ooxml\5.2.3\poi-ooxml-5.2.3.jar;C:\Users\Lenovo\.m2\repository\org\apache\poi\poi-ooxml-lite\5.2.3\poi-ooxml-lite-5.2.3.jar;C:\Users\Lenovo\.m2\repository\org\apache\xmlbeans\xmlbeans\5.1.1\xmlbeans-5.1.1.jar;C:\Users\Lenovo\.m2\repository\com\github\virtuald\curvesapi\1.07\curvesapi-1.07.jar;C:\Users\Lenovo\.m2\repository\org\apache\commons\commons-collections4\4.4\commons-collections4-4.4.jar;C:\Users\Lenovo\.m2\repository\org\apache\poi\poi\5.2.3\poi-5.2.3.jar;C:\Users\Lenovo\.m2\repository\org\apache\commons\commons-math3\3.6.1\commons-math3-3.6.1.jar;C:\Users\Lenovo\.m2\repository\com\zaxxer\SparseBitSet\1.2\SparseBitSet-1.2.jar;C:\Users\Lenovo\.m2\repository\org\apache\logging\log4j\log4j-core\2.23.0\log4j-core-2.23.0.jar;C:\Users\Lenovo\.m2\repository\org\apache\logging\log4j\log4j-api\2.23.0\log4j-api-2.23.0.jar;C:\Users\Lenovo\.m2\repository\commons-io\commons-io\2.15.1\commons-io-2.15.1.jar;C:\Users\Lenovo\.m2\repository\org\slf4j\slf4j-api\2.0.7\slf4j-api-2.0.7.jar;C:\Users\Lenovo\.m2\repository\com\aventstack\extentreports\5.1.1\extentreports-5.1.1.jar;C:\Users\Lenovo\.m2\repository\io\reactivex\rxjava3\rxjava\3.1.6\rxjava-3.1.6.jar;C:\Users\Lenovo\.m2\repository\org\reactivestreams\reactive-streams\1.0.4\reactive-streams-1.0.4.jar;C:\Users\Lenovo\.m2\repository\org\freemarker\freemarker\2.3.32\freemarker-2.3.32.jar;C:\Users\Lenovo\.m2\repository\org\projectlombok\lombok\1.18.26\lombok-1.18.26.jar;C:\Users\Lenovo\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.15.2\jackson-databind-2.15.2.jar;C:\Users\Lenovo\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.15.2\jackson-annotations-2.15.2.jar;C:\Users\Lenovo\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.15.2\jackson-core-2.15.2.jar;C:\Users\Lenovo\.m2\repository\commons-codec\commons-codec\1.15\commons-codec-1.15.jar;C:\Users\Lenovo\.m2\repository\org\apache\commons\commons-text\1.10.0\commons-text-1.10.0.jar;C:\Users\Lenovo\.m2\repository\com\slack\api\slack-api-client\1.9.0\slack-api-client-1.9.0.jar;C:\Users\Lenovo\.m2\repository\com\slack\api\slack-api-model\1.9.0\slack-api-model-1.9.0.jar;C:\Users\Lenovo\.m2\repository\com\squareup\okhttp3\okhttp\4.12.0\okhttp-4.12.0.jar;C:\Users\Lenovo\.m2\repository\com\squareup\okio\okio\3.6.0\okio-3.6.0.jar;C:\Users\Lenovo\.m2\repository\com\squareup\okio\okio-jvm\3.6.0\okio-jvm-3.6.0.jar;C:\Users\Lenovo\.m2\repository\org\jetbrains\kotlin\kotlin-stdlib-common\1.9.10\kotlin-stdlib-common-1.9.10.jar;C:\Users\Lenovo\.m2\repository\org\jetbrains\kotlin\kotlin-stdlib-jdk8\1.8.21\kotlin-stdlib-jdk8-1.8.21.jar;C:\Users\Lenovo\.m2\repository\org\jetbrains\kotlin\kotlin-stdlib\1.8.21\kotlin-stdlib-1.8.21.jar;C:\Users\Lenovo\.m2\repository\org\jetbrains\annotations\13.0\annotations-13.0.jar;C:\Users\Lenovo\.m2\repository\org\jetbrains\kotlin\kotlin-stdlib-jdk7\1.8.21\kotlin-stdlib-jdk7-1.8.21.jar;C:\Users\Lenovo\.m2\repository\org\apache\httpcomponents\httpclient\4.5.13\httpclient-4.5.13.jar;C:\Users\Lenovo\.m2\repository\org\apache\httpcomponents\httpcore\4.4.13\httpcore-4.4.13.jar;C:\Users\Lenovo\.m2\repository\commons-logging\commons-logging\1.2\commons-logging-1.2.jar;C:\Users\Lenovo\.m2\repository\org\apache\httpcomponents\httpmime\4.5.13\httpmime-4.5.13.jar;C:\Users\Lenovo\.m2\repository\jakarta\mail\jakarta.mail-api\2.1.1\jakarta.mail-api-2.1.1.jar;C:\Users\Lenovo\.m2\repository\jakarta\activation\jakarta.activation-api\2.1.1\jakarta.activation-api-2.1.1.jar;C:\Users\Lenovo\.m2\repository\org\eclipse\angus\jakarta.mail\1.0.0\jakarta.mail-1.0.0.jar;C:\Users\Lenovo\.m2\repository\org\eclipse\angus\angus-activation\1.0.0\angus-activation-1.0.0.jar;C:\Users\Lenovo\.m2\repository\com\mysql\mysql-connector-j\8.0.33\mysql-connector-j-8.0.33.jar;C:\Users\Lenovo\.m2\repository\com\google\protobuf\protobuf-java\3.21.9\protobuf-java-3.21.9.jar;C:\Users\Lenovo\.m2\repository\org\jsoup\jsoup\1.17.2\jsoup-1.17.2.jar;C:\Users\Lenovo\.m2\repository\com\opencsv\opencsv\5.7.1\opencsv-5.7.1.jar;C:\Users\Lenovo\.m2\repository\commons-beanutils\commons-beanutils\1.9.4\commons-beanutils-1.9.4.jar;C:\Users\Lenovo\.m2\repository\commons-collections\commons-collections\3.2.2\commons-collections-3.2.2.jar;"/>
-    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="webdriver.chrome.driver" value="/home/milind/.cache/selenium/chromedriver/linux64/128.0.6613.137/chromedriver"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/home/milind/MG-TECH/target/test-classes:/home/milind/MG-TECH/target/classes:/home/milind/.m2/repository/org/testng/testng/7.10.2/testng-7.10.2.jar:/home/milind/.m2/repository/com/beust/jcommander/1.82/jcommander-1.82.jar:/home/milind/.m2/repository/org/webjars/jquery/3.7.1/jquery-3.7.1.jar:/home/milind/.m2/repository/org/seleniumhq/selenium/selenium-java/4.22.0/selenium-java-4.22.0.jar:/home/milind/.m2/repository/org/seleniumhq/selenium/selenium-api/4.22.0/selenium-api-4.22.0.jar:/home/milind/.m2/repository/org/seleniumhq/selenium/selenium-chrome-driver/4.22.0/selenium-chrome-driver-4.22.0.jar:/home/milind/.m2/repository/com/google/auto/service/auto-service-annotations/1.1.1/auto-service-annotations-1.1.1.jar:/home/milind/.m2/repository/org/seleniumhq/selenium/selenium-chromium-driver/4.22.0/selenium-chromium-driver-4.22.0.jar:/home/milind/.m2/repository/org/seleniumhq/selenium/selenium-json/4.22.0/selenium-json-4.22.0.jar:/home/milind/.m2/repository/org/seleniumhq/selenium/selenium-manager/4.22.0/selenium-manager-4.22.0.jar:/home/milind/.m2/repository/org/seleniumhq/selenium/selenium-devtools-v124/4.22.0/selenium-devtools-v124-4.22.0.jar:/home/milind/.m2/repository/org/seleniumhq/selenium/selenium-devtools-v125/4.22.0/selenium-devtools-v125-4.22.0.jar:/home/milind/.m2/repository/org/seleniumhq/selenium/selenium-devtools-v126/4.22.0/selenium-devtools-v126-4.22.0.jar:/home/milind/.m2/repository/org/seleniumhq/selenium/selenium-devtools-v85/4.22.0/selenium-devtools-v85-4.22.0.jar:/home/milind/.m2/repository/org/seleniumhq/selenium/selenium-edge-driver/4.22.0/selenium-edge-driver-4.22.0.jar:/home/milind/.m2/repository/org/seleniumhq/selenium/selenium-firefox-driver/4.22.0/selenium-firefox-driver-4.22.0.jar:/home/milind/.m2/repository/org/seleniumhq/selenium/selenium-http/4.22.0/selenium-http-4.22.0.jar:/home/milind/.m2/repository/dev/failsafe/failsafe/3.3.2/failsafe-3.3.2.jar:/home/milind/.m2/repository/org/seleniumhq/selenium/selenium-ie-driver/4.22.0/selenium-ie-driver-4.22.0.jar:/home/milind/.m2/repository/org/seleniumhq/selenium/selenium-remote-driver/4.22.0/selenium-remote-driver-4.22.0.jar:/home/milind/.m2/repository/io/opentelemetry/semconv/opentelemetry-semconv/1.25.0-alpha/opentelemetry-semconv-1.25.0-alpha.jar:/home/milind/.m2/repository/io/opentelemetry/opentelemetry-api/1.39.0/opentelemetry-api-1.39.0.jar:/home/milind/.m2/repository/io/opentelemetry/opentelemetry-context/1.39.0/opentelemetry-context-1.39.0.jar:/home/milind/.m2/repository/io/opentelemetry/opentelemetry-exporter-logging/1.39.0/opentelemetry-exporter-logging-1.39.0.jar:/home/milind/.m2/repository/io/opentelemetry/opentelemetry-sdk-common/1.39.0/opentelemetry-sdk-common-1.39.0.jar:/home/milind/.m2/repository/io/opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/1.39.0/opentelemetry-sdk-extension-autoconfigure-spi-1.39.0.jar:/home/milind/.m2/repository/io/opentelemetry/opentelemetry-sdk-extension-autoconfigure/1.39.0/opentelemetry-sdk-extension-autoconfigure-1.39.0.jar:/home/milind/.m2/repository/io/opentelemetry/opentelemetry-api-incubator/1.39.0-alpha/opentelemetry-api-incubator-1.39.0-alpha.jar:/home/milind/.m2/repository/io/opentelemetry/opentelemetry-sdk-trace/1.39.0/opentelemetry-sdk-trace-1.39.0.jar:/home/milind/.m2/repository/io/opentelemetry/opentelemetry-sdk/1.39.0/opentelemetry-sdk-1.39.0.jar:/home/milind/.m2/repository/io/opentelemetry/opentelemetry-sdk-metrics/1.39.0/opentelemetry-sdk-metrics-1.39.0.jar:/home/milind/.m2/repository/io/opentelemetry/opentelemetry-sdk-logs/1.39.0/opentelemetry-sdk-logs-1.39.0.jar:/home/milind/.m2/repository/net/bytebuddy/byte-buddy/1.14.17/byte-buddy-1.14.17.jar:/home/milind/.m2/repository/org/seleniumhq/selenium/selenium-os/4.22.0/selenium-os-4.22.0.jar:/home/milind/.m2/repository/org/apache/commons/commons-exec/1.4.0/commons-exec-1.4.0.jar:/home/milind/.m2/repository/org/seleniumhq/selenium/selenium-safari-driver/4.22.0/selenium-safari-driver-4.22.0.jar:/home/milind/.m2/repository/org/seleniumhq/selenium/selenium-support/4.22.0/selenium-support-4.22.0.jar:/home/milind/.m2/repository/io/github/bonigarcia/webdrivermanager/5.8.0/webdrivermanager-5.8.0.jar:/home/milind/.m2/repository/com/github/docker-java/docker-java/3.3.6/docker-java-3.3.6.jar:/home/milind/.m2/repository/com/github/docker-java/docker-java-core/3.3.6/docker-java-core-3.3.6.jar:/home/milind/.m2/repository/com/github/docker-java/docker-java-api/3.3.6/docker-java-api-3.3.6.jar:/home/milind/.m2/repository/org/bouncycastle/bcpkix-jdk18on/1.76/bcpkix-jdk18on-1.76.jar:/home/milind/.m2/repository/org/bouncycastle/bcprov-jdk18on/1.76/bcprov-jdk18on-1.76.jar:/home/milind/.m2/repository/org/bouncycastle/bcutil-jdk18on/1.76/bcutil-jdk18on-1.76.jar:/home/milind/.m2/repository/org/slf4j/jcl-over-slf4j/1.7.30/jcl-over-slf4j-1.7.30.jar:/home/milind/.m2/repository/com/github/docker-java/docker-java-transport-httpclient5/3.3.6/docker-java-transport-httpclient5-3.3.6.jar:/home/milind/.m2/repository/com/github/docker-java/docker-java-transport/3.3.6/docker-java-transport-3.3.6.jar:/home/milind/.m2/repository/net/java/dev/jna/jna/5.13.0/jna-5.13.0.jar:/home/milind/.m2/repository/org/brotli/dec/0.1.2/dec-0.1.2.jar:/home/milind/.m2/repository/org/apache/commons/commons-lang3/3.14.0/commons-lang3-3.14.0.jar:/home/milind/.m2/repository/org/apache/commons/commons-compress/1.26.1/commons-compress-1.26.1.jar:/home/milind/.m2/repository/org/apache/httpcomponents/client5/httpclient5/5.2.1/httpclient5-5.2.1.jar:/home/milind/.m2/repository/org/apache/httpcomponents/core5/httpcore5/5.2/httpcore5-5.2.jar:/home/milind/.m2/repository/org/apache/httpcomponents/core5/httpcore5-h2/5.2/httpcore5-h2-5.2.jar:/home/milind/.m2/repository/io/rest-assured/rest-assured/5.3.0/rest-assured-5.3.0.jar:/home/milind/.m2/repository/org/apache/groovy/groovy/4.0.6/groovy-4.0.6.jar:/home/milind/.m2/repository/org/apache/groovy/groovy-xml/4.0.6/groovy-xml-4.0.6.jar:/home/milind/.m2/repository/org/hamcrest/hamcrest/2.1/hamcrest-2.1.jar:/home/milind/.m2/repository/org/ccil/cowan/tagsoup/tagsoup/1.2.1/tagsoup-1.2.1.jar:/home/milind/.m2/repository/io/rest-assured/json-path/5.3.0/json-path-5.3.0.jar:/home/milind/.m2/repository/org/apache/groovy/groovy-json/4.0.6/groovy-json-4.0.6.jar:/home/milind/.m2/repository/io/rest-assured/rest-assured-common/5.3.0/rest-assured-common-5.3.0.jar:/home/milind/.m2/repository/io/rest-assured/xml-path/5.3.0/xml-path-5.3.0.jar:/home/milind/.m2/repository/org/apache/poi/poi-ooxml/5.2.3/poi-ooxml-5.2.3.jar:/home/milind/.m2/repository/org/apache/poi/poi-ooxml-lite/5.2.3/poi-ooxml-lite-5.2.3.jar:/home/milind/.m2/repository/org/apache/xmlbeans/xmlbeans/5.1.1/xmlbeans-5.1.1.jar:/home/milind/.m2/repository/com/github/virtuald/curvesapi/1.07/curvesapi-1.07.jar:/home/milind/.m2/repository/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4.jar:/home/milind/.m2/repository/org/apache/poi/poi/5.2.3/poi-5.2.3.jar:/home/milind/.m2/repository/org/apache/commons/commons-math3/3.6.1/commons-math3-3.6.1.jar:/home/milind/.m2/repository/com/zaxxer/SparseBitSet/1.2/SparseBitSet-1.2.jar:/home/milind/.m2/repository/org/apache/logging/log4j/log4j-core/2.23.0/log4j-core-2.23.0.jar:/home/milind/.m2/repository/org/apache/logging/log4j/log4j-api/2.23.0/log4j-api-2.23.0.jar:/home/milind/.m2/repository/commons-io/commons-io/2.15.1/commons-io-2.15.1.jar:/home/milind/.m2/repository/org/slf4j/slf4j-api/2.0.7/slf4j-api-2.0.7.jar:/home/milind/.m2/repository/com/aventstack/extentreports/5.1.1/extentreports-5.1.1.jar:/home/milind/.m2/repository/io/reactivex/rxjava3/rxjava/3.1.6/rxjava-3.1.6.jar:/home/milind/.m2/repository/org/reactivestreams/reactive-streams/1.0.4/reactive-streams-1.0.4.jar:/home/milind/.m2/repository/org/freemarker/freemarker/2.3.32/freemarker-2.3.32.jar:/home/milind/.m2/repository/commons-codec/commons-codec/1.15/commons-codec-1.15.jar:/home/milind/.m2/repository/org/apache/commons/commons-text/1.10.0/commons-text-1.10.0.jar:/home/milind/.m2/repository/com/slack/api/slack-api-client/1.9.0/slack-api-client-1.9.0.jar:/home/milind/.m2/repository/com/slack/api/slack-api-model/1.9.0/slack-api-model-1.9.0.jar:/home/milind/.m2/repository/com/squareup/okhttp3/okhttp/4.12.0/okhttp-4.12.0.jar:/home/milind/.m2/repository/com/squareup/okio/okio/3.6.0/okio-3.6.0.jar:/home/milind/.m2/repository/com/squareup/okio/okio-jvm/3.6.0/okio-jvm-3.6.0.jar:/home/milind/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-common/1.9.10/kotlin-stdlib-common-1.9.10.jar:/home/milind/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-jdk8/1.8.21/kotlin-stdlib-jdk8-1.8.21.jar:/home/milind/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib/1.8.21/kotlin-stdlib-1.8.21.jar:/home/milind/.m2/repository/org/jetbrains/annotations/13.0/annotations-13.0.jar:/home/milind/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-jdk7/1.8.21/kotlin-stdlib-jdk7-1.8.21.jar:/home/milind/.m2/repository/org/apache/httpcomponents/httpclient/4.5.13/httpclient-4.5.13.jar:/home/milind/.m2/repository/org/apache/httpcomponents/httpcore/4.4.13/httpcore-4.4.13.jar:/home/milind/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/home/milind/.m2/repository/org/apache/httpcomponents/httpmime/4.5.13/httpmime-4.5.13.jar:/home/milind/.m2/repository/jakarta/mail/jakarta.mail-api/2.1.1/jakarta.mail-api-2.1.1.jar:/home/milind/.m2/repository/jakarta/activation/jakarta.activation-api/2.1.1/jakarta.activation-api-2.1.1.jar:/home/milind/.m2/repository/org/eclipse/angus/jakarta.mail/1.0.0/jakarta.mail-1.0.0.jar:/home/milind/.m2/repository/org/eclipse/angus/angus-activation/1.0.0/angus-activation-1.0.0.jar:/home/milind/.m2/repository/com/mysql/mysql-connector-j/8.0.33/mysql-connector-j-8.0.33.jar:/home/milind/.m2/repository/com/google/protobuf/protobuf-java/3.21.9/protobuf-java-3.21.9.jar:/home/milind/.m2/repository/org/jsoup/jsoup/1.17.2/jsoup-1.17.2.jar:/home/milind/.m2/repository/com/github/miachm/sods/SODS/1.6.2/SODS-1.6.2.jar:/home/milind/.m2/repository/com/google/code/gson/gson/2.11.0/gson-2.11.0.jar:/home/milind/.m2/repository/com/google/errorprone/error_prone_annotations/2.27.0/error_prone_annotations-2.27.0.jar:/home/milind/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.15.2/jackson-databind-2.15.2.jar:/home/milind/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.15.2/jackson-annotations-2.15.2.jar:/home/milind/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.15.2/jackson-core-2.15.2.jar:/home/milind/.m2/repository/com/googlecode/json-simple/json-simple/1.1.1/json-simple-1.1.1.jar:/home/milind/.m2/repository/junit/junit/4.10/junit-4.10.jar:/home/milind/.m2/repository/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar:/home/milind/.m2/repository/org/apache/commons/commons-csv/1.10.0/commons-csv-1.10.0.jar:/home/milind/.m2/repository/org/projectlombok/lombok/1.18.34/lombok-1.18.34.jar:/home/milind/.m2/repository/io/rest-assured/json-schema-validator/5.4.0/json-schema-validator-5.4.0.jar:/home/milind/.m2/repository/com/github/java-json-tools/json-schema-validator/2.2.14/json-schema-validator-2.2.14.jar:/home/milind/.m2/repository/com/github/java-json-tools/jackson-coreutils-equivalence/1.0/jackson-coreutils-equivalence-1.0.jar:/home/milind/.m2/repository/com/github/java-json-tools/jackson-coreutils/2.0/jackson-coreutils-2.0.jar:/home/milind/.m2/repository/com/github/java-json-tools/msg-simple/1.2/msg-simple-1.2.jar:/home/milind/.m2/repository/com/github/java-json-tools/btf/1.3/btf-1.3.jar:/home/milind/.m2/repository/com/github/java-json-tools/json-schema-core/1.2.14/json-schema-core-1.2.14.jar:/home/milind/.m2/repository/com/github/java-json-tools/uri-template/0.10/uri-template-0.10.jar:/home/milind/.m2/repository/org/mozilla/rhino/1.7.7.2/rhino-1.7.7.2.jar:/home/milind/.m2/repository/com/sun/mail/mailapi/1.6.2/mailapi-1.6.2.jar:/home/milind/.m2/repository/joda-time/joda-time/2.10.5/joda-time-2.10.5.jar:/home/milind/.m2/repository/com/googlecode/libphonenumber/libphonenumber/8.11.1/libphonenumber-8.11.1.jar:/home/milind/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar:/home/milind/.m2/repository/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar:/home/milind/.m2/repository/com/google/guava/guava/32.0.1-jre/guava-32.0.1-jre.jar:/home/milind/.m2/repository/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar:/home/milind/.m2/repository/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar:/home/milind/.m2/repository/org/checkerframework/checker-qual/3.33.0/checker-qual-3.33.0.jar:/home/milind/.m2/repository/com/google/j2objc/j2objc-annotations/2.8/j2objc-annotations-2.8.jar:"/>
+    <property name="java.vm.vendor" value="Amazon.com Inc."/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="user.variant" value=""/>
-    <property name="java.vendor.url" value="https://java.oracle.com/"/>
-    <property name="user.timezone" value="Asia/Calcutta"/>
-    <property name="os.name" value="Windows 11"/>
+    <property name="java.vendor.url" value="https://aws.amazon.com/corretto/"/>
+    <property name="user.timezone" value="Asia/Kolkata"/>
+    <property name="os.name" value="Linux"/>
     <property name="java.vm.specification.version" value="21"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="IN"/>
-    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-21\bin"/>
-    <property name="sun.java.command" value="C:\Users\Lenovo\AppData\Local\Temp\surefire10575131905947839046\surefirebooter-20240923000128653_3.jar C:\Users\Lenovo\AppData\Local\Temp\surefire10575131905947839046 2024-09-23T00-01-28_411-jvmRun1 surefire-20240923000128653_1tmp surefire_0-20240923000128653_2tmp"/>
+    <property name="sun.boot.library.path" value="/home/milind/.jdks/corretto-21.0.5/lib"/>
+    <property name="sun.java.command" value="/home/milind/MG-TECH/target/surefire/surefirebooter-20241020234217460_3.jar /home/milind/MG-TECH/target/surefire 2024-10-20T23-42-17_331-jvmRun1 surefire-20241020234217460_1tmp surefire_0-20241020234217460_2tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="surefire.test.class.path" value="C:\Users\Lenovo\IdeaProjects\MG-TECH\target\test-classes;C:\Users\Lenovo\IdeaProjects\MG-TECH\target\classes;C:\Users\Lenovo\.m2\repository\org\testng\testng\7.10.2\testng-7.10.2.jar;C:\Users\Lenovo\.m2\repository\com\beust\jcommander\1.82\jcommander-1.82.jar;C:\Users\Lenovo\.m2\repository\org\webjars\jquery\3.7.1\jquery-3.7.1.jar;C:\Users\Lenovo\.m2\repository\org\seleniumhq\selenium\selenium-java\4.22.0\selenium-java-4.22.0.jar;C:\Users\Lenovo\.m2\repository\org\seleniumhq\selenium\selenium-api\4.22.0\selenium-api-4.22.0.jar;C:\Users\Lenovo\.m2\repository\org\seleniumhq\selenium\selenium-chrome-driver\4.22.0\selenium-chrome-driver-4.22.0.jar;C:\Users\Lenovo\.m2\repository\com\google\auto\service\auto-service-annotations\1.1.1\auto-service-annotations-1.1.1.jar;C:\Users\Lenovo\.m2\repository\org\seleniumhq\selenium\selenium-chromium-driver\4.22.0\selenium-chromium-driver-4.22.0.jar;C:\Users\Lenovo\.m2\repository\org\seleniumhq\selenium\selenium-json\4.22.0\selenium-json-4.22.0.jar;C:\Users\Lenovo\.m2\repository\org\seleniumhq\selenium\selenium-manager\4.22.0\selenium-manager-4.22.0.jar;C:\Users\Lenovo\.m2\repository\org\seleniumhq\selenium\selenium-devtools-v124\4.22.0\selenium-devtools-v124-4.22.0.jar;C:\Users\Lenovo\.m2\repository\org\seleniumhq\selenium\selenium-devtools-v125\4.22.0\selenium-devtools-v125-4.22.0.jar;C:\Users\Lenovo\.m2\repository\org\seleniumhq\selenium\selenium-devtools-v126\4.22.0\selenium-devtools-v126-4.22.0.jar;C:\Users\Lenovo\.m2\repository\org\seleniumhq\selenium\selenium-devtools-v85\4.22.0\selenium-devtools-v85-4.22.0.jar;C:\Users\Lenovo\.m2\repository\org\seleniumhq\selenium\selenium-edge-driver\4.22.0\selenium-edge-driver-4.22.0.jar;C:\Users\Lenovo\.m2\repository\org\seleniumhq\selenium\selenium-firefox-driver\4.22.0\selenium-firefox-driver-4.22.0.jar;C:\Users\Lenovo\.m2\repository\org\seleniumhq\selenium\selenium-http\4.22.0\selenium-http-4.22.0.jar;C:\Users\Lenovo\.m2\repository\dev\failsafe\failsafe\3.3.2\failsafe-3.3.2.jar;C:\Users\Lenovo\.m2\repository\org\seleniumhq\selenium\selenium-ie-driver\4.22.0\selenium-ie-driver-4.22.0.jar;C:\Users\Lenovo\.m2\repository\org\seleniumhq\selenium\selenium-remote-driver\4.22.0\selenium-remote-driver-4.22.0.jar;C:\Users\Lenovo\.m2\repository\com\google\guava\guava\33.2.1-jre\guava-33.2.1-jre.jar;C:\Users\Lenovo\.m2\repository\com\google\guava\failureaccess\1.0.2\failureaccess-1.0.2.jar;C:\Users\Lenovo\.m2\repository\com\google\guava\listenablefuture\9999.0-empty-to-avoid-conflict-with-guava\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;C:\Users\Lenovo\.m2\repository\com\google\code\findbugs\jsr305\3.0.2\jsr305-3.0.2.jar;C:\Users\Lenovo\.m2\repository\org\checkerframework\checker-qual\3.42.0\checker-qual-3.42.0.jar;C:\Users\Lenovo\.m2\repository\com\google\errorprone\error_prone_annotations\2.26.1\error_prone_annotations-2.26.1.jar;C:\Users\Lenovo\.m2\repository\com\google\j2objc\j2objc-annotations\3.0.0\j2objc-annotations-3.0.0.jar;C:\Users\Lenovo\.m2\repository\io\opentelemetry\semconv\opentelemetry-semconv\1.25.0-alpha\opentelemetry-semconv-1.25.0-alpha.jar;C:\Users\Lenovo\.m2\repository\io\opentelemetry\opentelemetry-api\1.39.0\opentelemetry-api-1.39.0.jar;C:\Users\Lenovo\.m2\repository\io\opentelemetry\opentelemetry-context\1.39.0\opentelemetry-context-1.39.0.jar;C:\Users\Lenovo\.m2\repository\io\opentelemetry\opentelemetry-exporter-logging\1.39.0\opentelemetry-exporter-logging-1.39.0.jar;C:\Users\Lenovo\.m2\repository\io\opentelemetry\opentelemetry-sdk-common\1.39.0\opentelemetry-sdk-common-1.39.0.jar;C:\Users\Lenovo\.m2\repository\io\opentelemetry\opentelemetry-sdk-extension-autoconfigure-spi\1.39.0\opentelemetry-sdk-extension-autoconfigure-spi-1.39.0.jar;C:\Users\Lenovo\.m2\repository\io\opentelemetry\opentelemetry-sdk-extension-autoconfigure\1.39.0\opentelemetry-sdk-extension-autoconfigure-1.39.0.jar;C:\Users\Lenovo\.m2\repository\io\opentelemetry\opentelemetry-api-incubator\1.39.0-alpha\opentelemetry-api-incubator-1.39.0-alpha.jar;C:\Users\Lenovo\.m2\repository\io\opentelemetry\opentelemetry-sdk-trace\1.39.0\opentelemetry-sdk-trace-1.39.0.jar;C:\Users\Lenovo\.m2\repository\io\opentelemetry\opentelemetry-sdk\1.39.0\opentelemetry-sdk-1.39.0.jar;C:\Users\Lenovo\.m2\repository\io\opentelemetry\opentelemetry-sdk-metrics\1.39.0\opentelemetry-sdk-metrics-1.39.0.jar;C:\Users\Lenovo\.m2\repository\io\opentelemetry\opentelemetry-sdk-logs\1.39.0\opentelemetry-sdk-logs-1.39.0.jar;C:\Users\Lenovo\.m2\repository\net\bytebuddy\byte-buddy\1.14.17\byte-buddy-1.14.17.jar;C:\Users\Lenovo\.m2\repository\org\seleniumhq\selenium\selenium-os\4.22.0\selenium-os-4.22.0.jar;C:\Users\Lenovo\.m2\repository\org\apache\commons\commons-exec\1.4.0\commons-exec-1.4.0.jar;C:\Users\Lenovo\.m2\repository\org\seleniumhq\selenium\selenium-safari-driver\4.22.0\selenium-safari-driver-4.22.0.jar;C:\Users\Lenovo\.m2\repository\org\seleniumhq\selenium\selenium-support\4.22.0\selenium-support-4.22.0.jar;C:\Users\Lenovo\.m2\repository\io\github\bonigarcia\webdrivermanager\5.8.0\webdrivermanager-5.8.0.jar;C:\Users\Lenovo\.m2\repository\com\google\code\gson\gson\2.10.1\gson-2.10.1.jar;C:\Users\Lenovo\.m2\repository\com\github\docker-java\docker-java\3.3.6\docker-java-3.3.6.jar;C:\Users\Lenovo\.m2\repository\com\github\docker-java\docker-java-core\3.3.6\docker-java-core-3.3.6.jar;C:\Users\Lenovo\.m2\repository\com\github\docker-java\docker-java-api\3.3.6\docker-java-api-3.3.6.jar;C:\Users\Lenovo\.m2\repository\org\bouncycastle\bcpkix-jdk18on\1.76\bcpkix-jdk18on-1.76.jar;C:\Users\Lenovo\.m2\repository\org\bouncycastle\bcprov-jdk18on\1.76\bcprov-jdk18on-1.76.jar;C:\Users\Lenovo\.m2\repository\org\bouncycastle\bcutil-jdk18on\1.76\bcutil-jdk18on-1.76.jar;C:\Users\Lenovo\.m2\repository\org\slf4j\jcl-over-slf4j\1.7.30\jcl-over-slf4j-1.7.30.jar;C:\Users\Lenovo\.m2\repository\com\github\docker-java\docker-java-transport-httpclient5\3.3.6\docker-java-transport-httpclient5-3.3.6.jar;C:\Users\Lenovo\.m2\repository\com\github\docker-java\docker-java-transport\3.3.6\docker-java-transport-3.3.6.jar;C:\Users\Lenovo\.m2\repository\net\java\dev\jna\jna\5.13.0\jna-5.13.0.jar;C:\Users\Lenovo\.m2\repository\org\brotli\dec\0.1.2\dec-0.1.2.jar;C:\Users\Lenovo\.m2\repository\org\apache\commons\commons-lang3\3.14.0\commons-lang3-3.14.0.jar;C:\Users\Lenovo\.m2\repository\org\apache\commons\commons-compress\1.26.1\commons-compress-1.26.1.jar;C:\Users\Lenovo\.m2\repository\org\apache\httpcomponents\client5\httpclient5\5.2.1\httpclient5-5.2.1.jar;C:\Users\Lenovo\.m2\repository\org\apache\httpcomponents\core5\httpcore5\5.2\httpcore5-5.2.jar;C:\Users\Lenovo\.m2\repository\org\apache\httpcomponents\core5\httpcore5-h2\5.2\httpcore5-h2-5.2.jar;C:\Users\Lenovo\.m2\repository\io\rest-assured\rest-assured\5.3.0\rest-assured-5.3.0.jar;C:\Users\Lenovo\.m2\repository\org\apache\groovy\groovy\4.0.6\groovy-4.0.6.jar;C:\Users\Lenovo\.m2\repository\org\apache\groovy\groovy-xml\4.0.6\groovy-xml-4.0.6.jar;C:\Users\Lenovo\.m2\repository\org\hamcrest\hamcrest\2.1\hamcrest-2.1.jar;C:\Users\Lenovo\.m2\repository\org\ccil\cowan\tagsoup\tagsoup\1.2.1\tagsoup-1.2.1.jar;C:\Users\Lenovo\.m2\repository\io\rest-assured\json-path\5.3.0\json-path-5.3.0.jar;C:\Users\Lenovo\.m2\repository\org\apache\groovy\groovy-json\4.0.6\groovy-json-4.0.6.jar;C:\Users\Lenovo\.m2\repository\io\rest-assured\rest-assured-common\5.3.0\rest-assured-common-5.3.0.jar;C:\Users\Lenovo\.m2\repository\io\rest-assured\xml-path\5.3.0\xml-path-5.3.0.jar;C:\Users\Lenovo\.m2\repository\org\apache\poi\poi-ooxml\5.2.3\poi-ooxml-5.2.3.jar;C:\Users\Lenovo\.m2\repository\org\apache\poi\poi-ooxml-lite\5.2.3\poi-ooxml-lite-5.2.3.jar;C:\Users\Lenovo\.m2\repository\org\apache\xmlbeans\xmlbeans\5.1.1\xmlbeans-5.1.1.jar;C:\Users\Lenovo\.m2\repository\com\github\virtuald\curvesapi\1.07\curvesapi-1.07.jar;C:\Users\Lenovo\.m2\repository\org\apache\commons\commons-collections4\4.4\commons-collections4-4.4.jar;C:\Users\Lenovo\.m2\repository\org\apache\poi\poi\5.2.3\poi-5.2.3.jar;C:\Users\Lenovo\.m2\repository\org\apache\commons\commons-math3\3.6.1\commons-math3-3.6.1.jar;C:\Users\Lenovo\.m2\repository\com\zaxxer\SparseBitSet\1.2\SparseBitSet-1.2.jar;C:\Users\Lenovo\.m2\repository\org\apache\logging\log4j\log4j-core\2.23.0\log4j-core-2.23.0.jar;C:\Users\Lenovo\.m2\repository\org\apache\logging\log4j\log4j-api\2.23.0\log4j-api-2.23.0.jar;C:\Users\Lenovo\.m2\repository\commons-io\commons-io\2.15.1\commons-io-2.15.1.jar;C:\Users\Lenovo\.m2\repository\org\slf4j\slf4j-api\2.0.7\slf4j-api-2.0.7.jar;C:\Users\Lenovo\.m2\repository\com\aventstack\extentreports\5.1.1\extentreports-5.1.1.jar;C:\Users\Lenovo\.m2\repository\io\reactivex\rxjava3\rxjava\3.1.6\rxjava-3.1.6.jar;C:\Users\Lenovo\.m2\repository\org\reactivestreams\reactive-streams\1.0.4\reactive-streams-1.0.4.jar;C:\Users\Lenovo\.m2\repository\org\freemarker\freemarker\2.3.32\freemarker-2.3.32.jar;C:\Users\Lenovo\.m2\repository\org\projectlombok\lombok\1.18.26\lombok-1.18.26.jar;C:\Users\Lenovo\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.15.2\jackson-databind-2.15.2.jar;C:\Users\Lenovo\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.15.2\jackson-annotations-2.15.2.jar;C:\Users\Lenovo\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.15.2\jackson-core-2.15.2.jar;C:\Users\Lenovo\.m2\repository\commons-codec\commons-codec\1.15\commons-codec-1.15.jar;C:\Users\Lenovo\.m2\repository\org\apache\commons\commons-text\1.10.0\commons-text-1.10.0.jar;C:\Users\Lenovo\.m2\repository\com\slack\api\slack-api-client\1.9.0\slack-api-client-1.9.0.jar;C:\Users\Lenovo\.m2\repository\com\slack\api\slack-api-model\1.9.0\slack-api-model-1.9.0.jar;C:\Users\Lenovo\.m2\repository\com\squareup\okhttp3\okhttp\4.12.0\okhttp-4.12.0.jar;C:\Users\Lenovo\.m2\repository\com\squareup\okio\okio\3.6.0\okio-3.6.0.jar;C:\Users\Lenovo\.m2\repository\com\squareup\okio\okio-jvm\3.6.0\okio-jvm-3.6.0.jar;C:\Users\Lenovo\.m2\repository\org\jetbrains\kotlin\kotlin-stdlib-common\1.9.10\kotlin-stdlib-common-1.9.10.jar;C:\Users\Lenovo\.m2\repository\org\jetbrains\kotlin\kotlin-stdlib-jdk8\1.8.21\kotlin-stdlib-jdk8-1.8.21.jar;C:\Users\Lenovo\.m2\repository\org\jetbrains\kotlin\kotlin-stdlib\1.8.21\kotlin-stdlib-1.8.21.jar;C:\Users\Lenovo\.m2\repository\org\jetbrains\annotations\13.0\annotations-13.0.jar;C:\Users\Lenovo\.m2\repository\org\jetbrains\kotlin\kotlin-stdlib-jdk7\1.8.21\kotlin-stdlib-jdk7-1.8.21.jar;C:\Users\Lenovo\.m2\repository\org\apache\httpcomponents\httpclient\4.5.13\httpclient-4.5.13.jar;C:\Users\Lenovo\.m2\repository\org\apache\httpcomponents\httpcore\4.4.13\httpcore-4.4.13.jar;C:\Users\Lenovo\.m2\repository\commons-logging\commons-logging\1.2\commons-logging-1.2.jar;C:\Users\Lenovo\.m2\repository\org\apache\httpcomponents\httpmime\4.5.13\httpmime-4.5.13.jar;C:\Users\Lenovo\.m2\repository\jakarta\mail\jakarta.mail-api\2.1.1\jakarta.mail-api-2.1.1.jar;C:\Users\Lenovo\.m2\repository\jakarta\activation\jakarta.activation-api\2.1.1\jakarta.activation-api-2.1.1.jar;C:\Users\Lenovo\.m2\repository\org\eclipse\angus\jakarta.mail\1.0.0\jakarta.mail-1.0.0.jar;C:\Users\Lenovo\.m2\repository\org\eclipse\angus\angus-activation\1.0.0\angus-activation-1.0.0.jar;C:\Users\Lenovo\.m2\repository\com\mysql\mysql-connector-j\8.0.33\mysql-connector-j-8.0.33.jar;C:\Users\Lenovo\.m2\repository\com\google\protobuf\protobuf-java\3.21.9\protobuf-java-3.21.9.jar;C:\Users\Lenovo\.m2\repository\org\jsoup\jsoup\1.17.2\jsoup-1.17.2.jar;C:\Users\Lenovo\.m2\repository\com\opencsv\opencsv\5.7.1\opencsv-5.7.1.jar;C:\Users\Lenovo\.m2\repository\commons-beanutils\commons-beanutils\1.9.4\commons-beanutils-1.9.4.jar;C:\Users\Lenovo\.m2\repository\commons-collections\commons-collections\3.2.2\commons-collections-3.2.2.jar;"/>
+    <property name="surefire.test.class.path" value="/home/milind/MG-TECH/target/test-classes:/home/milind/MG-TECH/target/classes:/home/milind/.m2/repository/org/testng/testng/7.10.2/testng-7.10.2.jar:/home/milind/.m2/repository/com/beust/jcommander/1.82/jcommander-1.82.jar:/home/milind/.m2/repository/org/webjars/jquery/3.7.1/jquery-3.7.1.jar:/home/milind/.m2/repository/org/seleniumhq/selenium/selenium-java/4.22.0/selenium-java-4.22.0.jar:/home/milind/.m2/repository/org/seleniumhq/selenium/selenium-api/4.22.0/selenium-api-4.22.0.jar:/home/milind/.m2/repository/org/seleniumhq/selenium/selenium-chrome-driver/4.22.0/selenium-chrome-driver-4.22.0.jar:/home/milind/.m2/repository/com/google/auto/service/auto-service-annotations/1.1.1/auto-service-annotations-1.1.1.jar:/home/milind/.m2/repository/org/seleniumhq/selenium/selenium-chromium-driver/4.22.0/selenium-chromium-driver-4.22.0.jar:/home/milind/.m2/repository/org/seleniumhq/selenium/selenium-json/4.22.0/selenium-json-4.22.0.jar:/home/milind/.m2/repository/org/seleniumhq/selenium/selenium-manager/4.22.0/selenium-manager-4.22.0.jar:/home/milind/.m2/repository/org/seleniumhq/selenium/selenium-devtools-v124/4.22.0/selenium-devtools-v124-4.22.0.jar:/home/milind/.m2/repository/org/seleniumhq/selenium/selenium-devtools-v125/4.22.0/selenium-devtools-v125-4.22.0.jar:/home/milind/.m2/repository/org/seleniumhq/selenium/selenium-devtools-v126/4.22.0/selenium-devtools-v126-4.22.0.jar:/home/milind/.m2/repository/org/seleniumhq/selenium/selenium-devtools-v85/4.22.0/selenium-devtools-v85-4.22.0.jar:/home/milind/.m2/repository/org/seleniumhq/selenium/selenium-edge-driver/4.22.0/selenium-edge-driver-4.22.0.jar:/home/milind/.m2/repository/org/seleniumhq/selenium/selenium-firefox-driver/4.22.0/selenium-firefox-driver-4.22.0.jar:/home/milind/.m2/repository/org/seleniumhq/selenium/selenium-http/4.22.0/selenium-http-4.22.0.jar:/home/milind/.m2/repository/dev/failsafe/failsafe/3.3.2/failsafe-3.3.2.jar:/home/milind/.m2/repository/org/seleniumhq/selenium/selenium-ie-driver/4.22.0/selenium-ie-driver-4.22.0.jar:/home/milind/.m2/repository/org/seleniumhq/selenium/selenium-remote-driver/4.22.0/selenium-remote-driver-4.22.0.jar:/home/milind/.m2/repository/io/opentelemetry/semconv/opentelemetry-semconv/1.25.0-alpha/opentelemetry-semconv-1.25.0-alpha.jar:/home/milind/.m2/repository/io/opentelemetry/opentelemetry-api/1.39.0/opentelemetry-api-1.39.0.jar:/home/milind/.m2/repository/io/opentelemetry/opentelemetry-context/1.39.0/opentelemetry-context-1.39.0.jar:/home/milind/.m2/repository/io/opentelemetry/opentelemetry-exporter-logging/1.39.0/opentelemetry-exporter-logging-1.39.0.jar:/home/milind/.m2/repository/io/opentelemetry/opentelemetry-sdk-common/1.39.0/opentelemetry-sdk-common-1.39.0.jar:/home/milind/.m2/repository/io/opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/1.39.0/opentelemetry-sdk-extension-autoconfigure-spi-1.39.0.jar:/home/milind/.m2/repository/io/opentelemetry/opentelemetry-sdk-extension-autoconfigure/1.39.0/opentelemetry-sdk-extension-autoconfigure-1.39.0.jar:/home/milind/.m2/repository/io/opentelemetry/opentelemetry-api-incubator/1.39.0-alpha/opentelemetry-api-incubator-1.39.0-alpha.jar:/home/milind/.m2/repository/io/opentelemetry/opentelemetry-sdk-trace/1.39.0/opentelemetry-sdk-trace-1.39.0.jar:/home/milind/.m2/repository/io/opentelemetry/opentelemetry-sdk/1.39.0/opentelemetry-sdk-1.39.0.jar:/home/milind/.m2/repository/io/opentelemetry/opentelemetry-sdk-metrics/1.39.0/opentelemetry-sdk-metrics-1.39.0.jar:/home/milind/.m2/repository/io/opentelemetry/opentelemetry-sdk-logs/1.39.0/opentelemetry-sdk-logs-1.39.0.jar:/home/milind/.m2/repository/net/bytebuddy/byte-buddy/1.14.17/byte-buddy-1.14.17.jar:/home/milind/.m2/repository/org/seleniumhq/selenium/selenium-os/4.22.0/selenium-os-4.22.0.jar:/home/milind/.m2/repository/org/apache/commons/commons-exec/1.4.0/commons-exec-1.4.0.jar:/home/milind/.m2/repository/org/seleniumhq/selenium/selenium-safari-driver/4.22.0/selenium-safari-driver-4.22.0.jar:/home/milind/.m2/repository/org/seleniumhq/selenium/selenium-support/4.22.0/selenium-support-4.22.0.jar:/home/milind/.m2/repository/io/github/bonigarcia/webdrivermanager/5.8.0/webdrivermanager-5.8.0.jar:/home/milind/.m2/repository/com/github/docker-java/docker-java/3.3.6/docker-java-3.3.6.jar:/home/milind/.m2/repository/com/github/docker-java/docker-java-core/3.3.6/docker-java-core-3.3.6.jar:/home/milind/.m2/repository/com/github/docker-java/docker-java-api/3.3.6/docker-java-api-3.3.6.jar:/home/milind/.m2/repository/org/bouncycastle/bcpkix-jdk18on/1.76/bcpkix-jdk18on-1.76.jar:/home/milind/.m2/repository/org/bouncycastle/bcprov-jdk18on/1.76/bcprov-jdk18on-1.76.jar:/home/milind/.m2/repository/org/bouncycastle/bcutil-jdk18on/1.76/bcutil-jdk18on-1.76.jar:/home/milind/.m2/repository/org/slf4j/jcl-over-slf4j/1.7.30/jcl-over-slf4j-1.7.30.jar:/home/milind/.m2/repository/com/github/docker-java/docker-java-transport-httpclient5/3.3.6/docker-java-transport-httpclient5-3.3.6.jar:/home/milind/.m2/repository/com/github/docker-java/docker-java-transport/3.3.6/docker-java-transport-3.3.6.jar:/home/milind/.m2/repository/net/java/dev/jna/jna/5.13.0/jna-5.13.0.jar:/home/milind/.m2/repository/org/brotli/dec/0.1.2/dec-0.1.2.jar:/home/milind/.m2/repository/org/apache/commons/commons-lang3/3.14.0/commons-lang3-3.14.0.jar:/home/milind/.m2/repository/org/apache/commons/commons-compress/1.26.1/commons-compress-1.26.1.jar:/home/milind/.m2/repository/org/apache/httpcomponents/client5/httpclient5/5.2.1/httpclient5-5.2.1.jar:/home/milind/.m2/repository/org/apache/httpcomponents/core5/httpcore5/5.2/httpcore5-5.2.jar:/home/milind/.m2/repository/org/apache/httpcomponents/core5/httpcore5-h2/5.2/httpcore5-h2-5.2.jar:/home/milind/.m2/repository/io/rest-assured/rest-assured/5.3.0/rest-assured-5.3.0.jar:/home/milind/.m2/repository/org/apache/groovy/groovy/4.0.6/groovy-4.0.6.jar:/home/milind/.m2/repository/org/apache/groovy/groovy-xml/4.0.6/groovy-xml-4.0.6.jar:/home/milind/.m2/repository/org/hamcrest/hamcrest/2.1/hamcrest-2.1.jar:/home/milind/.m2/repository/org/ccil/cowan/tagsoup/tagsoup/1.2.1/tagsoup-1.2.1.jar:/home/milind/.m2/repository/io/rest-assured/json-path/5.3.0/json-path-5.3.0.jar:/home/milind/.m2/repository/org/apache/groovy/groovy-json/4.0.6/groovy-json-4.0.6.jar:/home/milind/.m2/repository/io/rest-assured/rest-assured-common/5.3.0/rest-assured-common-5.3.0.jar:/home/milind/.m2/repository/io/rest-assured/xml-path/5.3.0/xml-path-5.3.0.jar:/home/milind/.m2/repository/org/apache/poi/poi-ooxml/5.2.3/poi-ooxml-5.2.3.jar:/home/milind/.m2/repository/org/apache/poi/poi-ooxml-lite/5.2.3/poi-ooxml-lite-5.2.3.jar:/home/milind/.m2/repository/org/apache/xmlbeans/xmlbeans/5.1.1/xmlbeans-5.1.1.jar:/home/milind/.m2/repository/com/github/virtuald/curvesapi/1.07/curvesapi-1.07.jar:/home/milind/.m2/repository/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4.jar:/home/milind/.m2/repository/org/apache/poi/poi/5.2.3/poi-5.2.3.jar:/home/milind/.m2/repository/org/apache/commons/commons-math3/3.6.1/commons-math3-3.6.1.jar:/home/milind/.m2/repository/com/zaxxer/SparseBitSet/1.2/SparseBitSet-1.2.jar:/home/milind/.m2/repository/org/apache/logging/log4j/log4j-core/2.23.0/log4j-core-2.23.0.jar:/home/milind/.m2/repository/org/apache/logging/log4j/log4j-api/2.23.0/log4j-api-2.23.0.jar:/home/milind/.m2/repository/commons-io/commons-io/2.15.1/commons-io-2.15.1.jar:/home/milind/.m2/repository/org/slf4j/slf4j-api/2.0.7/slf4j-api-2.0.7.jar:/home/milind/.m2/repository/com/aventstack/extentreports/5.1.1/extentreports-5.1.1.jar:/home/milind/.m2/repository/io/reactivex/rxjava3/rxjava/3.1.6/rxjava-3.1.6.jar:/home/milind/.m2/repository/org/reactivestreams/reactive-streams/1.0.4/reactive-streams-1.0.4.jar:/home/milind/.m2/repository/org/freemarker/freemarker/2.3.32/freemarker-2.3.32.jar:/home/milind/.m2/repository/commons-codec/commons-codec/1.15/commons-codec-1.15.jar:/home/milind/.m2/repository/org/apache/commons/commons-text/1.10.0/commons-text-1.10.0.jar:/home/milind/.m2/repository/com/slack/api/slack-api-client/1.9.0/slack-api-client-1.9.0.jar:/home/milind/.m2/repository/com/slack/api/slack-api-model/1.9.0/slack-api-model-1.9.0.jar:/home/milind/.m2/repository/com/squareup/okhttp3/okhttp/4.12.0/okhttp-4.12.0.jar:/home/milind/.m2/repository/com/squareup/okio/okio/3.6.0/okio-3.6.0.jar:/home/milind/.m2/repository/com/squareup/okio/okio-jvm/3.6.0/okio-jvm-3.6.0.jar:/home/milind/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-common/1.9.10/kotlin-stdlib-common-1.9.10.jar:/home/milind/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-jdk8/1.8.21/kotlin-stdlib-jdk8-1.8.21.jar:/home/milind/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib/1.8.21/kotlin-stdlib-1.8.21.jar:/home/milind/.m2/repository/org/jetbrains/annotations/13.0/annotations-13.0.jar:/home/milind/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-jdk7/1.8.21/kotlin-stdlib-jdk7-1.8.21.jar:/home/milind/.m2/repository/org/apache/httpcomponents/httpclient/4.5.13/httpclient-4.5.13.jar:/home/milind/.m2/repository/org/apache/httpcomponents/httpcore/4.4.13/httpcore-4.4.13.jar:/home/milind/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/home/milind/.m2/repository/org/apache/httpcomponents/httpmime/4.5.13/httpmime-4.5.13.jar:/home/milind/.m2/repository/jakarta/mail/jakarta.mail-api/2.1.1/jakarta.mail-api-2.1.1.jar:/home/milind/.m2/repository/jakarta/activation/jakarta.activation-api/2.1.1/jakarta.activation-api-2.1.1.jar:/home/milind/.m2/repository/org/eclipse/angus/jakarta.mail/1.0.0/jakarta.mail-1.0.0.jar:/home/milind/.m2/repository/org/eclipse/angus/angus-activation/1.0.0/angus-activation-1.0.0.jar:/home/milind/.m2/repository/com/mysql/mysql-connector-j/8.0.33/mysql-connector-j-8.0.33.jar:/home/milind/.m2/repository/com/google/protobuf/protobuf-java/3.21.9/protobuf-java-3.21.9.jar:/home/milind/.m2/repository/org/jsoup/jsoup/1.17.2/jsoup-1.17.2.jar:/home/milind/.m2/repository/com/github/miachm/sods/SODS/1.6.2/SODS-1.6.2.jar:/home/milind/.m2/repository/com/google/code/gson/gson/2.11.0/gson-2.11.0.jar:/home/milind/.m2/repository/com/google/errorprone/error_prone_annotations/2.27.0/error_prone_annotations-2.27.0.jar:/home/milind/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.15.2/jackson-databind-2.15.2.jar:/home/milind/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.15.2/jackson-annotations-2.15.2.jar:/home/milind/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.15.2/jackson-core-2.15.2.jar:/home/milind/.m2/repository/com/googlecode/json-simple/json-simple/1.1.1/json-simple-1.1.1.jar:/home/milind/.m2/repository/junit/junit/4.10/junit-4.10.jar:/home/milind/.m2/repository/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar:/home/milind/.m2/repository/org/apache/commons/commons-csv/1.10.0/commons-csv-1.10.0.jar:/home/milind/.m2/repository/org/projectlombok/lombok/1.18.34/lombok-1.18.34.jar:/home/milind/.m2/repository/io/rest-assured/json-schema-validator/5.4.0/json-schema-validator-5.4.0.jar:/home/milind/.m2/repository/com/github/java-json-tools/json-schema-validator/2.2.14/json-schema-validator-2.2.14.jar:/home/milind/.m2/repository/com/github/java-json-tools/jackson-coreutils-equivalence/1.0/jackson-coreutils-equivalence-1.0.jar:/home/milind/.m2/repository/com/github/java-json-tools/jackson-coreutils/2.0/jackson-coreutils-2.0.jar:/home/milind/.m2/repository/com/github/java-json-tools/msg-simple/1.2/msg-simple-1.2.jar:/home/milind/.m2/repository/com/github/java-json-tools/btf/1.3/btf-1.3.jar:/home/milind/.m2/repository/com/github/java-json-tools/json-schema-core/1.2.14/json-schema-core-1.2.14.jar:/home/milind/.m2/repository/com/github/java-json-tools/uri-template/0.10/uri-template-0.10.jar:/home/milind/.m2/repository/org/mozilla/rhino/1.7.7.2/rhino-1.7.7.2.jar:/home/milind/.m2/repository/com/sun/mail/mailapi/1.6.2/mailapi-1.6.2.jar:/home/milind/.m2/repository/joda-time/joda-time/2.10.5/joda-time-2.10.5.jar:/home/milind/.m2/repository/com/googlecode/libphonenumber/libphonenumber/8.11.1/libphonenumber-8.11.1.jar:/home/milind/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar:/home/milind/.m2/repository/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar:/home/milind/.m2/repository/com/google/guava/guava/32.0.1-jre/guava-32.0.1-jre.jar:/home/milind/.m2/repository/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar:/home/milind/.m2/repository/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar:/home/milind/.m2/repository/org/checkerframework/checker-qual/3.33.0/checker-qual-3.33.0.jar:/home/milind/.m2/repository/com/google/j2objc/j2objc-annotations/2.8/j2objc-annotations-2.8.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
-    <property name="user.home" value="C:\Users\Lenovo"/>
+    <property name="user.home" value="/home/milind"/>
     <property name="user.language" value="en"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
-    <property name="java.version.date" value="2024-07-16"/>
-    <property name="java.home" value="C:\Program Files\Java\jdk-21"/>
-    <property name="file.separator" value="\"/>
-    <property name="basedir" value="C:\Users\Lenovo\IdeaProjects\MG-TECH"/>
+    <property name="java.version.date" value="2024-10-15"/>
+    <property name="java.home" value="/home/milind/.jdks/corretto-21.0.5"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/home/milind/MG-TECH"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\Lenovo\AppData\Local\Temp\surefire10575131905947839046\surefirebooter-20240923000128653_3.jar"/>
-    <property name="user.script" value=""/>
+    <property name="surefire.real.class.path" value="/home/milind/MG-TECH/target/surefire/surefirebooter-20241020234217460_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="java.runtime.version" value="21.0.4+8-LTS-274"/>
-    <property name="user.name" value="Lenovo"/>
-    <property name="stdout.encoding" value="Cp1252"/>
-    <property name="path.separator" value=";"/>
-    <property name="os.version" value="10.0"/>
-    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="java.runtime.version" value="21.0.5+11-LTS"/>
+    <property name="user.name" value="milind"/>
+    <property name="stdout.encoding" value="UTF-8"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="5.15.0-122-generic"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="file.encoding" value="UTF-8"/>
-    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
-    <property name="localRepository" value="C:\Users\Lenovo\.m2\repository"/>
-    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
-    <property name="java.io.tmpdir" value="C:\Users\Lenovo\AppData\Local\Temp\"/>
-    <property name="idea.version" value="2024.2.0.2"/>
-    <property name="java.version" value="21.0.4"/>
-    <property name="user.dir" value="C:\Users\Lenovo\IdeaProjects\MG-TECH"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="Corretto-21.0.5.11.1"/>
+    <property name="localRepository" value="/home/milind/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/corretto/corretto-21/issues/"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="idea.version" value="2024.2.3"/>
+    <property name="java.version" value="21.0.5"/>
+    <property name="user.dir" value="/home/milind/MG-TECH"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="sun.os.patch.level" value=""/>
-    <property name="native.encoding" value="Cp1252"/>
-    <property name="java.library.path" value="C:\Program Files\Java\jdk-21\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\apache-maven-3.9.9\bin;C:\Program Files\Git\cmd;C:\Program Files\Docker\Docker\resources\bin;C:\Users\Lenovo\AppData\Local\Microsoft\WindowsApps;C:\Users\Lenovo\AppData\Local\Programs\Microsoft VS Code\bin;."/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib"/>
     <property name="java.vm.info" value="mixed mode, sharing"/>
-    <property name="stderr.encoding" value="Cp1252"/>
-    <property name="java.vendor" value="Oracle Corporation"/>
-    <property name="java.vm.version" value="21.0.4+8-LTS-274"/>
+    <property name="stderr.encoding" value="UTF-8"/>
+    <property name="java.vendor" value="Amazon.com Inc."/>
+    <property name="java.vm.version" value="21.0.5+11-LTS"/>
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="VerifyingConnectionsGroups" classname="com.mgs.Tests.WebTests.ConnectionGroups" time="91.242">
-    <system-out><![CDATA[[============== Started Test method [Verifyingconnectionsgroups] =========]
+  <testcase name="verifyServerStatusIsUp" classname="com.mgs.Tests.ApiTest.GroceriesApis" time="5.675">
+    <system-out><![CDATA[[============== Started Test method [Verifyserverstatusisup] =========]
 [============== Started Test method [Verifyingcommunitymembers] =========]
+[============== Started Test method [Verifyingconnectionsgroups] =========]
 [============== Started Test method [Verifyingprogramdetails] =========]
-Launching the Local Headless chrome browser
-Launching the Local Headless chrome browser
-Launching the Local Headless chrome browser
-[12:01:38 am] INFO: Launching the URL :[https://basecopy5.staging.pg-test.com/v2/]
-[12:01:39 am] INFO: Launching the URL :[https://basecopy5.staging.pg-test.com/v2/]
-[12:01:39 am] INFO: Launching the URL :[https://basecopy5.staging.pg-test.com/v2/]
-[12:01:44 am] INFO: Clicking on Sign In button
-[12:01:44 am] INFO: Entering email address
-[12:01:44 am] INFO: Clicking on Sign In button
-[12:01:44 am] INFO: Entering email address
-[12:01:44 am] INFO: Clicking on Sign In button
-[12:01:44 am] INFO: Entering email address
-[12:01:47 am] INFO: Entering password
-[12:01:49 am] INFO: Clicking on Login button
-[12:01:49 am] INFO: Entering password
-[12:01:49 am] INFO: Entering password
-[12:01:51 am] INFO: Clicking on Login button
-[12:01:51 am] INFO: Clicking on Login button
-[12:01:52 am] INFO: Successfully Validated title of the Homepage
-[12:01:52 am] INFO: Clicking on Connect Dropdowns
-[12:01:54 am] INFO: Successfully Validated title of the Homepage
-[12:01:54 am] INFO: Clicking on Connect Dropdowns
-[12:01:55 am] INFO: Successfully Validated title of the Homepage
-[12:01:55 am] INFO: Clicking on Connect Dropdowns
-[12:02:01 am] INFO: Clicking on Groups Dropdowns
-[12:02:01 am] INFO: Clicked on Groups option
-[12:02:08 am] INFO: Clicking on Programs Dropdowns
-[12:02:08 am] INFO: Clicked on Programs option
-[12:02:09 am] INFO: Clicking on Community Dropdowns
-[12:02:09 am] INFO: Clicked on Community option
-Test Group 1
-Testing group new
-Total number of members in all groups: 30
-[12:03:01 am] INFO: Successfully validated members
+Request method:	GET
+Request URI:	https://simple-grocery-store-api.glitch.me/status
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+Cookies:		<none>
+Multiparts:		<none>
+Body:			<none>
+Launching the Local chrome browser
+Launching the Local chrome browser
+Launching the Local chrome browser
+{
+    "status": "UP"
+}
 ]]></system-out>
     <system-err><![CDATA[SLF4J: No SLF4J providers were found.
 SLF4J: Defaulting to no-operation (NOP) logger implementation
 SLF4J: See https://www.slf4j.org/codes.html#noProviders for further details.
-Sept 23, 2024 12:01:33 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+Oct 20, 2024 11:42:21 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 WARNING: Unable to find an exact match for CDP version 128, returning the closest version; found: 126; Please update to a Selenium version that supports CDP version 128
-Sept 23, 2024 12:01:33 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+Oct 20, 2024 11:42:21 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 WARNING: Unable to find an exact match for CDP version 128, returning the closest version; found: 126; Please update to a Selenium version that supports CDP version 128
-Sept 23, 2024 12:01:33 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+Oct 20, 2024 11:42:21 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 WARNING: Unable to find an exact match for CDP version 128, returning the closest version; found: 126; Please update to a Selenium version that supports CDP version 128
 ]]></system-err>
   </testcase>
-  <testcase name="VerifyingProgramDetails" classname="com.mgs.Tests.WebTests.ProgramDetails" time="99.832">
-    <system-out><![CDATA[[12:03:09 am] INFO: Clicking on Sort Button
-Total number of programs: 5
+  <testcase name="generateAccessToken" classname="com.mgs.Tests.ApiTest.GroceriesApis" time="3.076">
+    <system-out><![CDATA[[============== Started Test method [Generateaccesstoken] =========]
+Request method:	POST
+Request URI:	https://simple-grocery-store-api.glitch.me/api-clients
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "clientName": "Client PSw",
+    "clientEmail": "Ln6U5@example.com"
+}
+{
+    "accessToken": "213a54be80ece77feeae357e0488c0700333d61e1698ff5c15521aa3c0f738f1"
+}
 ]]></system-out>
   </testcase>
-  <testcase name="VerifyingCommunityMembers" classname="com.mgs.Tests.WebTests.ClusterHomeExplore" time="105.009">
-    <system-out><![CDATA[[12:03:12 am] INFO: Clicking on A-Z Dropdowns
-[12:03:15 am] INFO: Starts With 'A': Aathira Shaji
-[12:03:15 am] INFO: User List is not empty and Validated Sorted List Ascending Order
+  <testcase name="fetchProductById" classname="com.mgs.Tests.ApiTest.GroceriesApis" time="2.693">
+    <system-out><![CDATA[[============== Started Test method [Fetchproductbyid] =========]
+Request method:	GET
+Request URI:	https://simple-grocery-store-api.glitch.me/products/4643
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	id=4643
+Headers:		Accept=*/*
+Cookies:		<none>
+Multiparts:		<none>
+Body:			<none>
+{
+    "id": 4643,
+    "category": "coffee",
+    "name": "Starbucks Coffee Variety Pack, 100% Arabica",
+    "manufacturer": "Starbucks",
+    "price": 40.91,
+    "current-stock": 14,
+    "inStock": true
+}
+]]></system-out>
+  </testcase>
+  <testcase name="fetchAllProducts" classname="com.mgs.Tests.ApiTest.GroceriesApis" time="4.069">
+    <system-out><![CDATA[[============== Started Test method [Fetchallproducts] =========]
+Request method:	GET
+Request URI:	https://simple-grocery-store-api.glitch.me/products/
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+Cookies:		<none>
+Multiparts:		<none>
+Body:			<none>
+[11:42:30 pm] INFO: Launching the URL :[https://basecopy5.staging.pg-test.com/v2/]
+[11:42:30 pm] INFO: Launching the URL :[https://basecopy5.staging.pg-test.com/v2/]
+[11:42:30 pm] INFO: Launching the URL :[https://basecopy5.staging.pg-test.com/v2/]
+[
+    {
+        "id": 4643,
+        "category": "coffee",
+        "name": "Starbucks Coffee Variety Pack, 100% Arabica",
+        "inStock": true
+    },
+    {
+        "id": 4646,
+        "category": "coffee",
+        "name": "Ethical Bean Medium Dark Roast, Espresso",
+        "inStock": true
+    },
+    {
+        "id": 4641,
+        "category": "coffee",
+        "name": "Don Francisco Colombia Supremo Medium Roast",
+        "inStock": true
+    },
+    {
+        "id": 1225,
+        "category": "fresh-produce",
+        "name": "1/2 in. Brushless Hammer Drill",
+        "inStock": true
+    },
+    {
+        "id": 3674,
+        "category": "fresh-produce",
+        "name": "20V Max Cordless Drill Combo Kit",
+        "inStock": true
+    },
+    {
+        "id": 2585,
+        "category": "fresh-produce",
+        "name": "Green Cabbage Organic",
+        "inStock": true
+    },
+    {
+        "id": 5851,
+        "category": "fresh-produce",
+        "name": "Cucumber Organic",
+        "inStock": false
+    },
+    {
+        "id": 8739,
+        "category": "fresh-produce",
+        "name": "Fresh Spinach Organic",
+        "inStock": true
+    },
+    {
+        "id": 2177,
+        "category": "meat-seafood",
+        "name": "Cosco Three Step Steel Platform",
+        "inStock": true
+    },
+    {
+        "id": 1709,
+        "category": "meat-seafood",
+        "name": "Beef Choice Angus Ribeye Steak",
+        "inStock": true
+    },
+    {
+        "id": 1709,
+        "category": "meat-seafood",
+        "name": "Angus Steak Burgers",
+        "inStock": true
+    },
+    {
+        "id": 7395,
+        "category": "meat-seafood",
+        "name": "Boneless Skinless Chicken Breasts",
+        "inStock": true
+    },
+    {
+        "id": 8554,
+        "category": "candy",
+        "name": "Kinder Joy Eggs",
+        "inStock": true
+    },
+    {
+        "id": 6483,
+        "category": "candy",
+        "name": "Cadbury Milk Chocolate",
+        "inStock": true
+    },
+    {
+        "id": 5774,
+        "category": "candy",
+        "name": "HERSHEY'S, Milk Chocolate Almond",
+        "inStock": true
+    },
+    {
+        "id": 8753,
+        "category": "dairy",
+        "name": "Reduced Fat Milk",
+        "inStock": true
+    },
+    {
+        "id": 9482,
+        "category": "dairy",
+        "name": "Whole Milk",
+        "inStock": true
+    },
+    {
+        "id": 5477,
+        "category": "dairy",
+        "name": "Cream Cheese",
+        "inStock": true
+    },
+    {
+        "id": 5478,
+        "category": "dairy",
+        "name": "Low Fat Vanilla Yogurt",
+        "inStock": true
+    },
+    {
+        "id": 4875,
+        "category": "bread-bakery",
+        "name": "2800 Watt Inverter Generator",
+        "inStock": true
+    }
+]
+]]></system-out>
+  </testcase>
+  <testcase name="validateProductsUsingPOJO" classname="com.mgs.Tests.ApiTest.GroceriesApis" time="1.549">
+    <system-out><![CDATA[[============== Started Test method [Validateproductsusingpojo] =========]
+Request method:	GET
+Request URI:	https://simple-grocery-store-api.glitch.me/products/
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+Cookies:		<none>
+Multiparts:		<none>
+Body:			<none>
+[11:42:35 pm] INFO: Clicking on Sign In button
+[11:42:35 pm] INFO: Entering email address
+[
+    {
+        "id": 4643,
+        "category": "coffee",
+        "name": "Starbucks Coffee Variety Pack, 100% Arabica",
+        "inStock": true
+    },
+    {
+        "id": 4646,
+        "category": "coffee",
+        "name": "Ethical Bean Medium Dark Roast, Espresso",
+        "inStock": true
+    },
+    {
+        "id": 4641,
+        "category": "coffee",
+        "name": "Don Francisco Colombia Supremo Medium Roast",
+        "inStock": true
+    },
+    {
+        "id": 1225,
+        "category": "fresh-produce",
+        "name": "1/2 in. Brushless Hammer Drill",
+        "inStock": true
+    },
+    {
+        "id": 3674,
+        "category": "fresh-produce",
+        "name": "20V Max Cordless Drill Combo Kit",
+        "inStock": true
+    },
+    {
+        "id": 2585,
+        "category": "fresh-produce",
+        "name": "Green Cabbage Organic",
+        "inStock": true
+    },
+    {
+        "id": 5851,
+        "category": "fresh-produce",
+        "name": "Cucumber Organic",
+        "inStock": false
+    },
+    {
+        "id": 8739,
+        "category": "fresh-produce",
+        "name": "Fresh Spinach Organic",
+        "inStock": true
+    },
+    {
+        "id": 2177,
+        "category": "meat-seafood",
+        "name": "Cosco Three Step Steel Platform",
+        "inStock": true
+    },
+    {
+        "id": 1709,
+        "category": "meat-seafood",
+        "name": "Beef Choice Angus Ribeye Steak",
+        "inStock": true
+    },
+    {
+        "id": 1709,
+        "category": "meat-seafood",
+        "name": "Angus Steak Burgers",
+        "inStock": true
+    },
+    {
+        "id": 7395,
+        "category": "meat-seafood",
+        "name": "Boneless Skinless Chicken Breasts",
+        "inStock": true
+    },
+    {
+        "id": 8554,
+        "category": "candy",
+        "name": "Kinder Joy Eggs",
+        "inStock": true
+    },
+    {
+        "id": 6483,
+        "category": "candy",
+        "name": "Cadbury Milk Chocolate",
+        "inStock": true
+    },
+    {
+        "id": 5774,
+        "category": "candy",
+        "name": "HERSHEY'S, Milk Chocolate Almond",
+        "inStock": true
+    },
+    {
+        "id": 8753,
+        "category": "dairy",
+        "name": "Reduced Fat Milk",
+        "inStock": true
+    },
+    {
+        "id": 9482,
+        "category": "dairy",
+        "name": "Whole Milk",
+        "inStock": true
+    },
+    {
+        "id": 5477,
+        "category": "dairy",
+        "name": "Cream Cheese",
+        "inStock": true
+    },
+    {
+        "id": 5478,
+        "category": "dairy",
+        "name": "Low Fat Vanilla Yogurt",
+        "inStock": true
+    },
+    {
+        "id": 4875,
+        "category": "bread-bakery",
+        "name": "2800 Watt Inverter Generator",
+        "inStock": true
+    }
+]
+[11:42:35 pm] INFO: Clicking on Sign In button
+[11:42:35 pm] INFO: Entering email address
+Number of Products In Stock: 19
+Coffee Products: [4643, 4646, 4641]
+Coffee Product Names: [Starbucks Coffee Variety Pack, 100% Arabica, Ethical Bean Medium Dark Roast, Espresso, Don Francisco Colombia Supremo Medium Roast]
+]]></system-out>
+  </testcase>
+  <testcase name="createNewCart" classname="com.mgs.Tests.ApiTest.GroceriesApis" time="2.019">
+    <system-out><![CDATA[[============== Started Test method [Createnewcart] =========]
+Request method:	POST
+Request URI:	https://simple-grocery-store-api.glitch.me/carts/
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "created": true,
+    "cartId": "bx0-ycNjqIm5IvufuuZ09"
+}
+[11:42:35 pm] INFO: Clicking on Sign In button
+[11:42:35 pm] INFO: Entering email address
+{
+    "created": true,
+    "cartId": "c5itVg-l1Hy8r6SfT5RSY"
+}
+]]></system-out>
+  </testcase>
+  <testcase name="fetchCartById" classname="com.mgs.Tests.ApiTest.GroceriesApis" time="1.4">
+    <system-out><![CDATA[[============== Started Test method [Fetchcartbyid] =========]
+[11:42:37 pm] INFO: Entering password
+Request method:	GET
+Request URI:	https://simple-grocery-store-api.glitch.me/carts/c5itVg-l1Hy8r6SfT5RSY
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	cartId=c5itVg-l1Hy8r6SfT5RSY
+Headers:		Accept=*/*
+Cookies:		<none>
+Multiparts:		<none>
+Body:			<none>
+[11:42:37 pm] INFO: Entering password
+[11:42:37 pm] INFO: Entering password
+{
+    "items": [
+        
+    ],
+    "created": "2024-10-20T18:12:36.838Z"
+}
+]]></system-out>
+  </testcase>
+  <testcase name="addItemToCart" classname="com.mgs.Tests.ApiTest.GroceriesApis" time="2.269">
+    <system-out><![CDATA[[============== Started Test method [Additemtocart] =========]
+Request method:	POST
+Request URI:	https://simple-grocery-store-api.glitch.me/carts/c5itVg-l1Hy8r6SfT5RSY/items
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	cartId=c5itVg-l1Hy8r6SfT5RSY
+Headers:		Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "productId": "4643"
+}
+[11:42:39 pm] INFO: Clicking on Login button
+[11:42:39 pm] INFO: Clicking on Login button
+[11:42:39 pm] INFO: Clicking on Login button
+{
+    "created": true,
+    "itemId": 276089357
+}
+]]></system-out>
+  </testcase>
+  <testcase name="updateCartItemQuantity" classname="com.mgs.Tests.ApiTest.GroceriesApis" time="1.989">
+    <system-out><![CDATA[[============== Started Test method [Updatecartitemquantity] =========]
+Request method:	PATCH
+Request URI:	https://simple-grocery-store-api.glitch.me/carts/c5itVg-l1Hy8r6SfT5RSY/items/276089357
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	itemId=276089357
+				cartId=c5itVg-l1Hy8r6SfT5RSY
+Headers:		Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "quantity": 5
+}
+[11:42:42 pm] INFO: Successfully Validated title of the Homepage
+[11:42:42 pm] INFO: Clicking on Connect Dropdowns
+[11:42:42 pm] INFO: Successfully Validated title of the Homepage
+[11:42:42 pm] INFO: Clicking on Connect Dropdowns
+[11:42:43 pm] INFO: Successfully Validated title of the Homepage
+[11:42:43 pm] INFO: Clicking on Connect Dropdowns
+
+]]></system-out>
+  </testcase>
+  <testcase name="createOrder" classname="com.mgs.Tests.ApiTest.GroceriesApis" time="3.337">
+    <system-out><![CDATA[[============== Started Test method [Createorder] =========]
+Request method:	POST
+Request URI:	https://simple-grocery-store-api.glitch.me/orders/
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Authorization=Bearer 213a54be80ece77feeae357e0488c0700333d61e1698ff5c15521aa3c0f738f1
+				Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "cartId": "c5itVg-l1Hy8r6SfT5RSY",
+    "customerName": "MG NobMI"
+}
+{
+    "created": true,
+    "orderId": "hGVzqDiFa8d5raqG9lSpY"
+}
+]]></system-out>
+  </testcase>
+  <testcase name="fetchAllOrders" classname="com.mgs.Tests.ApiTest.GroceriesApis" time="2.547">
+    <system-out><![CDATA[[============== Started Test method [Fetchallorders] =========]
+Request method:	GET
+Request URI:	https://simple-grocery-store-api.glitch.me/orders/
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Authorization=Bearer 213a54be80ece77feeae357e0488c0700333d61e1698ff5c15521aa3c0f738f1
+				Accept=*/*
+Cookies:		<none>
+Multiparts:		<none>
+Body:			<none>
+[
+    {
+        "id": "hGVzqDiFa8d5raqG9lSpY",
+        "items": [
+            {
+                "id": 276089357,
+                "productId": 4643,
+                "quantity": 5
+            }
+        ],
+        "customerName": "MG NobMI",
+        "created": "2024-10-20T18:12:45.069Z",
+        "comment": ""
+    }
+]
+]]></system-out>
+  </testcase>
+  <testcase name="updateOrderCustomerName" classname="com.mgs.Tests.ApiTest.GroceriesApis" time="5.179">
+    <system-out><![CDATA[[============== Started Test method [Updateordercustomername] =========]
+Request method:	PATCH
+Request URI:	https://simple-grocery-store-api.glitch.me/orders/hGVzqDiFa8d5raqG9lSpY
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	orderId=hGVzqDiFa8d5raqG9lSpY
+Headers:		Authorization=Bearer 213a54be80ece77feeae357e0488c0700333d61e1698ff5c15521aa3c0f738f1
+				Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "customerName": "Mady 50S"
+}
+[11:42:50 pm] INFO: Clicking on Programs Dropdowns
+[11:42:50 pm] INFO: Clicking on Community Dropdowns
+[11:42:50 pm] INFO: Clicking on Groups Dropdowns
+[11:42:50 pm] INFO: Clicked on Programs option
+[11:42:50 pm] INFO: Clicked on Community option
+[11:42:50 pm] INFO: Clicked on Groups option
+
+]]></system-out>
+  </testcase>
+  <testcase name="deleteOrderById" classname="com.mgs.Tests.ApiTest.GroceriesApis" time="5.519">
+    <system-out><![CDATA[[============== Started Test method [Deleteorderbyid] =========]
+Request method:	DELETE
+Request URI:	https://simple-grocery-store-api.glitch.me/orders/hGVzqDiFa8d5raqG9lSpY
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	orderId=hGVzqDiFa8d5raqG9lSpY
+Headers:		Authorization=Bearer 213a54be80ece77feeae357e0488c0700333d61e1698ff5c15521aa3c0f738f1
+				Accept=*/*
+Cookies:		<none>
+Multiparts:		<none>
+Body:			<none>
+
+]]></system-out>
+  </testcase>
+  <testcase name="VerifyingConnectionsGroups" classname="com.mgs.Tests.WebTests.ConnectionGroups" time="56.534">
+    <system-out><![CDATA[[11:43:50 pm] INFO: Clicking on Sort Button
+[11:43:50 pm] INFO: Group Members : Test Group 1
+[11:43:50 pm] INFO: Group Members : Testing group new
+[11:43:50 pm] INFO: Successfully validated members : 30
+]]></system-out>
+  </testcase>
+  <testcase name="VerifyingProgramDetails" classname="com.mgs.Tests.WebTests.ProgramDetails" time="58.108">
+    <system-out><![CDATA[Total number of programs: 5
+]]></system-out>
+  </testcase>
+  <testcase name="VerifyingCommunityMembers" classname="com.mgs.Tests.WebTests.ClusterHomeExplore" time="62.417">
+    <system-out><![CDATA[[11:43:53 pm] INFO: Clicking on A-Z Dropdowns
+[11:43:56 pm] INFO: Starts With 'A': Aathira Shaji
+[11:43:56 pm] INFO: User List is not empty and Validated Sorted List Ascending Order
 ]]></system-out>
   </testcase>
 </testsuite>

@@ -184,6 +184,12 @@
 			<version>5.4.0</version>
 		</dependency>
 
+		<!--<dependency>
+			<groupId>org.everit.json</groupId>
+			  <artifactId>everit-json-schema</artifactId>
+			<version>1.14.2</version>
+		 </dependency>-->
+
 	</dependencies>
 
 	<build>
@@ -225,4 +231,4 @@
 	</build>
 </project>
 
-<!-- mvn clean test -DtestSuiteFile=sanity.xml-->
+<!-- mvn clean test -DfileName=sanity.xml-->

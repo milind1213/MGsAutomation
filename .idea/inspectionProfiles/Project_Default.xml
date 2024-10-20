@@ -21,16 +21,22 @@
         <list>
           <option value="MGTS" />
           <option value="MGTS" />
+          <option value="MGTS" />
+          <option value="MGTS" />
         </list>
       </option>
       <option name="ignoredPackages">
         <list>
           <option value="junit:junit:4.10" />
           <option value="org.bouncycastle:bcprov-jdk18on:1.76" />
+          <option value="org.json:json:20160810" />
+          <option value="commons-beanutils:commons-beanutils:1.9.2" />
         </list>
       </option>
       <option name="ignoredReasons">
         <list>
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
           <option value="Not exploitable" />
           <option value="Not exploitable" />
         </list>
