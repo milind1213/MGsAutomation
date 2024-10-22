@@ -1,0 +1,67 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "integer",
+        "description": "Unique identifier for the user"
+      },
+      "name": {
+        "type": "string",
+        "description": "Name of the user"
+      },
+      "company": {
+        "type": "string",
+        "description": "Company where the user works"
+      },
+      "username": {
+        "type": "string",
+        "description": "Username of the user"
+      },
+      "email": {
+        "type": "string",
+        "format": "email",
+        "description": "Email address of the user"
+      },
+      "address": {
+        "type": "string",
+        "description": "Physical address of the user"
+      },
+      "zip": {
+        "type": "string",
+        "description": "Postal/ZIP code of the user's address"
+      },
+      "state": {
+        "type": "string",
+        "description": "State in the user's address"
+      },
+      "country": {
+        "type": "string",
+        "description": "Country in the user's address"
+      },
+      "phone": {
+        "type": "string",
+        "description": "Phone number of the user"
+      },
+      "photo": {
+        "type": "string",
+        "format": "uri",
+        "description": "URL to the user's profile photo"
+      }
+    },
+    "required": [
+      "id",
+      "name",
+      "company",
+      "username",
+      "email",
+      "address",
+      "zip",
+      "state",
+      "country",
+      "phone",
+      "photo"
+    ]
+  }
+}
