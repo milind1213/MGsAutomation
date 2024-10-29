@@ -143,7 +143,6 @@ public class FileUtil {
         }
     }
 
-
     public static <T> T readJsonFromFile(String filePath, Class<T> valueType) {
         try {
             return objectMapper.readValue(new File(filePath), valueType);

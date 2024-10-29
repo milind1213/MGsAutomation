@@ -9,14 +9,12 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
-
 import static com.mgs.Pages.RestPage.Endpoints.users;
 import static io.restassured.RestAssured.given;
 
@@ -119,7 +117,6 @@ public class SchemaValidation {
     }
 
     public static void main(String[] args) {
-
         RestAssured.baseURI = "https://fake-json-api.mock.beeceptor.com";
         Response res = given().
                 when().get("/users").then().extract().response();

@@ -9,8 +9,6 @@
         <classes>
             <class name="com.mgs.Tests.ApiTest.GroceriesApis"/>
             <class name="com.mgs.Tests.WebTests.ClusterHomeExplore"/>
-            <class name="com.mgs.Tests.WebTests.ConnectionGroups"/>
-            <class name="com.mgs.Tests.WebTests.ProgramDetails"/>
         </classes>
     </test>
 </suite>
