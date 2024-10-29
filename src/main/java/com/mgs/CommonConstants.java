@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class CommonConstants {
     public static final String EXECUTION_ENV ="mgs.execution_env";
-    public static final String EXECUTION_PLATFORM ="mgs.executionPlatform";
+    public static final String EXECUTION_PLATFORM = "mgs.platform";
     public static final String HUB_URL ="mgs.hubUrl";
     public static final String MGS_USERNAME = "mgs.username";
     public static final String MGS_PASSWORD = "mgs.password";

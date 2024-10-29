@@ -22,40 +22,49 @@ public class HomePage extends CommonSelenium {
     By groupNames = By.xpath("//h2//span[@role='link']");
     By connectBtn = By.xpath("//button[normalize-space()='Connect']//*[name()='svg']");
 
-    public void moveOnConnect() {
+    public void moveOnConnect()
+    {
         waitForElementToBeClickable(connectBtn,10);
         moveToElement(connectBtn);
     }
 
-    public void selectConnectionType(String type) {
+    public void selectConnectionType(String type)
+    {
         List<WebElement> elements = driver.findElements(connectionsList);
-        for (WebElement element : elements) {
-            if (element.getText().equalsIgnoreCase(type)) {
+        for (WebElement element : elements)
+        {
+            if (element.getText().equalsIgnoreCase(type))
+            {
                 element.click();
                 break;
             }
         }
     }
 
-    public void clickSortButton() {
+    public void clickSortButton()
+    {
         click(By.xpath("//span[@class='btnLabel__aEhVM']"));
     }
 
-    public void clickedOnA2ZDropdowns() {
+    public void clickedOnA2ZDropdowns()
+    {
+
         click(sortByChar);
     }
 
-
-    public List<WebElement> getConnectionOptions() {
+    public List<WebElement> getConnectionOptions()
+    {
         return driver.findElements(sortOptions);
     }
 
-    public List<WebElement> getSortResults() {
+    public List<WebElement> getSortResults()
+    {
         waitForElementClickable(driver.findElement(sortResults), 5);
         return driver.findElements(sortResults);
     }
 
-    public List<WebElement> getGroupNames() {
+    public List<WebElement> getGroupNames()
+    {
         return driver.findElements(groupNames);
     }
 
@@ -79,7 +88,8 @@ public class HomePage extends CommonSelenium {
         return sum;
     }
 
-    public int getPrograms() {
+    public int getPrograms()
+    {
         String programs = getText(By.xpath("(//span[contains(.,'Programs')])[3]"));
         String programCount = programs.replaceAll("[A-Za-z]", "").trim();
         return Integer.parseInt(programCount);

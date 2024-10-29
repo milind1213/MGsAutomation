@@ -19,11 +19,13 @@ public class Loginpage extends CommonSelenium {
 	protected By loginButton = By.xpath("//button[@type='submit']");
 
 
-	public WebDashboard webLogin(String email, String password) {
-		if (isElementPresent(driver, signInButton)) {
+	public WebDashboard webLogin(String email, String password)
+	{
+		if (isElementPresent(driver, signInButton))
+		{
 			click(signInButton);
 			log("Clicking on Sign In button");
-		} else {
+		    } else {
 			waitForElementClickable(driver.findElement(signInButton), 10);
 			log("Clicking on Sign In button");
 			click(signInButton);

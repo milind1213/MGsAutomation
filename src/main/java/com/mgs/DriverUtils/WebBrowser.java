@@ -10,6 +10,8 @@ import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.CapabilityType;
@@ -34,6 +36,11 @@ public class WebBrowser {
             FirefoxOptions options = new FirefoxOptions();
             addCommonArguments(options, isHeadless);
             driver = new FirefoxDriver(options);
+        } else if(browserType.equalsIgnoreCase("edge")){
+            WebDriverManager.edgedriver().setup();
+            EdgeOptions options = new EdgeOptions();
+            addCommonArguments(options, isHeadless);
+            driver = new EdgeDriver(options);
         }
         if (driver != null) {
             webDriver.set(driver);
@@ -41,25 +48,31 @@ public class WebBrowser {
         }
     }
 
-    public void initializeRemoteWebDriver(String browserType, boolean isHeadless) throws MalformedURLException {
+    public void initializeRemoteWebDriver(String browserType ) throws MalformedURLException {
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        String ExecutionPlatform = getProperty(CommonConstants.MGS, CommonConstants.EXECUTION_PLATFORM);
-        if(ExecutionPlatform.equalsIgnoreCase("windows")){
-            capabilities.setPlatform(Platform.WINDOWS);
-        } else if(ExecutionPlatform.equalsIgnoreCase("linux")){
-            capabilities.setPlatform(Platform.LINUX);
-        } else if(ExecutionPlatform.equalsIgnoreCase("mac")){
-            capabilities.setPlatform(Platform.MAC);
+        String executionPlatform = System.getenv("EXECUTION_PLATFORM");
+        if (executionPlatform == null) {
+            executionPlatform = getProperty(CommonConstants.MGS, CommonConstants.EXECUTION_PLATFORM);
         }
+
+        switch (executionPlatform.toLowerCase()) {
+            case "windows" -> capabilities.setPlatform(Platform.WINDOWS);
+            case "linux" -> capabilities.setPlatform(Platform.LINUX);
+            case "mac" -> capabilities.setPlatform(Platform.MAC);
+            default -> throw new IllegalArgumentException("Invalid platform specified");
+        }
+
         if (browserType.equalsIgnoreCase("chrome")) {
             ChromeOptions options = new ChromeOptions();
-            addCommonArguments(options, isHeadless);
             capabilities.merge(options);
         } else if (browserType.equalsIgnoreCase("firefox")) {
             FirefoxOptions options = new FirefoxOptions();
-            addCommonArguments(options, isHeadless);
+            capabilities.merge(options);
+        }else if (browserType.equalsIgnoreCase("edge")) {
+            EdgeOptions options = new EdgeOptions();
             capabilities.merge(options);
         }
+
         driver = new RemoteWebDriver(new URL(getProperty(CommonConstants.MGS, CommonConstants.HUB_URL)), capabilities);
         webDriver.set(driver);
         webDriverList.add(driver);

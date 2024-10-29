@@ -194,7 +194,7 @@ public class GroceriesApis extends GroceriesPayloads implements Endpoints {
     }
 
     @Test(priority = 12)
-    public void updateOrderCustomerName() {
+    public void  updateOrderCustomerName() {
         String name = "Mady " + generateRandomText(3);
         RestConfig reqConfig = new RestConfig();
         String payload = "{\n" + "\"customerName\": \"" + name + "\"\n" + "}";

@@ -27,7 +27,7 @@ public class BaseTest extends WebBrowser {
                 initializeWebDriver(browserType, isHeadless);
                 System.out.println("Launching the Local " + (isHeadless ? "Headless " : "") + browserType + " browser");
             } else if (env.equalsIgnoreCase(CommonConstants.REMOTE)) {
-                initializeRemoteWebDriver(browserType, isHeadless);
+                initializeRemoteWebDriver(browserType);
                 System.out.println("Launching the Remote " + (isHeadless ? "Headless " : "") + browserType + " browser");
             }
             driver = webDriver.get();
@@ -61,3 +61,26 @@ public class BaseTest extends WebBrowser {
         }
     }
 }
+
+
+
+  /*  public static String getEnvironmentUrl() {
+        if (System.getProperty(CommonConstants.IS_EXECUTION_PLATFORM_JENKINS).equalsIgnoreCase("true")) {
+            if (System.getProperty("Environment").trim().equalsIgnoreCase("stage")) {
+                return System.getProperty(CommonConstants.STAGE_LOGIN);
+            } else if (System.getProperty("Environment").trim().equalsIgnoreCase("preprod")) {
+                return System.getProperty(CommonConstants.PREPROD_LOGIN);
+            } else {
+                return System.getProperty(CommonConstants.PREPROD_LOGIN).replace("bb-pre-prod", System.getProperty("Environment").trim());
+            }
+        } else {
+            if (System.getProperty(CommonConstants.LOCAL_EXECUTION_PLATFORM).trim().equalsIgnoreCase("stage")) {
+                return System.getProperty(CommonConstants.STAGE_LOGIN);
+            } else if (System.getProperty(CommonConstants.LOCAL_EXECUTION_PLATFORM).trim().equalsIgnoreCase("preprod")) {
+                return System.getProperty(CommonConstants.PREPROD_LOGIN);
+            } else {
+                return System.getProperty(CommonConstants.PREPROD_LOGIN).replace("pre-prod", System.getProperty(CommonConstants.LOCAL_EXECUTION_PLATFORM).trim());
+            }
+        }
+    }
+*/

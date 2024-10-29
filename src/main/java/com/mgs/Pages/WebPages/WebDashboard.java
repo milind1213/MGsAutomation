@@ -19,19 +19,23 @@ public class WebDashboard extends CommonSelenium {
         fdCalculatorPage = new FDCalculatorPage(driver);
     }
 
-    public Loginpage getHomePage() {
+    public Loginpage getHomePage()
+    {
         return loginpage;
     }
 
-    public HomePage getHome() {
+    public HomePage getHome()
+    {
         return homepage;
     }
 
-    public Summary getSummaryPage() {
+    public Summary getSummaryPage()
+    {
         return summary;
     }
 
-    public FDCalculatorPage getFDCalculator() {
+    public FDCalculatorPage getFDCalculator()
+    {
         return fdCalculatorPage;
     }
 

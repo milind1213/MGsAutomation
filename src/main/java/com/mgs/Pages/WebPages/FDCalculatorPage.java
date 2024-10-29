@@ -21,7 +21,8 @@ public class FDCalculatorPage extends CommonSelenium {
     By maturityAmt = By.xpath("//span[@id='resp_matval']//strong");
     By clearBtn = By.xpath("//img[@class='PL5']");
 
-    public void calculateRateOfInterest(String principle, String roi, String pr1, String pr2, String freq) {
+    public void calculateRateOfInterest(String principle, String roi, String pr1, String pr2, String freq)
+    {
         try {
             log("Entering Principle Amount : " + principle);
             sendKeys(principleField, principle);
@@ -47,18 +48,20 @@ public class FDCalculatorPage extends CommonSelenium {
         }
     }
 
-    public String getMaturity() {
+    public String getMaturity()
+    {
         try {
             log("Retrieve the maturity amount.");
             return getText(maturityAmt);
-        } catch (Exception e) {
+             } catch (Exception e) {
             log("Failed to retrieve the maturity amount: " + e.getMessage());
             e.printStackTrace();
             return null;
         }
     }
 
-    public void clickOnClearBtn() {
+    public void clickOnClearBtn()
+    {
         waitFor(3);
         try {
             log("Clicking on Clear button");
