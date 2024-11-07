@@ -1,7 +1,0 @@
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Daily Sanity">
-    <test name="Web Tests">
-        <classes>
-        </classes>
-    </test>
-</suite>

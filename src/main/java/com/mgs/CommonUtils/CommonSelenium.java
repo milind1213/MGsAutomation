@@ -8,7 +8,7 @@ import java.util.Set;
 
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
-import com.mgs.Utils.TestListeners;
+import com.mgs.Utils.Reporting.TestListeners;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -25,11 +25,13 @@ import org.testng.Assert;
 public class CommonSelenium {
 	public WebDriver driver;
 
-	public CommonSelenium(WebDriver driver) {
+	public CommonSelenium(WebDriver driver)
+	{
 		this.driver = driver;
 	}
 
-	public void sendKeys(By locator, String text) {
+	public void sendKeys(By locator, String text)
+	{
 		try {
 			waitFor(1);
 			WebElement element = driver.findElement(locator);
@@ -40,10 +42,10 @@ public class CommonSelenium {
 			e.getMessage();
 			Assert.fail("Failed to send keys to element [" + locator + "]");
 		}
-
 	}
 
-	public void sendKeys(WebElement element, String text) {
+	public void sendKeys(WebElement element, String text)
+	{
 		try {
 			waitFor(2);
 			drawBorder(driver, element);
@@ -55,7 +57,8 @@ public class CommonSelenium {
 		}
 	}
 
-	public void click(By locator) {
+	public void click(By locator)
+	{
 		try {
 			waitFor(2);
 			WebElement element = driver.findElement(locator);
@@ -68,7 +71,8 @@ public class CommonSelenium {
 		}
 	}
 
-	public void scrollToElement(WebDriver driver, By locator, int yOffset) {
+	public void scrollToElement(WebDriver driver, By locator, int yOffset)
+	{
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollTo(0, 0);");
 		js.executeScript("window.scrollBy(0, arguments[0]);", yOffset);
@@ -84,17 +88,20 @@ public class CommonSelenium {
 		}
 	}
 
-	public static WebElement waitForElementToBeClickable(WebDriver driver, By locator, int seconds) {
+	public static WebElement waitForElementToBeClickable(WebDriver driver, By locator, int seconds)
+	{
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
 		return wait.until(ExpectedConditions.elementToBeClickable(locator));
 	}
 
-	public static WebElement waitForElementToBeClickable(WebDriver driver, WebElement element, int seconds) {
+	public static WebElement waitForElementToBeClickable(WebDriver driver, WebElement element, int seconds)
+	{
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
 		return wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
 
-	public void waitForElementToAppear(WebElement ele, int seconds) {
+	public void waitForElementToAppear(WebElement ele, int seconds)
+	{
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
 		wait.until(ExpectedConditions.visibilityOf(ele));
 	}
@@ -105,7 +112,8 @@ public class CommonSelenium {
 		select.selectByVisibleText(optionText);
 	}
 
-	protected void waitForElementDisplay(WebElement ele, int seconds) {
+	protected void waitForElementDisplay(WebElement ele, int seconds)
+	{
 		try {
 			new WebDriverWait(driver, Duration.ofSeconds(seconds)).until(ExpectedConditions.visibilityOf(ele));
 		} catch (Exception e) {
@@ -113,7 +121,8 @@ public class CommonSelenium {
 		}
 	}
 
-	public void waitForElementPresence(WebDriver driver, By by, int seconds) {
+	public void waitForElementPresence(WebDriver driver, By by, int seconds)
+	{
 		try {
 			new WebDriverWait(driver, Duration.ofSeconds(seconds))
 					.until(ExpectedConditions.presenceOfElementLocated(by));
@@ -122,7 +131,8 @@ public class CommonSelenium {
 		}
 	}
 
-	public void waitForElementVisibility(WebDriver driver, By by, int seconds) {
+	public void waitForElementVisibility(WebDriver driver, By by, int seconds)
+	{
 		try {
 			new WebDriverWait(driver, Duration.ofSeconds(seconds))
 					.until(ExpectedConditions.visibilityOfElementLocated(by));
@@ -131,7 +141,8 @@ public class CommonSelenium {
 		}
 	}
 
-	public void waitForElementToBeClickable(By by, int seconds) {
+	public void waitForElementToBeClickable(By by, int seconds)
+	{
 		try {
 			new WebDriverWait(driver, Duration.ofSeconds(seconds)).until(ExpectedConditions.elementToBeClickable(by));
 		} catch (Exception e) {
@@ -149,7 +160,8 @@ public class CommonSelenium {
 		}
 	}
 
-	public void waitFor(int i) {
+	public void waitFor(int i)
+	{
 		try {
 			Thread.sleep(1000 * i);
 		} catch (InterruptedException e) {
@@ -157,7 +169,8 @@ public class CommonSelenium {
 		}
 	}
 
-	public String getText(By locator) {
+	public String getText(By locator)
+	{
 		try {
 			waitFor(2);
 			return driver.findElement(locator).getText();
@@ -167,7 +180,8 @@ public class CommonSelenium {
 		return null;
 	}
 
-	public boolean isTextInPage(String text) {
+	public boolean isTextInPage(String text)
+	{
 		try {
 			return driver.getPageSource().contains(text);
 		} catch (Exception e) {
@@ -175,7 +189,8 @@ public class CommonSelenium {
 		}
 	}
 
-	public void waitForNBLoad(int seconds) {
+	public void waitForNBLoad(int seconds)
+	{
 		try {
 			for (int i = 0; i < seconds / 2; i++) {
 				waitFor(1);
@@ -195,7 +210,8 @@ public class CommonSelenium {
 		return actualText.contains(actualText);
 	}
 
-	public boolean isElementPresent(WebDriver driver, By by) {
+	public boolean isElementPresent(WebDriver driver, By by)
+	{
 		try {
 			driver.findElement(by);
 			return true;
@@ -204,7 +220,8 @@ public class CommonSelenium {
 		}
 	}
 
-	public boolean isWebElementPresent(By locator, int duration) {
+	public boolean isWebElementPresent(By locator, int duration)
+	{
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(duration));
 			wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
@@ -220,12 +237,14 @@ public class CommonSelenium {
 		click(By.xpath(xpath));
 	}
 
-	public void clearElement(WebDriver driver, By locator) {
+	public void clearElement(WebDriver driver, By locator)
+	{
 		WebElement element = driver.findElement(locator);
 		element.clear();
 	}
 
-	public void javascriptClick(By locators) {
+	public void javascriptClick(By locators)
+	{
 		try {
 			waitFor(1);
 			WebElement element = driver.findElement(locators);
@@ -239,7 +258,8 @@ public class CommonSelenium {
 		}
 	}
 
-	public void moveToElement(By locator) {
+	public void moveToElement(By locator)
+	{
 		try {
 			waitFor(2); // Optional: wait for 2 seconds (adjust as necessary)
 
@@ -259,7 +279,8 @@ public class CommonSelenium {
 		}
 	}
 
-	public void doubleClick(By locator) {
+	public void doubleClick(By locator)
+	{
 		try {
 			waitFor(2);
 			WebElement element = driver.findElement(locator);
@@ -275,7 +296,8 @@ public class CommonSelenium {
 		}
 	}
 
-	public void click(WebElement element) {
+	public void click(WebElement element)
+	{
 		try {
 			waitFor(2);
 			drawBorder(driver, element);
@@ -287,7 +309,8 @@ public class CommonSelenium {
 		}
 	}
 
-	public void sendKeysWithWait(By locator, String text, int seconds) {
+	public void sendKeysWithWait(By locator, String text, int seconds)
+	{
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(seconds)); // Adjust timeout as needed
 		WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
 		element.sendKeys(text);
@@ -298,7 +321,8 @@ public class CommonSelenium {
 		js.executeScript("arguments[0].style.border='3px solid red'", element);
 	}
 
-	public static void scrollIntoView(WebDriver driver, By locator) {
+	public static void scrollIntoView(WebDriver driver, By locator)
+	{
 		try {
 			JavascriptExecutor js = (JavascriptExecutor) driver;
 
@@ -308,7 +332,8 @@ public class CommonSelenium {
 		}
 	}
 
-	public void scrollIntoView(WebElement element) {
+	public void scrollIntoView(WebElement element)
+	{
 		try {
 			JavascriptExecutor js = (JavascriptExecutor) driver;
 			js.executeScript("arguments[0].scrollIntoView({ behavior: 'smooth', block: 'center' });", element);
@@ -318,7 +343,8 @@ public class CommonSelenium {
 		}
 	}
 
-	public void switchToChildWindow() {
+	public void switchToChildWindow()
+	{
 		String parentWindow = driver.getWindowHandle();
 		Set<String> handles = driver.getWindowHandles();
 		for (String windowHandle : handles) {
@@ -342,7 +368,8 @@ public class CommonSelenium {
 		js.executeScript("window.scrollBy(0,750)");
 	}
 
-	public void scrollUpto(By elementLocator) {
+	public void scrollUpto(By elementLocator)
+	{
 		try {
 			WebElement element = driver.findElement(elementLocator);
 			JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -398,7 +425,8 @@ public class CommonSelenium {
 		return RandomStringUtils.randomAlphanumeric(length);
 	}
 
-	public static int getRandomNumberInRange(int min, int max) {
+	public static int getRandomNumberInRange(int min, int max)
+	{
 		if (min >= max) {
 			throw new IllegalArgumentException("max must be greater than min");
 		}
@@ -407,7 +435,8 @@ public class CommonSelenium {
 	}
 
 
-	public void log(String message) {
+	public void log(String message)
+	{
 		try {
 			String timestamp = new SimpleDateFormat("h:mm:ss a").format(new Date());
 			ExtentTest extentTest = TestListeners.extentTest.get();

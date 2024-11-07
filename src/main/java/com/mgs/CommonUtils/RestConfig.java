@@ -1,5 +1,6 @@
 package com.mgs.CommonUtils;
 
+import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.markuputils.CodeLanguage;
 import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
@@ -12,13 +13,11 @@ import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.SpecificationQuerier;
 import lombok.Getter;
 import lombok.Setter;
-
 import javax.crypto.*;
 import javax.crypto.spec.SecretKeySpec;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.*;
-import static com.mgs.Utils.TestListeners.extentTest;
 
 @Getter
 @Setter
@@ -28,14 +27,17 @@ public class RestConfig {
     private Map<String, Object> queryParameters;
     private Map<String, Object> pathParameters;
 
-    public RestConfig() {
+    private static ThreadLocal<ExtentTest> extentTest = new ThreadLocal<>();
+    public RestConfig()
+    {
         this.headers = new HashMap<>();
         this.cookies = new HashMap<>();
         this.queryParameters = new HashMap<>();
         this.pathParameters = new HashMap<>();
     }
 
-    public static RequestSpecification getRequestSpecification(String baseURL,String endPoint, RestConfig config) {
+    public static RequestSpecification getRequestSpecification(String baseURL, String endPoint, RestConfig config)
+    {
         RequestSpecification spec = RestAssured.given().log().all()
                 .baseUri(baseURL)
                 .basePath(endPoint)
@@ -46,16 +48,18 @@ public class RestConfig {
         return spec;
     }
 
-    public static Response Get(String baseURL,String endPoint,RestConfig config) {
-        RequestSpecification requestSpecification = getRequestSpecification(baseURL,endPoint,config);
-        reqLogGet(requestSpecification);
+    public static Response Get(String baseURL, String endPoint, RestConfig config)
+    {
+        RequestSpecification requestSpecification = getRequestSpecification(baseURL, endPoint, config);
+        requestLog(requestSpecification);
         Response response = requestSpecification.get();
         responseLog(response);
         return response;
     }
 
-    public static Response Post(String baseURL,String endPoint,RestConfig config, Object body) {
-        RequestSpecification requestSpecification = getRequestSpecification(baseURL,endPoint,config).contentType(ContentType.JSON)
+    public static Response Post(String baseURL, String endPoint, RestConfig config, Object body)
+    {
+        RequestSpecification requestSpecification = getRequestSpecification(baseURL, endPoint, config).contentType(ContentType.JSON)
                 .body(body);
         requestLog(requestSpecification);  // Log request details
         Response response = requestSpecification.post();  // Send POST request
@@ -63,8 +67,9 @@ public class RestConfig {
         return response;
     }
 
-    public static Response Patch(String baseURL,String endPoint,RestConfig config, Object body) {
-        RequestSpecification requestSpecification = getRequestSpecification(baseURL,endPoint,config).contentType(ContentType.JSON)
+    public static Response Patch(String baseURL, String endPoint, RestConfig config, Object body)
+    {
+        RequestSpecification requestSpecification = getRequestSpecification(baseURL, endPoint, config).contentType(ContentType.JSON)
                 .body(body);
         requestLog(requestSpecification);  // Log request details
         Response response = requestSpecification.patch();  // Send POST request
@@ -73,15 +78,17 @@ public class RestConfig {
     }
 
 
-    public static Response Delete(String baseURL,String endPoint,RestConfig config) {
-        RequestSpecification requestSpecification = getRequestSpecification(baseURL,endPoint,config);
-        reqLogGet(requestSpecification);
+    public static Response Delete(String baseURL, String endPoint, RestConfig config)
+    {
+        RequestSpecification requestSpecification = getRequestSpecification(baseURL, endPoint, config);
+        requestLog(requestSpecification);
         Response response = requestSpecification.delete();
         responseLog(response);
         return response;
     }
 
-    public String getDecryptedString(String inputText, String secret) {
+    public String getDecryptedString(String inputText, String secret)
+    {
         SecretKey key = new SecretKeySpec(secret.getBytes(), "AES");
         Cipher cipher = null;
         try {
@@ -96,37 +103,42 @@ public class RestConfig {
         return null;
     }
 
-    private static void requestLog(RequestSpecification requestSpecification) {
+    public static void requestLog(RequestSpecification requestSpecification)
+    {
         QueryableRequestSpecification queryableRequestSpecification = SpecificationQuerier.query(requestSpecification);
-        logInfo("Base URL is  : " + queryableRequestSpecification.getBaseUri());
-        logInfo("Base Path is  : " + queryableRequestSpecification.getBasePath());
-        logInfo("Headers Are  : ");
-        logHeaders(queryableRequestSpecification.getHeaders().asList());
-        logInfo("Request Body is :  ");
-        logJson(queryableRequestSpecification.getBody());
+        logInfo("Base URL : " + queryableRequestSpecification.getBaseUri());
+        logInfo("EndPoint is : " + queryableRequestSpecification.getBasePath());
+        if (!queryableRequestSpecification.getQueryParams().isEmpty()) {
+            logInfo("Query Parameters : ");
+            queryableRequestSpecification.getQueryParams().forEach((key, value) -> logInfo(key + " : " + value));
+        }
+        if (!queryableRequestSpecification.getHeaders().asList().isEmpty()) {
+            logInfo("Request Headers : ");
+            logHeaders(queryableRequestSpecification.getHeaders().asList());
+        }
+        String requestBody = queryableRequestSpecification.getBody();
+        if (requestBody != null && !requestBody.trim().isEmpty()) {
+            logInfo("Request Body : ");
+            logJson(requestBody);
+        }
     }
 
-    private static void responseLog(Response response) {
-        logInfo("Response Status is  : " + response.getStatusCode());
-        logInfo("Response Headers are :  ");
-        logHeaders(response.getHeaders().asList());
-        logInfo("Response Body is :  ");
-        logJson(response.getBody().prettyPrint());
+    public static void responseLog(Response response)
+    {
+        logInfo("Status Code is :  " + response.getStatusCode());
+        if (!response.getHeaders().asList().isEmpty()) {
+            // logInfo("Response Headers : ");
+            // logHeaders(response.getHeaders().asList());*/
+        }
+        String responseBody = response.getBody().asString();
+        if (responseBody != null && !responseBody.trim().isEmpty()) {
+            logInfo("Response Body : ");
+            logJson(response.getBody().prettyPrint());
+        }
     }
 
-    private static void reqLogGet(RequestSpecification requestSpecification) {
-        QueryableRequestSpecification queryableRequestSpecification = SpecificationQuerier.query(requestSpecification);
-        logInfo("Base URL is  : " + queryableRequestSpecification.getBaseUri());
-        logInfo("EndPoint is  : " + queryableRequestSpecification.getBasePath());
-        logInfo("Headers Are  : ");
-        logHeaders(queryableRequestSpecification.getHeaders().asList());
-        logInfo("Query Parameters Are  : ");
-        queryableRequestSpecification.getQueryParams().forEach((key, value) -> {
-            logInfo(key + " : " + value);
-         });
-    }
-
-    protected static void logInfo(String log) {
+    protected static void logInfo(String log)
+    {
         if (extentTest.get() != null) {
             extentTest.get().info(MarkupHelper.createLabel(log, ExtentColor.PINK));
         } else {
@@ -134,7 +146,8 @@ public class RestConfig {
         }
     }
 
-    static void logJson(String json) {
+    static void logJson(String json)
+    {
         if (extentTest.get() != null) {
             extentTest.get().info(MarkupHelper.createCodeBlock(json, CodeLanguage.JSON));
         } else {
@@ -142,7 +155,8 @@ public class RestConfig {
         }
     }
 
-    private static void logHeaders(List<Header> headersList) {
+    private static void logHeaders(List<Header> headersList)
+    {
         String[][] arrayHeaders = headersList.stream().map(header -> new String[]{header.getName(), header.getValue()})
                 .toArray(String[][]::new);
         if (extentTest.get() != null) {

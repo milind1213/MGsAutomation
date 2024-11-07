@@ -1,4 +1,4 @@
-package com.mgs.Utils;
+package com.mgs.Utils.Reporting;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
@@ -13,7 +13,7 @@ public class ExtentManager {
 				ViewName.CATEGORY, ViewName.EXCEPTION, ViewName.DEVICE, ViewName.AUTHOR }).apply();
 		extentSparkReporter.config().setReportName(reportName);
 		extentSparkReporter.config().setDocumentTitle(documentTitle);
-		extentSparkReporter.config().setTheme(Theme.DARK);
+		extentSparkReporter.config().setTheme(Theme.STANDARD);
 		extentSparkReporter.config().setEncoding("utf-8");
 		extentSparkReporter.config().setTimelineEnabled(true);
 

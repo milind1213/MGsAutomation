@@ -26,7 +26,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Map;
 
-import static com.mgs.Utils.TestListeners.extentTest;
+import static com.mgs.Utils.Reporting.TestListeners.extentTest;
 import static io.restassured.RestAssured.given;
 
 public class CommonRestAssured {

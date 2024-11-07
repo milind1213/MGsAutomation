@@ -3,7 +3,7 @@ package com.mgs.Tests.DataDriven;
 import com.mgs.CommonConstants;
 import com.mgs.Pages.WebPages.FDCalculatorPage;
 import com.mgs.TestBase.BaseTest;
-import com.mgs.Utils.TestListeners;
+import com.mgs.Utils.Reporting.TestListeners;
 import com.mgs.Utils.UtilsExcel;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeTest;

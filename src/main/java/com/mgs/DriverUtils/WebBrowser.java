@@ -25,18 +25,22 @@ public class WebBrowser {
     protected static ThreadLocal<WebDriver> webDriver = new ThreadLocal<>();
     private static final List<WebDriver> webDriverList = Collections.synchronizedList(new ArrayList<>());
 
-    public void initializeWebDriver(String browserType, boolean isHeadless) throws MalformedURLException {
-        if (browserType.equalsIgnoreCase("chrome")) {
+    public void initializeWebDriver(String browserType, boolean isHeadless) throws MalformedURLException
+    {
+        if (browserType.equalsIgnoreCase("chrome"))
+        {
             WebDriverManager.chromedriver().setup(); // Correct for Chrome
             ChromeOptions options = new ChromeOptions();
             addCommonArguments(options, isHeadless);
             driver = new ChromeDriver(options);
-        } else if (browserType.equalsIgnoreCase("firefox")) {
+        } else if (browserType.equalsIgnoreCase("firefox"))
+        {
             WebDriverManager.firefoxdriver().setup(); // Fix for Firefox (was wrongly using chromedriver)
             FirefoxOptions options = new FirefoxOptions();
             addCommonArguments(options, isHeadless);
             driver = new FirefoxDriver(options);
-        } else if(browserType.equalsIgnoreCase("edge")){
+        } else if(browserType.equalsIgnoreCase("edge"))
+        {
             WebDriverManager.edgedriver().setup();
             EdgeOptions options = new EdgeOptions();
             addCommonArguments(options, isHeadless);
@@ -48,21 +52,24 @@ public class WebBrowser {
         }
     }
 
-    public void initializeRemoteWebDriver(String browserType ) throws MalformedURLException {
+    public void initializeRemoteWebDriver(String browserType ) throws MalformedURLException
+    {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         String executionPlatform = System.getenv("EXECUTION_PLATFORM");
         if (executionPlatform == null) {
             executionPlatform = getProperty(CommonConstants.MGS, CommonConstants.EXECUTION_PLATFORM);
         }
 
-        switch (executionPlatform.toLowerCase()) {
+        switch (executionPlatform.toLowerCase())
+        {
             case "windows" -> capabilities.setPlatform(Platform.WINDOWS);
             case "linux" -> capabilities.setPlatform(Platform.LINUX);
             case "mac" -> capabilities.setPlatform(Platform.MAC);
             default -> throw new IllegalArgumentException("Invalid platform specified");
         }
 
-        if (browserType.equalsIgnoreCase("chrome")) {
+        if (browserType.equalsIgnoreCase("chrome"))
+        {
             ChromeOptions options = new ChromeOptions();
             capabilities.merge(options);
         } else if (browserType.equalsIgnoreCase("firefox")) {
@@ -78,8 +85,10 @@ public class WebBrowser {
         webDriverList.add(driver);
     }
 
-    private void addCommonArguments(Object options, boolean isHeadless) {
-        if (options instanceof ChromeOptions chromeOptions) {
+    private void addCommonArguments(Object options, boolean isHeadless)
+    {
+        if (options instanceof ChromeOptions chromeOptions)
+        {
             chromeOptions.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);
             chromeOptions.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
             if (isHeadless) {

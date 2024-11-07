@@ -1,4 +1,4 @@
-package com.mgs.Utils;
+package com.mgs.Utils.Reporting;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -10,15 +10,15 @@ import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.Markup;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
-import com.mgs.CommonConstants;
 import com.mgs.DriverUtils.WebBrowser;
+import com.mgs.Utils.FileUtil;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 import org.testng.annotations.Listeners;
-import java.util.Base64;
+
 import java.util.Calendar;
 import java.util.Date;
 import static com.mgs.Utils.FileUtil.*;
@@ -27,10 +27,10 @@ import static com.mgs.Utils.FileUtil.*;
 public class TestListeners extends WebBrowser implements ITestListener {
 	public static ExtentReports extentReports;
 	public static ThreadLocal<ExtentTest> extentTest = new ThreadLocal<>();
-	private String reportPath;
+	String reportPath;
 
 	@Override
-	public void onStart(ITestContext context) {
+	public synchronized void onStart(ITestContext context) {
 		reportPath = System.getProperty("user.dir") + "/Reports/";
 		Path reportDirPath = Paths.get(reportPath);
 		createDirectoryIfNotExists(reportDirPath);
@@ -40,7 +40,7 @@ public class TestListeners extends WebBrowser implements ITestListener {
 	}
 
 	@Override
-	public void onTestStart(ITestResult result) {
+	public synchronized void onTestStart(ITestResult result) {
 		String methodName = FileUtil.enhancedMethodName(result.getMethod().getMethodName());
 		String qualifiedName = result.getMethod().getQualifiedName();
 		int last = qualifiedName.lastIndexOf(".");
@@ -61,7 +61,7 @@ public class TestListeners extends WebBrowser implements ITestListener {
 	}
 
 	@Override
-	public void onTestFailure(ITestResult result) {
+	public synchronized void onTestFailure(ITestResult result) {
 		String failureScreenshot = "";
 		String className = result.getMethod().getRealClass().getSimpleName();
 		String exceptionMessage = Arrays.toString(result.getThrowable().getStackTrace());
@@ -87,14 +87,14 @@ public class TestListeners extends WebBrowser implements ITestListener {
 	}
 
 	@Override
-	public void onTestSuccess(ITestResult result) {
+	public synchronized void onTestSuccess(ITestResult result) {
 		String logText = "<b>" + "Test Passed! \uD83D\uDE0A " + "</b>";
 		Markup m = MarkupHelper.createLabel(logText, ExtentColor.GREEN);
 		extentTest.get().pass(m);
 	}
 
 	@Override
-	public void onTestSkipped(ITestResult result) {
+	public synchronized void onTestSkipped(ITestResult result) {
 		String methodName = FileUtil.enhancedMethodName(result.getMethod().getMethodName());
 		String logText = "<b>" + "Test Case: '" + methodName + " Skipped" + "</b>";
 		Markup m = MarkupHelper.createLabel(logText, ExtentColor.INDIGO);
@@ -102,7 +102,7 @@ public class TestListeners extends WebBrowser implements ITestListener {
 	}
 
 	@Override
-	public void onFinish(ITestContext context) {
+	public synchronized void onFinish(ITestContext context) {
 		System.out.println("[============== Finish Test method [" + context.getName() + "] =========]");
 		if (extentReports != null) {
 			extentReports.flush();

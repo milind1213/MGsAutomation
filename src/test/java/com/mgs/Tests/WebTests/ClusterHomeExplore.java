@@ -4,7 +4,7 @@ import com.mgs.CommonConstants;
 import com.mgs.Pages.WebPages.Loginpage;
 import com.mgs.Pages.WebPages.WebDashboard;
 import com.mgs.TestBase.BaseTest;
-import com.mgs.Utils.TestListeners;
+import com.mgs.Utils.Reporting.TestListeners;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;

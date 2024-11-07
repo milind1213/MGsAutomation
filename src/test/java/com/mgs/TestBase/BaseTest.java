@@ -7,7 +7,7 @@ import java.util.Date;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.mgs.CommonConstants;
-import com.mgs.Utils.TestListeners;
+import com.mgs.Utils.Reporting.TestListeners;
 import org.openqa.selenium.WebDriver;
 
 import com.mgs.DriverUtils.WebBrowser;

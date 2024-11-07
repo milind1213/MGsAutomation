@@ -191,7 +191,7 @@
 			<version>5.4.0</version>
 		</dependency>
 
-		<!--<dependency>
+		 <!--<dependency>
 			<groupId>org.everit.json</groupId>
 			  <artifactId>everit-json-schema</artifactId>
 			<version>1.14.2</version>

@@ -1,12 +1,11 @@
 package com.mgs.Tests.ApiTest;
-
 import com.mgs.CommonConstants;
 import com.mgs.CommonUtils.RestConfig;
 import com.mgs.Pages.RestPage.Endpoints;
 import com.mgs.Pages.RestPage.GroceriesPayloads;
 import com.mgs.Pages.RestPage.POJO.CreateOrder;
 import com.mgs.Pages.RestPage.POJO.Products;
-import com.mgs.Utils.TestListeners;
+import com.mgs.Utils.Reporting.TestListeners;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.Response;
 import org.testng.Assert;

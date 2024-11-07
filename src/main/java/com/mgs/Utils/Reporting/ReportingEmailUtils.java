@@ -1,4 +1,4 @@
-package com.mgs.Utils;
+package com.mgs.Utils.Reporting;
 
 import com.mgs.CommonConstants;
 import jakarta.mail.*;
