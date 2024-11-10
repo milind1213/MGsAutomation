@@ -52,18 +52,17 @@ public class BaseTest extends WebBrowser {
     public void log(String message) {
         try {
             String timestamp = new SimpleDateFormat("h:mm:ss a").format(new Date());
-            if (extentTest != null) {
+            if (extentTest.get() != null) {
                 extentTest.get().log(Status.INFO, message);
+            } else {
+                System.err.println("ExtentTest is null for log message: " + message);
             }
-            System.out.println("[" + timestamp + "] " + "INFO: " + message);
+            System.out.println("[" + timestamp + "] INFO: " + message);
         } catch (Exception e) {
-            System.err.println("Failed to log message: " + message + " Error : " + e.getMessage());
+            System.err.println("Failed to log message: " + message + " Error: " + e.getMessage());
         }
     }
 }
-
-
-
   /*  public static String getEnvironmentUrl() {
         if (System.getProperty(CommonConstants.IS_EXECUTION_PLATFORM_JENKINS).equalsIgnoreCase("true")) {
             if (System.getProperty("Environment").trim().equalsIgnoreCase("stage")) {

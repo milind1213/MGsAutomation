@@ -30,7 +30,7 @@ public class CommonConstants {
     public static final String PROD ="prod";
     public static final String MGS_SLACK_CHANENEL = "mgs.slackChannel";
     public static final String MGS_SLACK_TOKEN = "mgs.slackToken";
-
+    public static final String CURRENT_WORKING_DIRECTORY = System.getProperty("user.dir");
 
 
     public static String generateRandomText(int length) {
