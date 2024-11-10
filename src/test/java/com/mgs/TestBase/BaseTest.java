@@ -14,6 +14,7 @@ import com.mgs.DriverUtils.WebBrowser;
 import org.testng.annotations.AfterMethod;
 
 import static com.mgs.Utils.FileUtil.getProperty;
+import static com.mgs.Utils.Reporting.TestListeners.extentTest;
 
 public class BaseTest extends WebBrowser {
     WebDriver driver;
@@ -51,9 +52,8 @@ public class BaseTest extends WebBrowser {
     public void log(String message) {
         try {
             String timestamp = new SimpleDateFormat("h:mm:ss a").format(new Date());
-            ExtentTest extentTest = TestListeners.extentTest.get();
             if (extentTest != null) {
-                extentTest.log(Status.INFO, message);
+                extentTest.get().log(Status.INFO, message);
             }
             System.out.println("[" + timestamp + "] " + "INFO: " + message);
         } catch (Exception e) {

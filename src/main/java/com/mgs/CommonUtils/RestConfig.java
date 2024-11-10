@@ -19,6 +19,8 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.*;
 
+import static com.mgs.Utils.Reporting.TestListeners.extentTest;
+
 @Getter
 @Setter
 public class RestConfig {
@@ -26,8 +28,6 @@ public class RestConfig {
     private Map<String, Object> cookies;
     private Map<String, Object> queryParameters;
     private Map<String, Object> pathParameters;
-
-    private static ThreadLocal<ExtentTest> extentTest = new ThreadLocal<>();
     public RestConfig()
     {
         this.headers = new HashMap<>();
@@ -140,7 +140,11 @@ public class RestConfig {
     protected static void logInfo(String log)
     {
         if (extentTest.get() != null) {
-            extentTest.get().info(MarkupHelper.createLabel(log, ExtentColor.PINK));
+            try {
+                extentTest.get().info(MarkupHelper.createLabel(log, ExtentColor.PINK));
+            } catch (Exception e) {
+                System.err.println("Error logging to Extent Report: " + e.getMessage());
+            }
         } else {
             System.out.println(log);
         }

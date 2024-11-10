@@ -1,14 +1,12 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="SanityTestSuite" parallel="classes" thread-count="4">
+<suite name="SanityTestSuite">
     <listeners>
         <listener class-name="com.mgs.TestBase.RetryAnnotation"/>
         <listener class-name="com.mgs.Utils.Reporting.TestListeners"/>
     </listeners>
 
-    <test name="Web Tests" parallel="classes" thread-count="2">
+    <test name="Web Tests" parallel="methods" thread-count="2">
         <classes>
-            <class name="com.mgs.Tests.WebTests.ClusterHomeExplore"/>
-            <class name="com.mgs.Tests.WebTests.ConnectionGroups"/>
             <class name="com.mgs.Tests.ApiTest.GroceriesApis"/>
             <class name="com.mgs.Tests.ApiTest.SchemaValidation"/>
         </classes>

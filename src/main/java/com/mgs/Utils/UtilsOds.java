@@ -8,8 +8,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 
 public class UtilsOds {
-
-    // Load ODS Spreadsheet
     public static SpreadSheet loadSpreadsheet(String odsFile) throws Exception {
         File file = new File(odsFile);
         if (!file.exists()) {
@@ -50,7 +48,6 @@ public class UtilsOds {
         if (colnum < 0 || colnum >= range.getLastColumn()) {
             throw new Exception("Invalid column number: " + colnum);
         }
-
         Object cellValue = range.getCell(rownum, colnum).getValue();
         return (cellValue != null) ? cellValue.toString() : "";
     }

@@ -27,10 +27,10 @@ import static com.mgs.Utils.FileUtil.*;
 public class TestListeners extends WebBrowser implements ITestListener {
 	public static ExtentReports extentReports;
 	public static ThreadLocal<ExtentTest> extentTest = new ThreadLocal<>();
-	String reportPath;
+	private String reportPath;
 
 	@Override
-	public synchronized void onStart(ITestContext context) {
+	public  synchronized void onStart(ITestContext context) {
 		reportPath = System.getProperty("user.dir") + "/Reports/";
 		Path reportDirPath = Paths.get(reportPath);
 		createDirectoryIfNotExists(reportDirPath);

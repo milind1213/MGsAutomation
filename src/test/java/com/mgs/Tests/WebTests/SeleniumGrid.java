@@ -1,4 +1,4 @@
-package com.mgs.Tests.Rough;
+package com.mgs.Tests.WebTests;
 
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
