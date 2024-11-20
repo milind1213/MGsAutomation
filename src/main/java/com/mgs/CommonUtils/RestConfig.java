@@ -28,6 +28,7 @@ public class RestConfig {
     private Map<String, Object> cookies;
     private Map<String, Object> queryParameters;
     private Map<String, Object> pathParameters;
+
     public RestConfig()
     {
         this.headers = new HashMap<>();
@@ -44,7 +45,7 @@ public class RestConfig {
                 .headers(Optional.ofNullable(config.getHeaders()).orElse(Collections.emptyMap()))  // Add headers
                 .cookies(Optional.ofNullable(config.getCookies()).orElse(Collections.emptyMap()))  // Add cookies
                 .pathParams(Optional.ofNullable(config.getPathParameters()).orElse(Collections.emptyMap()));  // Add path parameters
-        Optional.ofNullable(config.getQueryParameters()).ifPresent(spec::queryParams);
+                 Optional.ofNullable(config.getQueryParameters()).ifPresent(spec::queryParams);
         return spec;
     }
 
@@ -87,21 +88,6 @@ public class RestConfig {
         return response;
     }
 
-    public String getDecryptedString(String inputText, String secret)
-    {
-        SecretKey key = new SecretKeySpec(secret.getBytes(), "AES");
-        Cipher cipher = null;
-        try {
-            cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
-            cipher.init(Cipher.DECRYPT_MODE, key);
-            Thread.sleep(1000);
-            return new String(cipher.doFinal(org.apache.commons.codec.binary.Base64.decodeBase64(inputText)));
-        } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException | IllegalBlockSizeException |
-                 BadPaddingException | InterruptedException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
 
     public static void requestLog(RequestSpecification requestSpecification)
     {
@@ -170,6 +156,22 @@ public class RestConfig {
                 System.out.println(header[0] + ": " + header[1]);
             }
         }
+    }
+
+    public String getDecryptedString(String inputText, String secret)
+    {
+        SecretKey key = new SecretKeySpec(secret.getBytes(), "AES");
+        Cipher cipher = null;
+        try {
+            cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
+            cipher.init(Cipher.DECRYPT_MODE, key);
+            Thread.sleep(1000);
+            return new String(cipher.doFinal(org.apache.commons.codec.binary.Base64.decodeBase64(inputText)));
+        } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException | IllegalBlockSizeException |
+                 BadPaddingException | InterruptedException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
 

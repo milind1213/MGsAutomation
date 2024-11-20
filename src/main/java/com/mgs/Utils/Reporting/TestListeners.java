@@ -37,7 +37,6 @@ public class TestListeners extends WebBrowser implements ITestListener {
 		Path reportDirPath = Paths.get(reportPath);
 		createDirectoryIfNotExists(reportDirPath);
 		deleteOldReports(reportDirPath);
-
 		String reportFilePath = FileUtil.generateReportFilePath(reportPath);
 		extentReports = ExtentManager.createInstance(reportFilePath, "Automation Test Report", "Test Execution Report");
 

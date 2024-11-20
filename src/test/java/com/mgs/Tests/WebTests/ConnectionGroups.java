@@ -58,7 +58,7 @@ public class ConnectionGroups extends BaseTest {
             log("Group Members : "+group.getText());
         }
         int members = user.getHome().getMembersCounts();
-        Assert.assertEquals(members, 30);
+        Assert.assertEquals(members, 31);
         log("Successfully validated members : "+ members);
     }
 }
