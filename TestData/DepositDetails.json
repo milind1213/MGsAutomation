@@ -1,1 +1,52 @@
-[{"principle":20000,"rateOfInterest":10,"period":2,"periodType":"year(s)","frequency":"Simple Interest","maturityValue":24000.0,"expected":"Pass","result":"Passed"},{"principle":40000,"rateOfInterest":15,"period":5,"periodType":"year(s)","frequency":"Simple Interest","maturityValue":70000.0,"expected":"Passed","result":"Passed"},{"principle":50000,"rateOfInterest":10,"period":3,"periodType":"month(s)","frequency":"Simple Interest","maturityValue":51250.0,"expected":"Passed","result":"Passed"},{"principle":75000,"rateOfInterest":12,"period":2,"periodType":"month(s)","frequency":"Simple Interest","maturityValue":76500.0,"expected":"Passed","result":"Passed"},{"principle":75000,"rateOfInterest":12,"period":2,"periodType":"day(s)","frequency":"Simple Interest","maturityValue":75045.32,"expected":"Failed","result":"Failed"}]
+[
+  {
+    "principle": 20000,
+    "rateOfInterest": 10,
+    "period": 2,
+    "periodType": "year(s)",
+    "frequency": "Simple Interest",
+    "maturityValue": 24000,
+    "expected": "Pass",
+    "result": "Passed"
+  },
+  {
+    "principle": 40000,
+    "rateOfInterest": 15,
+    "period": 5,
+    "periodType": "year(s)",
+    "frequency": "Simple Interest",
+    "maturityValue": 70000,
+    "expected": "Passed",
+    "result": "Passed"
+  },
+  {
+    "principle": 50000,
+    "rateOfInterest": 10,
+    "period": 3,
+    "periodType": "month(s)",
+    "frequency": "Simple Interest",
+    "maturityValue": 51250,
+    "expected": "Passed",
+    "result": "Passed"
+  },
+  {
+    "principle": 75000,
+    "rateOfInterest": 12,
+    "period": 2,
+    "periodType": "month(s)",
+    "frequency": "Simple Interest",
+    "maturityValue": 76500,
+    "expected": "Passed",
+    "result": "Passed"
+  },
+  {
+    "principle": 75000,
+    "rateOfInterest": 12,
+    "period": 2,
+    "periodType": "day(s)",
+    "frequency": "Simple Interest",
+    "maturityValue": 75045.32,
+    "expected": "Failed",
+    "result": "Failed"
+  }
+]

@@ -2,11 +2,11 @@ package com.mgs.Pages.RestPage;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import com.mgs.CommonUtils.CommonRestAssured;
+
 import java.util.HashMap;
 import java.util.Map;
 
-public class GroceriesPayloads extends CommonRestAssured {
+public class GroceriesPayloads {
 
     public String createCart(String id, boolean isCreated) {
         return "{\n" +" \"created\": " + isCreated + ",\n" +

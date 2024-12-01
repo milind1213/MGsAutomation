@@ -27,6 +27,7 @@ public class GroceriesApis extends GroceriesPayloads implements Endpoints {
     List<String> allIds, categories, productsList;
     String cartId, oldCartId = "bx0-ycNjqIm5IvufuuZ09", itemId , orderId ;
     String baseUrl = getProperty(CommonConstants.MGS, CommonConstants.REST_URL1);
+    //((ArrayList)((LinkedHashMap)((LinkedHashMap) response.getData()).get("Mumbai")).get("Mumbai")).get(1);
 
     @Test(priority = 1)
     public void verifyServerStatusIsUp() {
@@ -223,7 +224,6 @@ public class GroceriesApis extends GroceriesPayloads implements Endpoints {
     @Test(priority = 13)
     public void deleteOrderById() {
         RestConfig reqConfig = new RestConfig();
-
         Map<String, Object> headers = new HashMap<>();
         headers.put("Authorization", "Bearer " + accessToken);
         reqConfig.setHeaders(headers);

@@ -14,7 +14,7 @@ public class DepositDatails {
     private double maturityValue;  // Lowercase 'm'
     private String expected;  // Lowercase 'e'
     private String result;  // Lowercase 'r'
-
+/*
     @Override
     public String toString() {
         return "FdData{" +
@@ -27,5 +27,5 @@ public class DepositDatails {
                 ", expected='" + expected + '\'' +
                 ", result='" + result + '\'' +
                 '}';
-    }
+    }*/
 }

@@ -29,16 +29,14 @@ public class RestConfig {
     private Map<String, Object> queryParameters;
     private Map<String, Object> pathParameters;
 
-    public RestConfig()
-    {
+    public RestConfig() {
         this.headers = new HashMap<>();
         this.cookies = new HashMap<>();
         this.queryParameters = new HashMap<>();
         this.pathParameters = new HashMap<>();
     }
 
-    public static RequestSpecification getRequestSpecification(String baseURL, String endPoint, RestConfig config)
-    {
+    public static RequestSpecification getRequestSpecification(String baseURL, String endPoint, RestConfig config) {
         RequestSpecification spec = RestAssured.given().log().all()
                 .baseUri(baseURL)
                 .basePath(endPoint)
@@ -62,9 +60,9 @@ public class RestConfig {
     {
         RequestSpecification requestSpecification = getRequestSpecification(baseURL, endPoint, config).contentType(ContentType.JSON)
                 .body(body);
-        requestLog(requestSpecification);  // Log request details
-        Response response = requestSpecification.post();  // Send POST request
-        responseLog(response);  // Log response details
+        requestLog(requestSpecification);  // LogRequest Details
+        Response response = requestSpecification.post();
+        responseLog(response);  // LogResponse Details
         return response;
     }
 
@@ -72,9 +70,9 @@ public class RestConfig {
     {
         RequestSpecification requestSpecification = getRequestSpecification(baseURL, endPoint, config).contentType(ContentType.JSON)
                 .body(body);
-        requestLog(requestSpecification);  // Log request details
-        Response response = requestSpecification.patch();  // Send POST request
-        responseLog(response);  // Log response details
+        requestLog(requestSpecification);  // LogRequest Details
+        Response response = requestSpecification.patch();
+        responseLog(response);  // LogResponse Details
         return response;
     }
 
@@ -94,16 +92,19 @@ public class RestConfig {
         QueryableRequestSpecification queryableRequestSpecification = SpecificationQuerier.query(requestSpecification);
         logInfo("Base URL : " + queryableRequestSpecification.getBaseUri());
         logInfo("EndPoint is : " + queryableRequestSpecification.getBasePath());
-        if (!queryableRequestSpecification.getQueryParams().isEmpty()) {
+        if (!queryableRequestSpecification.getQueryParams().isEmpty())
+        {
             logInfo("Query Parameters : ");
             queryableRequestSpecification.getQueryParams().forEach((key, value) -> logInfo(key + " : " + value));
         }
-        if (!queryableRequestSpecification.getHeaders().asList().isEmpty()) {
+        if (!queryableRequestSpecification.getHeaders().asList().isEmpty())
+        {
             logInfo("Request Headers : ");
             logHeaders(queryableRequestSpecification.getHeaders().asList());
         }
         String requestBody = queryableRequestSpecification.getBody();
-        if (requestBody != null && !requestBody.trim().isEmpty()) {
+        if (requestBody != null && !requestBody.trim().isEmpty())
+        {
             logInfo("Request Body : ");
             logJson(requestBody);
         }
@@ -112,12 +113,14 @@ public class RestConfig {
     public static void responseLog(Response response)
     {
         logInfo("Status Code is :  " + response.getStatusCode());
-        if (!response.getHeaders().asList().isEmpty()) {
+        if (!response.getHeaders().asList().isEmpty())
+        {
             // logInfo("Response Headers : ");
             // logHeaders(response.getHeaders().asList());*/
         }
         String responseBody = response.getBody().asString();
-        if (responseBody != null && !responseBody.trim().isEmpty()) {
+        if (responseBody != null && !responseBody.trim().isEmpty())
+        {
             logInfo("Response Body : ");
             logJson(response.getBody().prettyPrint());
         }
@@ -125,7 +128,8 @@ public class RestConfig {
 
     protected static void logInfo(String log)
     {
-        if (extentTest.get() != null) {
+        if (extentTest.get() != null)
+        {
             try {
                 extentTest.get().info(MarkupHelper.createLabel(log, ExtentColor.PINK));
             } catch (Exception e) {

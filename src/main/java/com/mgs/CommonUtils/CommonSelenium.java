@@ -368,7 +368,7 @@ public class CommonSelenium {
 		js.executeScript("window.scrollBy(0,750)");
 	}
 
-	public void scrollUpto(By elementLocator)
+	public void scrollUpTo(By elementLocator)
 	{
 		try {
 			WebElement element = driver.findElement(elementLocator);
