@@ -24,7 +24,7 @@ public class ConnectionGroups extends BaseTest {
                 getProperty(CommonConstants.MGS, CommonConstants.MGS_PASSWORD)
         );
         String title = userDashboard.loginpage.getTitle();
-        Assert.assertEquals(title, "PeopleGrove for Career & Alumni");
+        Assert.assertEquals(title, "PeopleGrove for CareerPage & Alumni");
         log("Successfully Validated title of the Homepage");
         return userDashboard;
     }

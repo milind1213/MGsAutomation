@@ -9,6 +9,7 @@ public class WebDashboard extends CommonSelenium {
     public final Loginpage loginpage;
     public final HomePage homepage;
     public final Summary summary;
+    public final CareerPage careerpage;
     public final FDCalculatorPage fdCalculatorPage;
     public WebDashboard(WebDriver driver) {
         super(driver);
@@ -17,8 +18,13 @@ public class WebDashboard extends CommonSelenium {
         homepage = new HomePage(driver);
         summary = new Summary(driver);
         fdCalculatorPage = new FDCalculatorPage(driver);
+        careerpage = new CareerPage(driver);
     }
 
+   public CareerPage getCareer()
+   {
+        return careerpage;
+    }
     public Loginpage getHomePage()
     {
         return loginpage;

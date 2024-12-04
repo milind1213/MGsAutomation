@@ -28,13 +28,10 @@ public class HomePage extends CommonSelenium {
         moveToElement(connectBtn);
     }
 
-    public void selectConnectionType(String type)
-    {
+    public void selectConnectionType(String type) {
         List<WebElement> elements = driver.findElements(connectionsList);
-        for (WebElement element : elements)
-        {
-            if (element.getText().equalsIgnoreCase(type))
-            {
+        for (WebElement element : elements) {
+            if (element.getText().equalsIgnoreCase(type)) {
                 element.click();
                 break;
             }

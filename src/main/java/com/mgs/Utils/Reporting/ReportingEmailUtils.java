@@ -42,12 +42,12 @@ public class ReportingEmailUtils {
         if (latestReportFile != null) {
             boolean emailSent = sendEmailWithAttachment(to, from, subject, text, latestReportFile);
             if (emailSent) {
-                System.out.println("Extent Report has been successfully sent with the attachment to: " + Arrays.toString(to));
+                System.out.println("Execution Report has been successfully sent with the attachment to: " + Arrays.toString(to));
             } else {
-                System.out.println("Failed to send the Extent Report email.");
+                System.out.println("Failed to send Execution Report.");
             }
         } else {
-            System.out.println("Failed to locate the most recent Extent Report.");
+            System.out.println("Failed to locate the most recent ExecutionReport.");
         }
     }
     public static File getLatestFileFromDir(File dir) {
@@ -59,7 +59,8 @@ public class ReportingEmailUtils {
         return null;
     }
 
-    public static boolean sendEmailWithAttachment(String[] to, String from, String subject, String text, File file) {
+    public static boolean sendEmailWithAttachment(String[] to, String from, String subject, String text, File file)
+    {
         boolean flag = false;
         Properties properties = new Properties();
         properties.put("mail.smtp.auth", true);
@@ -100,7 +101,8 @@ public class ReportingEmailUtils {
         return flag;
     }
 
-    public static boolean sendEmail(String[] to, String from, String subject, String text) {
+    public static boolean sendEmail(String[] to, String from, String subject, String text)
+    {
         boolean flag = false;
         Properties properties = new Properties();
         properties.put("mail.smtp.auth", true);

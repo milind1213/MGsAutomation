@@ -25,7 +25,6 @@ public class ExtentManager {
 		extentReports.setSystemInfo("Java Version", System.getProperty("java.version"));
 		extentReports.setSystemInfo("Time Zone", System.getProperty("user.timezone"));
 		extentReports.setSystemInfo("Author", "Milind G");
-
 		return extentReports;
 	}
 }

@@ -25,7 +25,17 @@ public class ClusterHomeExplore extends BaseTest {
                 getProperty(CommonConstants.MGS, CommonConstants.MGS_PASSWORD)
         );
         String title = userDashboard.loginpage.getTitle();
-        Assert.assertEquals(title, "PeopleGrove for Career & Alumni");
+        Assert.assertEquals(title, "PeopleGrove for CareerPage & Alumni");
+        log("Successfully Validated title of the Homepage");
+        return userDashboard;
+    }
+
+
+    public WebDashboard getLoginWithEmail() throws Exception {
+        Loginpage homepage = getWebLogin();
+        WebDashboard userDashboard = homepage.loginWithGmail();
+        String title = userDashboard.loginpage.getTitle();
+        Assert.assertEquals(title, "PeopleGrove for CareerPage & Alumni");
         log("Successfully Validated title of the Homepage");
         return userDashboard;
     }
@@ -53,7 +63,6 @@ public class ClusterHomeExplore extends BaseTest {
                 e.click();
             }
         }
-
         log("Clicking on Sort Button");
         user.getHome().clickSortButton();
         log("Clicking on A-Z Dropdowns");
@@ -67,5 +76,11 @@ public class ClusterHomeExplore extends BaseTest {
         }
         Assert.assertFalse(userList.isEmpty(), "The user list is empty.");
         log("User List is not empty and Validated Sorted List Ascending Order");
+    }
+
+
+    public void getLoginWithWeb() throws Exception {
+        WebDashboard user = getLoginWithEmail();
+        user.getHome().moveOnConnect();
     }
 }

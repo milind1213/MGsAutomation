@@ -1,5 +1,6 @@
 package com.mgs.Tests.WebTests;
 
+import com.aventstack.extentreports.ExtentTest;
 import com.mgs.CommonConstants;
 import com.mgs.Pages.WebPages.Loginpage;
 import com.mgs.Pages.WebPages.WebDashboard;
@@ -10,13 +11,12 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
 import java.util.List;
-
 import static com.mgs.Utils.FileUtil.getProperty;
 
 @Listeners(TestListeners.class)
 public class ProgramDetails extends BaseTest {
+    public ExtentTest extent;
     WebDriver driver;
     public WebDashboard getLoginInstance() throws Exception {
         Loginpage homepage = getWebLogin();
@@ -25,7 +25,7 @@ public class ProgramDetails extends BaseTest {
                 getProperty(CommonConstants.MGS, CommonConstants.MGS_PASSWORD)
         );
         String title = userDashboard.loginpage.getTitle();
-        Assert.assertEquals(title, "PeopleGrove for Career & Alumni");
+        Assert.assertEquals(title, "PeopleGrove for CareerPage & Alumni");
         log("Successfully Validated title of the Homepage");
         return userDashboard;
     }
@@ -54,8 +54,8 @@ public class ProgramDetails extends BaseTest {
                 log("Clicked on Programs option");
             }
         }
-
         int programCount = user.getHome().getPrograms();
         System.out.println("Total number of programs: " + programCount);
     }
+
 }

@@ -35,7 +35,7 @@ public class CommonSelenium {
 		try {
 			waitFor(1);
 			WebElement element = driver.findElement(locator);
-			drawBorder(driver, element);
+			highlight(element);
 			element.sendKeys(text);
 			waitFor(1);
 		} catch (Exception e) {
@@ -48,7 +48,7 @@ public class CommonSelenium {
 	{
 		try {
 			waitFor(2);
-			drawBorder(driver, element);
+			highlight(element);
 			element.sendKeys(text);
 			waitFor(1);
 		} catch (Exception e) {
@@ -62,7 +62,7 @@ public class CommonSelenium {
 		try {
 			waitFor(2);
 			WebElement element = driver.findElement(locator);
-			drawBorder(driver, element);
+			highlight(element);
 			element.click();
 			waitFor(1);
 		} catch (Exception e) {
@@ -82,6 +82,7 @@ public class CommonSelenium {
 		try {
 			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
 			Actions actions = new Actions(driver);
+			highlight(element);
 			actions.moveToElement(element).click().perform();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -106,8 +107,9 @@ public class CommonSelenium {
 		wait.until(ExpectedConditions.visibilityOf(ele));
 	}
 
-	public static void selectDropdownOptionByText(WebDriver driver, By dropdownLocator, String optionText) {
+	public void selectDropdownOptionByText(WebDriver driver, By dropdownLocator, String optionText) {
 		WebElement dropdown = driver.findElement(dropdownLocator);
+		highlight(dropdownLocator);
 		Select select = new Select(dropdown);
 		select.selectByVisibleText(optionText);
 	}
@@ -173,6 +175,7 @@ public class CommonSelenium {
 	{
 		try {
 			waitFor(2);
+			highlight(locator);
 			return driver.findElement(locator).getText();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -234,12 +237,14 @@ public class CommonSelenium {
 	public void clickElementWithText(String textVal) {
 		String xpath = String.format("//*[text()='%s' or contains(text(),'%s')]", textVal, textVal);
 //	        waitFor(2);
+		highlight(By.xpath(xpath));
 		click(By.xpath(xpath));
 	}
 
 	public void clearElement(WebDriver driver, By locator)
 	{
 		WebElement element = driver.findElement(locator);
+		highlight(element);
 		element.clear();
 	}
 
@@ -247,9 +252,10 @@ public class CommonSelenium {
 	{
 		try {
 			waitFor(1);
-			WebElement element = driver.findElement(locators);
+			WebElement ele = driver.findElement(locators);
 			JavascriptExecutor executor = (JavascriptExecutor) driver;
-			executor.executeScript("arguments[0].click();", element);
+			highlight(ele);
+			executor.executeScript("arguments[0].click();", ele);
 
 			waitFor(1);
 		} catch (Exception e) {
@@ -262,16 +268,10 @@ public class CommonSelenium {
 	{
 		try {
 			waitFor(2); // Optional: wait for 2 seconds (adjust as necessary)
-
-			// Find the element
 			WebElement element = driver.findElement(locator);
-			drawBorder(driver, element); // Optional: highlight the element with a border
-
 			Actions actions = new Actions(driver);
-
-			// Move to the element
 			actions.moveToElement(element).build().perform();
-
+			highlight(element);
 			waitFor(1); // Optional: additional wait after moving to the element
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -284,7 +284,7 @@ public class CommonSelenium {
 		try {
 			waitFor(2);
 			WebElement element = driver.findElement(locator);
-			drawBorder(driver, element);
+			highlight(element);
 
 			Actions actions = new Actions(driver);
 			actions.doubleClick(element).build().perform();
@@ -300,7 +300,7 @@ public class CommonSelenium {
 	{
 		try {
 			waitFor(2);
-			drawBorder(driver, element);
+			highlight(element);
 			element.click();
 			waitFor(1);
 		} catch (Exception e) {
@@ -309,17 +309,44 @@ public class CommonSelenium {
 		}
 	}
 
+	public void highlight(By element)
+	{
+		try
+		{
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			js.executeScript("arguments[0].setAttribute('style','background: ; border: 2px solid red;');", driver.findElement(element));
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+			junit.framework.Assert.fail("Failed to highlight [" + element + "] element.");
+		}
+	}
+
+	public void highlight(WebElement element)
+	{
+		try
+		{
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			js.executeScript("arguments[0].setAttribute('style','background: ; border: 2px solid red;');", element);
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+			junit.framework.Assert.fail("Failed to highlight [" + element + "] element.");
+		}
+	}
+
+
 	public void sendKeysWithWait(By locator, String text, int seconds)
 	{
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(seconds)); // Adjust timeout as needed
 		WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
 		element.sendKeys(text);
 	}
-
+/*
 	public static void drawBorder(WebDriver driver, WebElement element) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].style.border='3px solid red'", element);
-	}
+	}*/
 
 	public static void scrollIntoView(WebDriver driver, By locator)
 	{
