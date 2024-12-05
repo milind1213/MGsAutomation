@@ -1,22 +1,20 @@
 package com.mgs.CommonUtils;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
-import java.util.Date;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.mgs.Utils.Reporting.TestListeners;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
+import org.apache.commons.lang3.time.DateUtils;
+import org.openqa.selenium.*;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.interactions.Coordinates;
+import org.openqa.selenium.interactions.Locatable;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -26,6 +24,37 @@ public class CommonSelenium {
 	public WebDriver driver;
 	public CommonSelenium(WebDriver driver) {
 		this.driver = driver;
+	}
+
+
+	public void click(By locator)
+	{
+		try {
+			waitFor(2);
+			WebElement element = driver.findElement(locator);
+			highlight(element);
+			element.click();
+			waitFor(1);
+		} catch (Exception e) {
+			e.printStackTrace();
+			Assert.fail("Failed to click on element [" + locator + "]");
+		}
+	}
+
+	public void ClickWithJS(By locators)
+	{
+		try {
+			waitFor(1);
+			WebElement ele = driver.findElement(locators);
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			highlight(ele);
+			executor.executeScript("arguments[0].click();", ele);
+
+			waitFor(1);
+		} catch (Exception e) {
+			e.printStackTrace();
+			Assert.fail("Failed to click on element [" + locators + "] ");
+		}
 	}
 
 	public void sendKeys(By locator, String text)
@@ -81,19 +110,6 @@ public class CommonSelenium {
 		}
 	}
 
-	public void click(By locator)
-	{
-		try {
-			waitFor(2);
-			WebElement element = driver.findElement(locator);
-			highlight(element);
-			element.click();
-			waitFor(1);
-		} catch (Exception e) {
-			e.printStackTrace();
-			Assert.fail("Failed to click on element [" + locator + "]");
-		}
-	}
 
 	public void handleEleClickInterException(WebDriver driver, WebElement element) {
 		try {
@@ -130,7 +146,8 @@ public class CommonSelenium {
 		}
 	}
 
-	public void waitForElementToAppear(WebElement ele, int seconds) {
+	public void waitForElementToAppear(WebElement ele, int seconds)
+	{
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
 			wait.until(ExpectedConditions.visibilityOf(ele));
@@ -140,28 +157,6 @@ public class CommonSelenium {
 		} catch (Exception e) {
 			e.printStackTrace();
 			Assert.fail("An unexpected error occurred while waiting for the element: " + ele);
-		}
-	}
-
-	public void selectDropdownOptionByText(WebDriver driver, By dropdownLocator, String optionText) {
-		try {
-			WebElement dropdown = driver.findElement(dropdownLocator);
-			highlight(dropdownLocator);
-			Select select = new Select(dropdown);
-			select.selectByVisibleText(optionText);
-		} catch (Exception e) {
-			e.printStackTrace();
-			Assert.fail("Failed to select dropdown option: [" + optionText + "] from dropdown: " + dropdownLocator);
-		}
-	}
-
-
-	protected void waitForElementDisplay(WebElement ele, int seconds)
-	{
-		try {
-			new WebDriverWait(driver, Duration.ofSeconds(seconds)).until(ExpectedConditions.visibilityOf(ele));
-		} catch (Exception e) {
-			System.err.println("Waited for element [" + ele + "] for " + seconds + " seconds");
 		}
 	}
 
@@ -175,6 +170,7 @@ public class CommonSelenium {
 		}
 	}
 
+
 	public void waitForElementVisibility(WebDriver driver, By by, int seconds)
 	{
 		try {
@@ -184,6 +180,7 @@ public class CommonSelenium {
 			System.err.println("Waited for element [" + by.toString() + "] visibility for " + seconds + " seconds");
 		}
 	}
+
 
 	public void waitForElementToBeClickable(By by, int seconds)
 	{
@@ -213,24 +210,13 @@ public class CommonSelenium {
 		}
 	}
 
-	public String getText(By locator)
-	{
-		try {
-			waitFor(2);
-			highlight(locator);
-			return driver.findElement(locator).getText();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
 	public void scrollToElement(WebDriver driver, By locator, int yOffset)
 	{
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollTo(0, 0);");
 		js.executeScript("window.scrollBy(0, arguments[0]);", yOffset);
 	}
+
 
 	public boolean isTextInPage(String text)
 	{
@@ -241,22 +227,6 @@ public class CommonSelenium {
 		}
 	}
 
-	public void waitForNBLoad(int seconds)
-	{
-		try {
-			for (int i = 0; i < seconds / 2; i++) {
-				waitFor(1);
-				if (!driver.getPageSource().contains("Loading..."))
-					break;
-				else
-					System.out.println("Loading...");
-			}
-
-		} catch (Exception e) {
-			System.err.println("Loading error");
-		}
-
-	}
 
 	public boolean isTextPresent(WebDriver driver, String actualText) {
 		return actualText.contains(actualText);
@@ -295,6 +265,18 @@ public class CommonSelenium {
 		}
 	}
 
+	public void selectDropdownOptionByText(WebDriver driver, By dropdownLocator, String optionText)
+	{
+		try {
+			WebElement dropdown = driver.findElement(dropdownLocator);
+			highlight(dropdownLocator);
+			Select select = new Select(dropdown);
+			select.selectByVisibleText(optionText);
+		} catch (Exception e) {
+			e.printStackTrace();
+			Assert.fail("Failed to select dropdown option: [" + optionText + "] from dropdown: " + dropdownLocator);
+		}
+	}
 
 	public void clearElement(WebDriver driver, By locator)
 	{
@@ -303,31 +285,17 @@ public class CommonSelenium {
 		element.clear();
 	}
 
-	public void javascriptClick(By locators)
-	{
-		try {
-			waitFor(1);
-			WebElement ele = driver.findElement(locators);
-			JavascriptExecutor executor = (JavascriptExecutor) driver;
-			highlight(ele);
-			executor.executeScript("arguments[0].click();", ele);
 
-			waitFor(1);
-		} catch (Exception e) {
-			e.printStackTrace();
-			Assert.fail("Failed to click on element [" + locators + "] ");
-		}
-	}
 
 	public void moveToElement(By locator)
 	{
 		try {
-			waitFor(2); // Optional: wait for 2 seconds (adjust as necessary)
+			waitFor(2);
 			WebElement element = driver.findElement(locator);
 			Actions actions = new Actions(driver);
-			actions.moveToElement(element).build().perform();
 			highlight(element);
-			waitFor(1); // Optional: additional wait after moving to the element
+			actions.moveToElement(element).build().perform();
+			waitFor(1);
 		} catch (Exception e) {
 			e.printStackTrace();
 			Assert.fail("Failed to move to element [" + locator + "]");
@@ -397,17 +365,12 @@ public class CommonSelenium {
 		WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
 		element.sendKeys(text);
 	}
-/*
-	public static void drawBorder(WebDriver driver, WebElement element) {
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("arguments[0].style.border='3px solid red'", element);
-	}*/
+
 
 	public static void scrollIntoView(WebDriver driver, By locator)
 	{
 		try {
 			JavascriptExecutor js = (JavascriptExecutor) driver;
-
 			js.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(locator));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -536,7 +499,7 @@ public class CommonSelenium {
 		return RandomStringUtils.randomAlphanumeric(length);
 	}
 
-	public static int getRandomNumberInRange(int min, int max)
+	public static int getRandomNumberInRanges(int min, int max)
 	{
 		if (min >= max) {
 			throw new IllegalArgumentException("max must be greater than min");
@@ -557,6 +520,501 @@ public class CommonSelenium {
 			System.out.println("[" + timestamp + "] " + "INFO: " + message);
 		} catch (Exception e) {
 			System.err.println("Failed to log message: " + e.getMessage());
+		}
+	}
+//---------------------------------------------------------------------------------------------------------------
+
+
+	public WebElement findElementFromFrame(String xPath)
+	{
+
+		List<WebElement> frames = driver.findElements(By.xpath("//iframe"));
+		int index = 0;
+		for (WebElement frame : frames)
+		{
+			try
+			{
+				driver.switchTo().defaultContent();
+				return driver.switchTo().frame(index).findElement(By.xpath(xPath));
+			} catch (NoSuchFrameException | NoSuchElementException e)
+			{
+				index = index + 1;
+			}
+		}
+		return driver.findElement(By.xpath(xPath));
+	}
+
+	public String getCurrentValueOfDropDownList(By by)
+	{
+		Select select = new Select(driver.findElement(by));
+		return select.getFirstSelectedOption().getText();
+	}
+	public void clickOnTextSpan(String textVal)
+	{
+		String xpath = String.format("//span[.='%s']", textVal);
+		click(By.xpath(xpath));
+	}
+
+	public void pressESCKey()
+	{
+		Actions action = new Actions(driver);
+		action.sendKeys(Keys.ESCAPE).perform();
+		waitFor(3);
+	}
+
+
+	public String getCurrentDate()
+	{
+		Date date = new Date();
+		DateFormat dateFormat2 = new SimpleDateFormat("dd MMM, yyyy");
+		String date1 =  dateFormat2.format(date);
+		System.out.println(date1);
+		return date1;
+	}
+
+	public String getTomorrowDate()
+	{
+		DateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy");
+		Date date = new Date();
+
+		Calendar c = Calendar.getInstance();
+		c.setTime(date);
+		c.add(Calendar.DATE, 1);
+		date = c.getTime();
+		System.out.println(dateFormat.format(date));
+
+		DateFormat dateFormat2 = new SimpleDateFormat("dd MMM, yyyy");
+		System.out.println(dateFormat2.format(date));
+		return dateFormat2.format(date);
+	}
+
+	public String getYesterdaysDate()
+	{
+		Date date = DateUtils.addDays(new Date(), -1);
+		SimpleDateFormat sdf = new SimpleDateFormat("d");
+		return sdf.format(date);
+	}
+
+	public String getTomorrowsDate()
+	{
+		Date date = DateUtils.addDays(new Date(), 1);
+		SimpleDateFormat sdf = new SimpleDateFormat("d");
+		return sdf.format(date);
+	}
+	public List<String> getAllOptions(By locator)
+	{
+		Select action = new Select(driver.findElement(locator));
+		List<WebElement> options = action.getOptions();
+		List<String> values = new ArrayList<String>();
+		int size = options.size();
+		for (int i = 0; i < size; i++)
+		{
+			String op = options.get(i).getText();
+			values.add(op);
+		}
+		return values;
+	}
+
+	public void selectByOption(By locator, String option)
+	{
+		Select action = new Select(driver.findElement(locator));
+		action.selectByVisibleText(option);
+	}
+
+	public void mouseMoveByOffset(int x, int y)
+	{
+		Actions action = new Actions(driver);
+		action.moveByOffset(x, y).perform();
+	}
+	public void hoverElement(WebElement el)
+	{
+		Actions action = new Actions(driver);
+		action.moveToElement(el).perform();
+		waitFor(1);
+		action.release();
+
+	}
+
+	public void selectDropDownValue(int positionNeedToSelect)
+	{
+		Actions action = new Actions(driver);
+		for (int i = 1; i <= positionNeedToSelect; i++)
+		{
+			action.sendKeys(Keys.DOWN);
+		}
+		action.sendKeys(Keys.ENTER);
+		action.perform();
+		waitFor(2);
+	}
+
+	public boolean containsIgnoreCase(String parent, String child)
+	{
+		return parent.toLowerCase().contains(child.toLowerCase());
+	}
+
+	public void getToUrl(String url)
+	{
+		try
+		{
+			driver.get(url);
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+	public void waitForElementText(String textVal, int timeoutSeconds)
+	{
+		String xpath = String.format("//*[text()='%s' or contains(text(),'%s')]", textVal, textVal);
+		waitForElementDisplay(By.xpath(xpath), timeoutSeconds);
+	}
+
+	public void scrollClickBtnWithText(String textVal)
+	{
+		String xpath = String.format("//button[text()='%s']", textVal, textVal);
+
+		waitFor(1);
+		scrollClick(By.xpath(xpath));
+		waitFor(1);
+	}
+
+
+	public void sendKeysAction(CharSequence... text)
+	{
+		Actions action = new Actions(driver);
+		action.sendKeys(text).build().perform();
+	}
+
+	public List<String> getTextValuesFromElements(By locator, int limit)
+	{
+		int count = 0;
+
+		List<WebElement> elements = driver.findElements(locator);
+		List<String> textValues = new ArrayList<String>();
+
+		for (WebElement element : elements)
+		{
+			if (count <= limit)
+			{
+				textValues.add(element.getText());
+				count++;
+			} else
+				return textValues;
+		}
+		return textValues;
+	}
+
+	public double getNumericValue(String numberTxt) // returns 1000.00 from " ₹ 1,000 " for calculations
+	{
+		String number = "";
+		for (char c : numberTxt.toCharArray())
+			if (Character.isDigit(c) || c == '.')
+				number += c;
+		return Double.parseDouble(number);
+	}
+
+	public void waitForNBLoad(int seconds)
+	{
+		try
+		{
+			for (int i = 0; i < seconds / 2; i++)
+			{
+				waitFor(2);
+				if (!driver.getPageSource().contains("Loading..."))
+					break;
+				else
+					System.out.println("Loading...");
+			}
+
+		} catch (Exception e)
+		{
+			System.err.println("Loading error");
+		}
+
+	}
+
+	public void waitForNBLoad(String loadingId, int seconds) throws InterruptedException
+	{
+		try
+		{
+			for (int i = 0; i < seconds / 2; i++)
+			{
+				waitFor(2);
+				if (!driver.getPageSource().contains(loadingId))
+					break;
+				else
+					System.out.println("Waiting for [" + loadingId + "]");
+			}
+
+		} catch (Exception e)
+		{
+			System.err.println("Loading error");
+		}
+
+	}
+
+	public void closeTab()
+	{
+		try
+		{
+			Thread.sleep(3);
+			log("trying to close selenium WebDriver");
+			if (driver != null)
+				driver.close();
+			log("Selenium WebDriver is closed successfully.");
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+
+	public void waitForJsLoad(int seconds) {
+		JavascriptExecutor js = (JavascriptExecutor) driver; // waits for loading indicator in browser header
+		String ready;
+		waitFor(2);
+		try {
+			for (int i = 0; i < seconds; i++) {
+				ready = js.executeScript("return document.readyState").toString();
+				System.out.println(ready);
+				if (ready.equals("complete"))
+					break;
+				else
+					waitFor(1);
+			}
+			waitFor(1);
+		} catch (Exception e) {
+			System.err.println("Error in waiting for browser load" + e.getMessage());
+		}
+	}
+
+	protected void waitForElementDisplay(WebElement locator, int timeoutSeconds)
+	{
+		try
+		{
+			new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds)).until(ExpectedConditions.visibilityOf(locator));
+		} catch (Exception e)
+		{
+			System.err.println("Waited for element [" + locator + "] for " + timeoutSeconds + " seconds");
+		}
+	}
+	protected void waitForElementDisplay(By locator, int timeoutSeconds)
+	{
+		try
+		{
+			new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds)).until(ExpectedConditions.visibilityOfElementLocated(locator));
+		} catch (Exception e)
+		{
+			System.err.println("Waited for element [" + locator + "] for " + timeoutSeconds + " seconds");
+		}
+	}
+
+
+	protected void clickAction(By locator) throws InterruptedException
+	{
+		Actions action = new Actions(driver);
+		action.click(driver.findElement(locator)).perform();
+	}
+
+	public void switchToTab(int tabNo)
+	{
+		ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(tabs2.get(tabNo));
+	}
+
+	public void switchBackToParentWindowAndCloseChild() {
+		String parentWindow = driver.getWindowHandle();
+		Set<String> handles = driver.getWindowHandles();
+		for (String windowHandle : handles) {
+			if (!windowHandle.equals(parentWindow)) {
+				driver.switchTo().window(windowHandle);
+				driver.close();
+				System.out.println("Closed child window");
+				driver.switchTo().window(parentWindow);
+				System.out.println("Switched back to parent window");
+				break; // Exit the loop after closing the child window
+			}
+		}
+	}
+
+	public void switchToChildWindowWithoutClosingParent()
+	{
+		String parentWindow = driver.getWindowHandle();
+		Set<String> handles = driver.getWindowHandles();
+		for (String windowHandle : handles)
+		{
+			if (!windowHandle.equals(parentWindow))
+			{
+				driver.switchTo().window(windowHandle);
+				System.out.println("closing Parent window and control on the new open window");
+			}
+		}
+	}
+
+	public void scrollClickExactText(String textVal)
+	{
+		String xpath = String.format("//*[text()='%s']", textVal, textVal);
+		scrollClick(By.xpath(xpath));
+	}
+
+	public void scrollClickText(String textVal)
+	{
+		String xpath = String.format("//*[text()='%s' or contains(text(),'%s')]", textVal, textVal);
+		scrollClick(By.xpath(xpath));
+	}
+
+	protected String getAttribute(By locator, String attribute)
+	{
+		String attributeValue = driver.findElement(locator).getAttribute(attribute);
+
+		return attributeValue != null ? attributeValue : "null";
+	}
+
+	public boolean isElementTextDisplayed(String textVal)
+	{
+		String xpath = String.format("//*[text()='%s' or contains(text(),'%s')]", textVal, textVal);
+
+		try
+		{
+			return driver.findElement(By.xpath(xpath)).isDisplayed();
+		} catch (Exception e)
+		{
+			return false;
+		}
+	}
+
+	public void refresh()
+	{
+		try
+		{
+			waitFor(1);
+			driver.navigate().refresh();
+			waitFor(2);
+		} catch (Exception e)
+		{
+			Assert.fail("Failed to refresh page..");
+		}
+	}
+
+	public void scrollDownTillLast()
+	{
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
+		waitFor(1);
+	}
+
+
+
+	public String getText(By locator)
+	{
+		try
+		{
+			waitFor(2);
+			highlight(locator);
+			return driver.findElement(locator).getText();
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+			Assert.fail("Failed to get String for element [" + locator + "]");
+		}
+		return null;
+	}
+
+	public boolean isElementDisplayed(By locator)
+	{
+		waitFor(2);
+		highlight(locator);
+		Coordinates coordinate = ((Locatable) driver.findElement(locator)).getCoordinates();
+		coordinate.onPage();
+		coordinate.inViewPort();
+		return driver.findElement(locator).isDisplayed();
+	}
+
+
+
+	public String getRandomValueFromArray(List<String> values)
+	{
+		Random rand = new Random();
+		String randomElement = values.get(rand.nextInt(values.size()));
+		if (randomElement.equalsIgnoreCase("Select"))
+			return getRandomValueFromArray(values);
+		else
+			return randomElement;
+	}
+
+	public int getRandomNumberInRange(int min, int max)
+	{
+
+		if (min >= max)
+		{
+			throw new IllegalArgumentException("max must be greater than min");
+		}
+
+		Random r = new Random();
+		return r.nextInt((max - min) + 1) + min;
+	}
+
+	public WebElement getRandomValueFromGivenList(List<WebElement> givenList)
+	{
+		Random rand = new Random();
+		WebElement randomElement = givenList.get(rand.nextInt(givenList.size()));
+		while(randomElement.getText().equalsIgnoreCase("select"))
+		{
+			continue;
+		}
+		return randomElement;
+	}
+	public void clearAndSendKeys(WebElement webelement, String str)
+	{
+		try
+		{
+			waitFor(1);
+			highlight(webelement);
+			webelement.clear();
+			webelement.sendKeys(str);
+			waitFor(1);
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	public void scrollUpto(WebElement e)
+	{
+		try
+		{
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			js.executeScript("arguments[0].scrollIntoView();", e);
+		} catch (Exception ea)
+		{
+			ea.printStackTrace();
+			Assert.fail("Failed to scroll upto [" + e + "] element.");
+		}
+	}
+
+	public void pressBack(int times)
+	{
+		for (int i = 1; i <= times; i++)
+		{
+			driver.navigate().back();
+			waitFor(1);
+		}
+
+	}
+
+	public void clickWithMoreWait(By locators)
+	{
+		try
+		{
+			waitFor(5);
+			highlight(locators);
+			driver.findElement(locators).click();
+			waitFor(10);
+			waitForJsLoad(60);
+			waitForNBLoad(60);
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+			Assert.fail("Failed to click on element [" + locators + "] ");
 		}
 	}
 
