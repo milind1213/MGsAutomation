@@ -142,7 +142,8 @@ public class RestConfig {
 
     static void logJson(String json)
     {
-        if (extentTest.get() != null) {
+        if (extentTest.get() != null)
+        {
             extentTest.get().info(MarkupHelper.createCodeBlock(json, CodeLanguage.JSON));
         } else {
             System.out.println(json);
@@ -153,9 +154,11 @@ public class RestConfig {
     {
         String[][] arrayHeaders = headersList.stream().map(header -> new String[]{header.getName(), header.getValue()})
                 .toArray(String[][]::new);
-        if (extentTest.get() != null) {
+        if (extentTest.get() != null)
+        {
             extentTest.get().info(MarkupHelper.createTable(arrayHeaders));
-        } else {
+        } else
+        {
             for (String[] header : arrayHeaders) {
                 System.out.println(header[0] + ": " + header[1]);
             }

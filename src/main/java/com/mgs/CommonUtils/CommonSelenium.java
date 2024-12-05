@@ -24,9 +24,7 @@ import org.testng.Assert;
 
 public class CommonSelenium {
 	public WebDriver driver;
-
-	public CommonSelenium(WebDriver driver)
-	{
+	public CommonSelenium(WebDriver driver) {
 		this.driver = driver;
 	}
 
@@ -57,6 +55,32 @@ public class CommonSelenium {
 		}
 	}
 
+	public void enterValueUsingJS(By locator, String text)
+	{
+		try {
+
+			WebElement element = driver.findElement(locator);
+			highlight(element);
+			JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+			jsExecutor.executeScript("arguments[0].setAttribute('text', arguments[1]);", element, text);
+		} catch (Exception e) {
+			e.printStackTrace();
+			Assert.fail("Failed to Enter textValue to element");
+		}
+	}
+
+	public void enterValueUsingJS(WebElement element, String text)
+	{
+		try {
+			highlight(element);
+			JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+			jsExecutor.executeScript("arguments[0].setAttribute('text', arguments[1]);", element, text);
+		} catch (Exception e) {
+			e.printStackTrace();
+			Assert.fail("Failed to Enter textValue to element");
+		}
+	}
+
 	public void click(By locator)
 	{
 		try {
@@ -71,13 +95,6 @@ public class CommonSelenium {
 		}
 	}
 
-	public void scrollToElement(WebDriver driver, By locator, int yOffset)
-	{
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("window.scrollTo(0, 0);");
-		js.executeScript("window.scrollBy(0, arguments[0]);", yOffset);
-	}
-
 	public void handleEleClickInterException(WebDriver driver, WebElement element) {
 		try {
 			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
@@ -89,30 +106,55 @@ public class CommonSelenium {
 		}
 	}
 
-	public static WebElement waitForElementToBeClickable(WebDriver driver, By locator, int seconds)
+
+	public void waitForElementClickable(WebElement webElement, int timeoutSeconds)
 	{
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
-		return wait.until(ExpectedConditions.elementToBeClickable(locator));
+		try {
+			new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds))
+					.until(ExpectedConditions.elementToBeClickable(webElement));
+		} catch (Exception e) {
+			System.err.println(
+					"Waited for element [" + webElement + "] to be clickable for " + timeoutSeconds + " seconds");
+		}
 	}
 
-	public static WebElement waitForElementToBeClickable(WebDriver driver, WebElement element, int seconds)
+
+	public void waitForElementClickable(By locator, int timeoutSeconds)
 	{
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
-		return wait.until(ExpectedConditions.elementToBeClickable(element));
+		try {
+			new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds))
+					.until(ExpectedConditions.elementToBeClickable(driver.findElement(locator)));
+		} catch (Exception e) {
+			System.err.println(
+					"Waited for Locator [" + locator + "] to be clickable for " + timeoutSeconds + " seconds");
+		}
 	}
 
-	public void waitForElementToAppear(WebElement ele, int seconds)
-	{
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
-		wait.until(ExpectedConditions.visibilityOf(ele));
+	public void waitForElementToAppear(WebElement ele, int seconds) {
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
+			wait.until(ExpectedConditions.visibilityOf(ele));
+		} catch (TimeoutException e) {
+			e.printStackTrace();
+			Assert.fail("Element did not appear within " + seconds + " seconds: " + ele);
+		} catch (Exception e) {
+			e.printStackTrace();
+			Assert.fail("An unexpected error occurred while waiting for the element: " + ele);
+		}
 	}
 
 	public void selectDropdownOptionByText(WebDriver driver, By dropdownLocator, String optionText) {
-		WebElement dropdown = driver.findElement(dropdownLocator);
-		highlight(dropdownLocator);
-		Select select = new Select(dropdown);
-		select.selectByVisibleText(optionText);
+		try {
+			WebElement dropdown = driver.findElement(dropdownLocator);
+			highlight(dropdownLocator);
+			Select select = new Select(dropdown);
+			select.selectByVisibleText(optionText);
+		} catch (Exception e) {
+			e.printStackTrace();
+			Assert.fail("Failed to select dropdown option: [" + optionText + "] from dropdown: " + dropdownLocator);
+		}
 	}
+
 
 	protected void waitForElementDisplay(WebElement ele, int seconds)
 	{
@@ -183,6 +225,13 @@ public class CommonSelenium {
 		return null;
 	}
 
+	public void scrollToElement(WebDriver driver, By locator, int yOffset)
+	{
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollTo(0, 0);");
+		js.executeScript("window.scrollBy(0, arguments[0]);", yOffset);
+	}
+
 	public boolean isTextInPage(String text)
 	{
 		try {
@@ -235,11 +284,17 @@ public class CommonSelenium {
 	}
 
 	public void clickElementWithText(String textVal) {
-		String xpath = String.format("//*[text()='%s' or contains(text(),'%s')]", textVal, textVal);
-//	        waitFor(2);
-		highlight(By.xpath(xpath));
-		click(By.xpath(xpath));
+		try {
+			String xpath = String.format("//*[text()='%s' or contains(text(),'%s')]", textVal, textVal);
+			waitFor(1);
+			highlight(By.xpath(xpath));
+			click(By.xpath(xpath));
+		} catch (Exception e) {
+			e.printStackTrace();
+			Assert.fail("An error occurred while clicking element with text: " + textVal + ". Error: " + e.getMessage());
+		}
 	}
+
 
 	public void clearElement(WebDriver driver, By locator)
 	{
@@ -370,6 +425,29 @@ public class CommonSelenium {
 		}
 	}
 
+	public void scrollByPixels(int x, int y)
+	{
+		try {
+			JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+			jsExecutor.executeScript("window.scrollBy(arguments[0], arguments[1]);", x, y);
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.err.println("Failed to scroll by pixels y [" + y + "] and [" + y + "]");
+		}
+	}
+
+	public int getVerticalScrollOffset()
+	{
+		try {
+			JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+			return ((Long) jsExecutor.executeScript("return window.pageYOffset;")).intValue();
+		} catch (Exception e) {
+			e.printStackTrace();
+			Assert.fail("An error occurred while getting the vertical scroll offset.");
+			return 0;
+		}
+	}
+
 	public void switchToChildWindow()
 	{
 		String parentWindow = driver.getWindowHandle();
@@ -394,6 +472,22 @@ public class CommonSelenium {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollBy(0,750)");
 	}
+
+	public void scrollToBottomOfPage() {
+		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+		jsExecutor.executeScript("window.scrollTo(0, document.body.scrollHeight);");
+	}
+
+	public void scrollToTopOfPage () {
+		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+		jsExecutor.executeScript("window.scrollTo(0, 0);");
+	}
+
+	public void setPageZoom(String zoomLevel) {
+		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+		jsExecutor.executeScript("document.body.style.zoom = arguments[0];", zoomLevel);
+	}
+
 
 	public void scrollUpTo(By elementLocator)
 	{
@@ -428,16 +522,6 @@ public class CommonSelenium {
 		js.executeScript("arguments[0].click();", element);
 	}
 
-	protected WebElement waitForElementClickable(WebElement webElement, int timeoutSeconds) {
-		try {
-			new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds))
-					.until(ExpectedConditions.elementToBeClickable(webElement));
-		} catch (Exception e) {
-			System.err.println(
-					"Waited for element [" + webElement + "] to be clickable for " + timeoutSeconds + " seconds");
-		}
-		return webElement;
-	}
 
 	public void waitForOverlayToDisappear(By overlayElement, int timeoutSeconds) {
 		try {
