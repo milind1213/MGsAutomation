@@ -1,9 +1,16 @@
 package com.mgs.CommonUtils;
 
+import java.awt.*;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
+import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
@@ -189,6 +196,16 @@ public class CommonSelenium {
 		} catch (Exception e) {
 			System.err
 					.println("Waited for element [" + by.toString() + "] to be clickable for " + seconds + " seconds");
+		}
+	}
+
+	public void waitForElementToBeClickable(WebElement ele, int seconds)
+	{
+		try {
+			new WebDriverWait(driver, Duration.ofSeconds(seconds)).until(ExpectedConditions.elementToBeClickable(ele));
+		} catch (Exception e) {
+			System.err
+					.println("Waited for element [" + ele.toString() + "] to be clickable for " + seconds + " seconds");
 		}
 	}
 
@@ -495,20 +512,6 @@ public class CommonSelenium {
 		}
 	}
 
-	public static String generateRandomText(int length) {
-		return RandomStringUtils.randomAlphanumeric(length);
-	}
-
-	public static int getRandomNumberInRanges(int min, int max)
-	{
-		if (min >= max) {
-			throw new IllegalArgumentException("max must be greater than min");
-		}
-		Random r = new Random();
-		return r.nextInt((max - min) + 1) + min;
-	}
-
-
 	public void log(String message)
 	{
 		try {
@@ -522,8 +525,10 @@ public class CommonSelenium {
 			System.err.println("Failed to log message: " + e.getMessage());
 		}
 	}
-//---------------------------------------------------------------------------------------------------------------
 
+	public List<WebElement> getElements(By locator) {
+		return driver.findElements(locator);
+	}
 
 	public WebElement findElementFromFrame(String xPath)
 	{
@@ -555,6 +560,13 @@ public class CommonSelenium {
 		click(By.xpath(xpath));
 	}
 
+	public void clickJSOnTextSpan(String textVal)
+	{
+		String xpath = String.format("//span[.='%s']", textVal);
+		ClickWithJS(By.xpath(xpath));
+	}
+
+
 	public void pressESCKey()
 	{
 		Actions action = new Actions(driver);
@@ -562,45 +574,6 @@ public class CommonSelenium {
 		waitFor(3);
 	}
 
-
-	public String getCurrentDate()
-	{
-		Date date = new Date();
-		DateFormat dateFormat2 = new SimpleDateFormat("dd MMM, yyyy");
-		String date1 =  dateFormat2.format(date);
-		System.out.println(date1);
-		return date1;
-	}
-
-	public String getTomorrowDate()
-	{
-		DateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy");
-		Date date = new Date();
-
-		Calendar c = Calendar.getInstance();
-		c.setTime(date);
-		c.add(Calendar.DATE, 1);
-		date = c.getTime();
-		System.out.println(dateFormat.format(date));
-
-		DateFormat dateFormat2 = new SimpleDateFormat("dd MMM, yyyy");
-		System.out.println(dateFormat2.format(date));
-		return dateFormat2.format(date);
-	}
-
-	public String getYesterdaysDate()
-	{
-		Date date = DateUtils.addDays(new Date(), -1);
-		SimpleDateFormat sdf = new SimpleDateFormat("d");
-		return sdf.format(date);
-	}
-
-	public String getTomorrowsDate()
-	{
-		Date date = DateUtils.addDays(new Date(), 1);
-		SimpleDateFormat sdf = new SimpleDateFormat("d");
-		return sdf.format(date);
-	}
 	public List<String> getAllOptions(By locator)
 	{
 		Select action = new Select(driver.findElement(locator));
@@ -632,7 +605,6 @@ public class CommonSelenium {
 		action.moveToElement(el).perform();
 		waitFor(1);
 		action.release();
-
 	}
 
 	public void selectDropDownValue(int positionNeedToSelect)
@@ -919,6 +891,7 @@ public class CommonSelenium {
 		return null;
 	}
 
+
 	public boolean isElementDisplayed(By locator)
 	{
 		waitFor(2);
@@ -931,38 +904,6 @@ public class CommonSelenium {
 
 
 
-	public String getRandomValueFromArray(List<String> values)
-	{
-		Random rand = new Random();
-		String randomElement = values.get(rand.nextInt(values.size()));
-		if (randomElement.equalsIgnoreCase("Select"))
-			return getRandomValueFromArray(values);
-		else
-			return randomElement;
-	}
-
-	public int getRandomNumberInRange(int min, int max)
-	{
-
-		if (min >= max)
-		{
-			throw new IllegalArgumentException("max must be greater than min");
-		}
-
-		Random r = new Random();
-		return r.nextInt((max - min) + 1) + min;
-	}
-
-	public WebElement getRandomValueFromGivenList(List<WebElement> givenList)
-	{
-		Random rand = new Random();
-		WebElement randomElement = givenList.get(rand.nextInt(givenList.size()));
-		while(randomElement.getText().equalsIgnoreCase("select"))
-		{
-			continue;
-		}
-		return randomElement;
-	}
 	public void clearAndSendKeys(WebElement webelement, String str)
 	{
 		try
@@ -1017,5 +958,169 @@ public class CommonSelenium {
 			Assert.fail("Failed to click on element [" + locators + "] ");
 		}
 	}
+
+
+	public void uploadFileViaRobot(String filePath) {
+		try {
+			if (filePath == null || filePath.isEmpty()) {
+				throw new IllegalArgumentException("File path cannot be null or empty.");
+			}
+			StringSelection selection = new StringSelection(filePath);
+			Toolkit.getDefaultToolkit().getSystemClipboard().setContents(selection, null);
+			Robot robot = new Robot();
+			robot.keyPress(KeyEvent.VK_CONTROL);
+			robot.keyPress(KeyEvent.VK_V);
+			robot.keyRelease(KeyEvent.VK_V);
+			robot.keyRelease(KeyEvent.VK_CONTROL);
+			robot.keyPress(KeyEvent.VK_ENTER);
+			robot.keyRelease(KeyEvent.VK_ENTER);
+			System.out.println("File uploaded successfully: " + filePath);
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+			throw new RuntimeException("Invalid file path: " + filePath);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException("File upload failed: " + e.getMessage());
+		}
+	}
+
+
+	public String getRandomValueFromArray(List<String> values)
+	{
+		Random rand = new Random();
+		String randomElement = values.get(rand.nextInt(values.size()));
+		if (randomElement.equalsIgnoreCase("Select"))
+			return getRandomValueFromArray(values);
+		else
+			return randomElement;
+	}
+
+	public WebElement getRandomValueFromGivenList(List<WebElement> givenList)
+	{
+		Random rand = new Random();
+		WebElement randomElement = givenList.get(rand.nextInt(givenList.size()));
+		while(randomElement.getText().equalsIgnoreCase("select"))
+		{
+			continue;
+		}
+		return randomElement;
+	}
+
+	public static String getRandomPhoneNumber() {
+		String phoneNumber ="";
+		try {
+			Random random = new Random();
+			int part1 = random.nextInt(900) + 100;
+			int part2 = random.nextInt(900) + 100;
+			int part3 = random.nextInt(9000) + 1000;
+			phoneNumber = "+91" + part1 + part2 + part3;
+			return phoneNumber;
+		} catch (Exception e) {
+			System.err.println("Failed to Generate PhoneNumber");
+		}
+		return phoneNumber;
+	}
+
+	public static String getRandomEmail()
+	{
+		String email = "";
+		try {
+			Random random = new Random();
+			String alphabet = "abcdefghijklmnopqrstuvwxyz";
+			StringBuilder username = new StringBuilder();
+			int usernameLength = random.nextInt(4) +3;
+			for (int i = 0; i < usernameLength; i++)
+			{
+				char randomChar = alphabet.charAt(random.nextInt(alphabet.length()));
+				username.append(randomChar);
+			}
+			String[] domains = {"gmail.com", "yahoo.com", "hotmail.com", "example.com"};
+			String domain = domains[random.nextInt(domains.length)];
+			email = username+ "@" + domain;
+			return email;
+		} catch (Exception e)
+		{
+			System.err.println("Failed to Generate Email");
+		}
+		return email;
+	}
+
+	public int getRandomNumberInRange(int min, int max)
+	{
+		if (min >= max)
+		{
+			throw new IllegalArgumentException("max must be greater than min");
+		}
+
+		Random r = new Random();
+		return r.nextInt((max - min) + 1) + min;
+	}
+
+	public static String generateRandomText(int length) {
+		return RandomStringUtils.randomAlphanumeric(length);
+	}
+
+	public static int getRandomNumberInRanges(int min, int max)
+	{
+		if (min >= max) {
+			throw new IllegalArgumentException("max must be greater than min");
+		}
+		Random r = new Random();
+		return r.nextInt((max - min) + 1) + min;
+	}
+
+	public static LocalDate getRandomDateBetween(int sYr, int sMon, int sDay, int eYr, int eMon, int eDay) {
+		LocalDate startDate = LocalDate.of(sYr, sMon, sDay);
+		LocalDate endDate = LocalDate.of(eYr, eMon, eDay);
+		if (startDate.isAfter(endDate)) {
+			throw new IllegalArgumentException("StartDate must be before or equal to endDate");
+		}
+		long daysBetween = ChronoUnit.DAYS.between(startDate, endDate);
+		if (daysBetween <= 0) {
+			throw new IllegalArgumentException("startDate and endDate must be different");
+		}
+		long randomDays = ThreadLocalRandom.current().nextLong(daysBetween);
+		return startDate.plusDays(randomDays);
+	}
+
+	public String getCurrentDate()
+	{
+		Date date = new Date();
+		DateFormat dateFormat2 = new SimpleDateFormat("dd MMM, yyyy");
+		String date1 =  dateFormat2.format(date);
+		System.out.println(date1);
+		return date1;
+	}
+
+	public String getTomorrowDate()
+	{
+		DateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy");
+		Date date = new Date();
+
+		Calendar c = Calendar.getInstance();
+		c.setTime(date);
+		c.add(Calendar.DATE, 1);
+		date = c.getTime();
+		System.out.println(dateFormat.format(date));
+
+		DateFormat dateFormat2 = new SimpleDateFormat("dd MMM, yyyy");
+		System.out.println(dateFormat2.format(date));
+		return dateFormat2.format(date);
+	}
+
+	public String getYesterdaysDate()
+	{
+		Date date = DateUtils.addDays(new Date(), -1);
+		SimpleDateFormat sdf = new SimpleDateFormat("d");
+		return sdf.format(date);
+	}
+
+	public String getTomorrowsDate()
+	{
+		Date date = DateUtils.addDays(new Date(), 1);
+		SimpleDateFormat sdf = new SimpleDateFormat("d");
+		return sdf.format(date);
+	}
+
 
 }

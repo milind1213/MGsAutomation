@@ -40,7 +40,6 @@ public class FDCalculatorPage extends CommonSelenium {
             selectDropdownOptionByText(driver, frequncyDrp, freq);
 
             log("Clicking on Calculate");
-            javascriptClick(calculateBtn);
 
         } catch (Exception e) {
             log("An error occurred while calculating ROI: " + e.getMessage());
@@ -65,7 +64,7 @@ public class FDCalculatorPage extends CommonSelenium {
         waitFor(3);
         try {
             log("Clicking on Clear button");
-            javascriptClick(clearBtn);
+            ClickWithJS(clearBtn);
         } catch (Exception e) {
             log("Failed to click the Clear button: " + e.getMessage());
             e.printStackTrace();
